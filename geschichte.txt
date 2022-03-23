@@ -1,3 +1,10 @@
 Diese Geschichte erzählt das Abenteuer eines mutigen Helden
+<<<<<<< HEAD
 Er starb wie er lebte. Mit runtergelassenen Hosen.
 Ende 
+=======
+
+Der Name unseres Helden lautet Manith Man. Dieser musste lebenlang vom bösen König Kevin der Große weglaufen.
+
+Ende.
+>>>>>>> 563423ad55fc86fe5e87c49fcd95623e98835573
