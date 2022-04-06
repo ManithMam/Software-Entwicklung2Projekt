@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<VBox styleClass="menu" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.MenuController" alignment="CENTER">
+    <Label text="Main Menu"/>
+    <Button text="Start" onAction="#startGame"/>
+    <Button text="Options" onAction="#options"/>
+    <Button text="Exit" onAction="#exit"/>
+
+    <stylesheets>
+        <URL value="@mainMenu.css"/>
+    </stylesheets>
+</VBox>
