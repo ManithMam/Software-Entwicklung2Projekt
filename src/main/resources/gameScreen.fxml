@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.GameController"
+          alignment="BOTTOM_LEFT" >
+
+    <HBox>
+        <VBox styleClass="menu" alignment="center" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="1">
+            <Button prefWidth="100" text="Options" onAction="#optionsInGame"/>
+            <Button prefWidth="100" text="Back to Menu" onAction="#backToMenu"/>
+        </VBox>
+        <VBox styleClass="actions" alignment="center" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="1">
+            <Label text="Actions"/>
+            <HBox styleClass="action-Button">
+                <Button prefWidth="100" text="Investigate" onAction="#investigate"/>
+                <Button prefWidth="100" text="Interact" onAction="#interact"/>
+                <Button prefWidth="100" text="Pick Up" onAction="#pickUp"/>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@CSS/gameScreen.css" />
+    </stylesheets>
+</GridPane>

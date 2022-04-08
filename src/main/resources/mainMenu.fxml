@@ -6,11 +6,11 @@
 <?import java.net.URL?>
 <VBox styleClass="menu" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.MenuController" alignment="CENTER">
     <Label text="Main Menu"/>
-    <Button text="Start" onAction="#startGame"/>
-    <Button text="Options" onAction="#options"/>
-    <Button text="Exit" onAction="#exit"/>
+    <Button prefWidth="100" text="Start" onAction="#startGame"/>
+    <Button prefWidth="100" text="Options" onAction="#options"/>
+    <Button prefWidth="100" text="Exit" onAction="#exit"/>
 
     <stylesheets>
-        <URL value="@mainMenu.css"/>
+        <URL value="@CSS/mainMenu.css"/>
     </stylesheets>
 </VBox>

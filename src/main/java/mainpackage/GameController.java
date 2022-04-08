@@ -12,20 +12,25 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
-public class MenuController {
-
-    public static boolean fullScreen = false;
-    public static final int mainWindowWidth = 600;
-    public static final int mainWindowHeight = 400;
+public class GameController {
+    public static int gameWindowWidth = 600;
+    public static int gameWindowHeight = 400;
 
     @FXML
-    private void startGame(ActionEvent event) throws IOException {
-        URL fxmlFileUrl = getClass().getClassLoader().getResource("gameScreen.fxml");
+    private void investigate(ActionEvent event) {System.out.println("To bo implemented!");}
+
+    @FXML
+    private void interact(ActionEvent event) {System.out.println("To bo implemented!");}
+
+    @FXML
+    private void pickUp(ActionEvent event) {System.out.println("To bo implemented!");}
+
+    @FXML
+    private void optionsInGame(ActionEvent event) throws IOException {
+        URL fxmlFileUrl = getClass().getClassLoader().getResource("optionsInGameScreen.fxml");
         Parent root = FXMLLoader.load(Objects.requireNonNull(fxmlFileUrl));
 
-        Main.primaryStage.setScene(new Scene(root, GameController.gameWindowWidth, GameController.gameWindowHeight));
-        Main.primaryStage.setFullScreenExitHint("");
-        Main.primaryStage.setFullScreen(fullScreen);
+        Main.primaryStage.setScene(new Scene(root, OptionInGameController.optionInGameWindowWidth, OptionInGameController.optionInGameWindowHeight ));
 
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);
@@ -33,20 +38,14 @@ public class MenuController {
     }
 
     @FXML
-    private void options(ActionEvent event) throws IOException {
-        URL fxmlFileUrl = getClass().getClassLoader().getResource("optionScreen.fxml");
+    private void backToMenu(ActionEvent event) throws IOException {
+        URL fxmlFileUrl = getClass().getClassLoader().getResource("mainMenu.fxml");
         Parent root = FXMLLoader.load(Objects.requireNonNull(fxmlFileUrl));
 
-        Main.primaryStage.setScene(new Scene(root, OptionController.optionWindowWidth, OptionController.optionWindowHeight));
+        Main.primaryStage.setScene(new Scene(root, MenuController.mainWindowWidth, MenuController.mainWindowHeight));
 
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);
         Main.primaryStage.setY((primScreenBounds.getHeight() - Main.primaryStage.getHeight()) / 2);
     }
-
-    @FXML
-    private void exit(ActionEvent event) {
-        System.exit(0);
-    }
-
 }

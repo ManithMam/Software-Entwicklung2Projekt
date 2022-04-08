@@ -1,0 +1,14 @@
+
+.menu {
+    -fx-padding: 20 0 20 50;
+    -fx-spacing: 10;
+}
+
+.actions {
+    -fx-padding: 20 50 20 50;
+    -fx-spacing: 10;
+}
+
+.action-Button {
+    -fx-spacing: 20;
+}

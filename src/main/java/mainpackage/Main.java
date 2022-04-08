@@ -14,8 +14,7 @@ import java.util.Objects;
 public class Main extends Application {
 
     public static Stage primaryStage;
-    public static final int mainWindowWidth = 300;
-    public static final int mainWindowHeight = 275;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -23,7 +22,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(fxmlFileUrl));
 
         primaryStage.setTitle("PAIN");
-        primaryStage.setScene(new Scene(root, mainWindowWidth, mainWindowHeight));
+        primaryStage.setScene(new Scene(root, MenuController.mainWindowWidth, MenuController.mainWindowHeight));
         primaryStage.show();
         Main.primaryStage = primaryStage;
 
