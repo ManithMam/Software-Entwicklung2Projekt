@@ -13,7 +13,7 @@ public class Room {
         this.description = description;
     }
 
-    private String getDescription(){
+    protected String getDescription(){
         return this.description;
     }
 
