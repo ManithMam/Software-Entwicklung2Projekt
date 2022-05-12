@@ -1,16 +1,14 @@
-package mainpackage;
+package mainpackage.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
+import mainpackage.Main;
+import mainpackage.Utilities;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
 public class OptionInGameController {
 
@@ -30,13 +28,13 @@ public class OptionInGameController {
 
 
     @FXML
-    private void backToGame(ActionEvent event) throws IOException {
-        URL fxmlFileUrl = getClass().getClassLoader().getResource("gameScreen.fxml");
-        Parent root = FXMLLoader.load(Objects.requireNonNull(fxmlFileUrl));
+    private void backToGame(ActionEvent event) {
+        Parent root = Utilities.loadFxml("gameScreen.fxml", getClass());
 
         Main.primaryStage.setScene(new Scene(root, GameController.gameWindowWidth, GameController.gameWindowHeight));
         Main.primaryStage.setFullScreenExitHint("");
         Main.primaryStage.setFullScreen(MenuController.fullScreen);
+        root.requestFocus();
 
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);

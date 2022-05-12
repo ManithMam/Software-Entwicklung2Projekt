@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<VBox styleClass="options" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.OptionInGameController" alignment="CENTER">
+<VBox styleClass="options" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.Controller.OptionInGameController" alignment="CENTER">
     <Label text="Options"/>
     <Button prefWidth="100" text="Ray-Tracing On" onAction = "#rayTracing"/>
     <Button prefWidth="100" text="FullScreen" onAction="#fullScreen"/>

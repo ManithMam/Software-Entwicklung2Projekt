@@ -1,16 +1,14 @@
-package mainpackage;
+package mainpackage.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
+import mainpackage.Main;
+import mainpackage.Utilities;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
 public class MenuController {
 
@@ -19,13 +17,13 @@ public class MenuController {
     public static final int mainWindowHeight = 400;
 
     @FXML
-    private void startGame(ActionEvent event) throws IOException {
-        URL fxmlFileUrl = getClass().getClassLoader().getResource("gameScreen.fxml");
-        Parent root = FXMLLoader.load(Objects.requireNonNull(fxmlFileUrl));
+    private void startGame(ActionEvent event) {
+        Parent root = Utilities.loadFxml("gameScreen.fxml", getClass());
 
         Main.primaryStage.setScene(new Scene(root, GameController.gameWindowWidth, GameController.gameWindowHeight));
         Main.primaryStage.setFullScreenExitHint("");
         Main.primaryStage.setFullScreen(fullScreen);
+        root.requestFocus();
 
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);
@@ -33,11 +31,11 @@ public class MenuController {
     }
 
     @FXML
-    private void options(ActionEvent event) throws IOException {
-        URL fxmlFileUrl = getClass().getClassLoader().getResource("optionScreen.fxml");
-        Parent root = FXMLLoader.load(Objects.requireNonNull(fxmlFileUrl));
+    private void options(ActionEvent event) {
+        Parent root = Utilities.loadFxml("optionScreen.fxml", getClass());
 
         Main.primaryStage.setScene(new Scene(root, OptionController.optionWindowWidth, OptionController.optionWindowHeight));
+        root.requestFocus();
 
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);

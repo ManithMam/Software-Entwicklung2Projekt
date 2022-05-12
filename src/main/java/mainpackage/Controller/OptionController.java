@@ -1,16 +1,14 @@
-package mainpackage;
+package mainpackage.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
+import mainpackage.Main;
+import mainpackage.Utilities;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
 public class OptionController {
 
@@ -28,11 +26,11 @@ public class OptionController {
     }
 
     @FXML
-    private void backToMenu(ActionEvent event) throws IOException {
-        URL fxmlFileUrl = getClass().getClassLoader().getResource("mainMenu.fxml");
-        Parent root = FXMLLoader.load(Objects.requireNonNull(fxmlFileUrl));
+    private void backToMenu(ActionEvent event) {
+        Parent root = Utilities.loadFxml("mainMenu.fxml", getClass());
 
         Main.primaryStage.setScene(new Scene(root, MenuController.mainWindowWidth, MenuController.mainWindowHeight));
+        root.requestFocus();
 
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);

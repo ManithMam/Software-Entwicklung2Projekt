@@ -4,4 +4,5 @@ module SE2StartupProject {
 
     opens mainpackage;
     opens classes;
+    opens mainpackage.Controller;
 }
