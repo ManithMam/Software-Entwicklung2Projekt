@@ -3,4 +3,5 @@ module SE2StartupProject {
     requires javafx.fxml;
 
     opens mainpackage;
+    opens classes;
 }
