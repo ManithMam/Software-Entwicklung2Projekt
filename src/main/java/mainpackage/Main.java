@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import mainpackage.Controller.MenuController;
+import mainpackage.controller.Resource;
 
 
 public class Main extends Application {
@@ -16,17 +16,19 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Parent root = Utilities.loadFxml("mainMenu.fxml", getClass());
+        //Parent root = Utilities.loadFxml("/Fxml/mainMenu.fxml");
+        Parent root = Utilities.loadFxml(Resource.MENU_SCREEN);
 
         primaryStage.setTitle("PAIN");
-        primaryStage.setScene(new Scene(root, MenuController.mainWindowWidth, MenuController.mainWindowHeight));
+        primaryStage.setScene(new Scene(root, Resource.MENU_SCREEN.getStageWidth(), Resource.MENU_SCREEN.getStageHeight()));
         primaryStage.show();
+        primaryStage.setFullScreenExitHint("");
         Main.primaryStage = primaryStage;
         root.requestFocus();
 
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);
-        Main.primaryStage.setY((primScreenBounds.getHeight() - Main.primaryStage.getHeight()) / 2);
+        //Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        //Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);
+        //Main.primaryStage.setY((primScreenBounds.getHeight() - Main.primaryStage.getHeight()) / 2);
     }
 
     public static void main(String[] args) {

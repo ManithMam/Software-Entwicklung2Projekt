@@ -4,13 +4,13 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<VBox styleClass="menu" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.Controller.MenuController" alignment="CENTER">
+<VBox styleClass="menu" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.controller.MenuController" alignment="CENTER">
     <Label text="Main Menu"/>
     <Button prefWidth="100" text="Start" onAction="#startGame"/>
-    <Button prefWidth="100" text="Options" onAction="#options"/>
+    <Button prefWidth="100" text="Options" onAction="#option"/>
     <Button prefWidth="100" text="Exit" onAction="#exit"/>
 
     <stylesheets>
-        <URL value="@CSS/mainMenu.css"/>
+        <URL value="@../css/mainMenu.css"/>
     </stylesheets>
 </VBox>
