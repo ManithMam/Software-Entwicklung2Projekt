@@ -1,13 +1,55 @@
-package classes;
+package Items;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 public class Items {
+
+    private int id;
+    private String name;
+    private boolean pickable;
+    private String desc;
+    private boolean isKeyItem;                                      //questionable whether needed, or defined by item id
+    private ArrayList<Items> itemList = new ArrayList<Items>();
+
+
+    public Items(int id, String name, boolean pickable, String desc){
+        this.id = id;
+        this.name = name;
+        this.pickable = pickable;
+        this.desc = desc;
+
+        itemList.add(this);
+    }
+
+    public Items(){
+        this.id = 0;
+        this.name = "No name found";
+        this.pickable = false;
+        this.desc = "No description found";
+
+        itemList.add(this);
+    }
+
+    public int getId(){return this.id;}
+
+    public boolean isPickable(){return this.pickable;}
+
+    public String getDesc(){return this.desc;}
+
+    public String getName(){return this.name;}
+
+    public void setId(int id){this.id = id;}
+
+    public void setName(String name){this.name = name;}
+
+    public void setPickable(boolean pickable){this.pickable = pickable;}
+
+    public void setDesc(String desc){this.desc = desc;}
+
+
+
+    /* NOTE: unused code for reference, to be removed
 
     private static final Map<String, Integer> idMap = new HashMap<>();
     private static final Map<Integer, Boolean> pableMap = new HashMap<>();
@@ -166,4 +208,6 @@ public class Items {
         return desc;
     }
 
+
+     */
 }

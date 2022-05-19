@@ -6,4 +6,5 @@ module SE2StartupProject {
     opens classes;
     opens mainpackage.gui;
     opens rooms;
+    opens Items;
 }

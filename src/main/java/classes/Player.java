@@ -1,5 +1,6 @@
 package classes;
 
+import Items.Items;
 import rooms.Room;
 
 import java.util.HashSet;
@@ -23,8 +24,8 @@ public class Player {
         System.out.println(this.currentRoom.getDescription());
     }
 
-    private void inspectItem(int itemId) {
-        Items.getDesc(itemId);
+    private void inspectItem(Items item) {
+        item.getDesc();
     }
 
     private void pickUpItem(Items item) {

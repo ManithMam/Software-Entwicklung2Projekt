@@ -1,9 +1,8 @@
 package rooms;
 
-import classes.Items;
+import Items.Items;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Room {
 

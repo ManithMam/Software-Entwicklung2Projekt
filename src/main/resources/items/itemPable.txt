@@ -1,3 +1,0 @@
-Baseball Schlaeger= 1
-Vase= 0
-Zange= 1

@@ -1,6 +1,6 @@
 package rooms;
 
-import classes.Items;
+import Items.Items;
 
 public class Bathroom extends Room {
 
