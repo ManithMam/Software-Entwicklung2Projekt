@@ -8,6 +8,8 @@ public class Kitchen extends Room{
 
     public Kitchen()
     {
+        setId(4);
+        setAccess(true);
         setName("Kitchen");
         setDescription("Go cook something");
         addItemsInRoom(knife);

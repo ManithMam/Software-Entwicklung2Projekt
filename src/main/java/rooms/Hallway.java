@@ -8,6 +8,8 @@ public class Hallway extends Room{
 
     public Hallway()
     {
+        setId(2);
+        setAccess(true);
         setName("Hallway");
         setDescription("It seems pretty empty");
         addItemsInRoom(carKey);

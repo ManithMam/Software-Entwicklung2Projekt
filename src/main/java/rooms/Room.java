@@ -9,18 +9,22 @@ public abstract class Room {
     private String name;
     private ArrayList<Items> itemsInRoom = new ArrayList<Items>();      //TODO nachfragen ob es Sinn macht private zu halten, und dann über Setter auf die Attribute zuzugreifen
     private String description;
+    private int id;                                                 //TODO nachfragen interface + vererbung oder nur interface etc
+    private boolean access;
 
 
-
-
-
-
-
-
-
+    public int getId()
+    {
+        return this.id;
+    }
 
     public String getName() {
         return name;
+    }
+
+    public boolean getAccess()
+    {
+        return access;
     }
 
     public ArrayList<Items> getItemsInRoom() {
@@ -37,6 +41,16 @@ public abstract class Room {
 
     protected void setDescription(String description) {
         this.description = description;
+    }
+
+    protected void setAccess(boolean access)
+    {
+        this.access = access;
+    }
+
+    protected void setId(int id)
+    {
+        this.id = id;
     }
 
     protected void addItemsInRoom(Items item)
@@ -56,4 +70,5 @@ public abstract class Room {
         }
         return "You can't pick it up";
     }
+
 }

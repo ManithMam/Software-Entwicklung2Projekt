@@ -10,6 +10,8 @@ public class Basement extends Room{
 
     public Basement()
     {
+        setId(0);
+        setAccess(true);
         setName("Basement");
         setDescription("This is the last Level");
         addItemsInRoom(baseballbat);
