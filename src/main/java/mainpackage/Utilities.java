@@ -14,24 +14,7 @@ import java.util.Objects;
 
 //TODO documentation
 public class Utilities {
-    /*public static Parent loadFxml(String fxmlName) {
-        final URL fxmlFileUrl = Utilities.class.getResource(fxmlName);
-        try {
-            return FXMLLoader.load(Objects.requireNonNull(fxmlFileUrl));
-        }catch (IOException e){
-            e.printStackTrace();
 
-            VBox fail= new VBox();
-            Label label = new Label("Failed to load " + fxmlName);
-
-            label.setTextFill(Color.web("#FF9494"));
-            fail.getChildren().add(label);
-            fail.setAlignment(Pos.CENTER);
-
-            return fail;
-        }
-    }
-     */
     //TODO Exception loggen
     //TODO Fehler screen als Dialog?
     public static Parent loadFxml(Resource resource) {
@@ -54,7 +37,7 @@ public class Utilities {
     }
 
     //TODO method for positioning window on new loaded stage
-    public static void positionWindow(){
+    public static void positionWindow() {
 
     }
 }

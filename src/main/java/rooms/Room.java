@@ -1,4 +1,5 @@
 package rooms;
+
 import classes.Items;
 
 import java.util.ArrayList;
@@ -13,8 +14,7 @@ public abstract class Room {
     private boolean access;
 
 
-    public int getId()
-    {
+    public int getId() {
         return this.id;
     }
 
@@ -22,8 +22,7 @@ public abstract class Room {
         return name;
     }
 
-    public boolean getAccess()
-    {
+    public boolean getAccess() {
         return access;
     }
 
@@ -43,27 +42,22 @@ public abstract class Room {
         this.description = description;
     }
 
-    protected void setAccess(boolean access)
-    {
+    protected void setAccess(boolean access) {
         this.access = access;
     }
 
-    protected void setId(int id)
-    {
+    protected void setId(int id) {
         this.id = id;
     }
 
-    protected void addItemsInRoom(Items item)
-    {
-        if(itemsInRoom.contains(item) && item != null)
-        {
+    protected void addItemsInRoom(Items item) {
+        if (itemsInRoom.contains(item) && item != null) {
             itemsInRoom.add(item);
         }
     }
 
-    protected String removeItem(Items item)
-    {
-        if(itemsInRoom.contains(item) && item != null)  //&& if pickable = true
+    protected String removeItem(Items item) {
+        if (itemsInRoom.contains(item) && item != null)  //&& if pickable = true
         {
             itemsInRoom.remove(item);
             return "You picked up the Item";

@@ -12,13 +12,13 @@ import mainpackage.Utilities;
 //TODO add documentation
 public class OptionController {
 
-
     @FXML
     private Button btnRayTracing;
     @FXML
     private Button btnFullScreen;
     @FXML
     private Button btnBack;
+
 
     @FXML
     private void initialize() {

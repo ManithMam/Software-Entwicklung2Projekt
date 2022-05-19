@@ -98,7 +98,6 @@ public class Items {
                 itemName = "";
                 index += 4;
             }
-
         }
     }
 
@@ -120,17 +119,15 @@ public class Items {
             if (idStage == 0) {
                 currentId = Character.getNumericValue(currentChar);
                 idStage = 1;
-            }
-            else if (idStage == 1) {
+            } else if (idStage == 1) {
                 if (currentChar != ' ') {
                     currentId = currentId * 10;
                     currentId += Character.getNumericValue(currentChar);
                 } else {
                     idStage = 2;
-                    index ++;
+                    index++;
                 }
-            }
-            else if (idStage == 2) {
+            } else if (idStage == 2) {
                 if (currentChar != ')') {
                     itemDesc += currentChar;
                 } else {
@@ -145,7 +142,7 @@ public class Items {
     }
 
     // get item id from name
-    public static int getItemId(String name){
+    public static int getItemId(String name) {
         int id;
         id = idMap.get(name);
 
@@ -153,20 +150,20 @@ public class Items {
     }
 
     // get boolean value if item is pickupable or not via id input (not defined == not pickupable)
-    public static boolean isPable(int id){
+    public static boolean isPable(int id) {
         boolean pableValue = false;
-        if (pableMap.get(id)!= null){
+        if (pableMap.get(id) != null) {
             pableValue = pableMap.get(id);
         }
         return pableValue;
     }
 
     // get item description from name (To fix: currently wrong id assigned)
-    public static String getDesc(int id){
-            String desc;
-            desc = descMap.get(id);
+    public static String getDesc(int id) {
+        String desc;
+        desc = descMap.get(id);
 
-            return desc;
+        return desc;
     }
 
 }

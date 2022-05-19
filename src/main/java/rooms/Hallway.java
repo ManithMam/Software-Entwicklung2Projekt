@@ -2,12 +2,11 @@ package rooms;
 
 import classes.Items;
 
-public class Hallway extends Room{
+public class Hallway extends Room {
 
     Items carKey = new Items();
 
-    public Hallway()
-    {
+    public Hallway() {
         setId(2);
         setAccess(true);
         setName("Hallway");

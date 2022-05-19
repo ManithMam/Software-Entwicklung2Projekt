@@ -2,12 +2,11 @@ package rooms;
 
 import classes.Items;
 
-public class Kitchen extends Room{
+public class Kitchen extends Room {
 
     Items knife = new Items();
 
-    public Kitchen()
-    {
+    public Kitchen() {
         setId(4);
         setAccess(true);
         setName("Kitchen");

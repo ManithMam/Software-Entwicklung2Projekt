@@ -19,12 +19,12 @@ public class GameController {
     @FXML
     private VBox actions;
     @FXML
-    private Button btnBackToMenu, btnOptionsInGame,btnChangeRoom;
+    private Button btnBackToMenu, btnOptionsInGame, btnChangeRoom;
 
 
     //TODO add rest of buttons
     @FXML
-    private void initialize(){
+    private void initialize() {
         //Buttons of actions
         btnBackToMenu.setOnAction(this::backToMenu);
         btnOptionsInGame.setOnAction(this::optionInGame);
@@ -47,7 +47,6 @@ public class GameController {
         room1Btn3.setOnAction(this::loadActions);
         Button room1Btn4 = (Button) roomOneBtns.lookup("#room1Btn4");
         room1Btn4.setOnAction(this::loadActions);
-
     }
 
     //TODO add method to display itemlist
@@ -56,18 +55,17 @@ public class GameController {
 
     //TODO add other roomBtns and set to false (dynamically?)
     @FXML
-    private void loadActions(ActionEvent event){
+    private void loadActions(ActionEvent event) {
         roomOneBtns.setVisible(false);
         roomOneBtns.setManaged(false);
         actions.setVisible(true);
         actions.setManaged(true);
         actions.requestFocus();
-
     }
 
     //TODO (dynamically?) set roomBtns of currently selected room to true
     @FXML
-    private void backToRoomBtns(ActionEvent event){
+    private void backToRoomBtns(ActionEvent event) {
         roomOneBtns.setVisible(true);
         roomOneBtns.setManaged(true);
         actions.setVisible(false);
@@ -77,15 +75,21 @@ public class GameController {
 
     //TODO implement getItemId and getDesc method from Items class
     @FXML
-    private void inspect(ActionEvent event) {System.out.println("To bo implemented!");}
+    private void inspect(ActionEvent event) {
+        System.out.println("To bo implemented!");
+    }
 
     //TODO implement yet to be written methods
     @FXML
-    private void use(ActionEvent event) {System.out.println("To bo implemented!");}
+    private void use(ActionEvent event) {
+        System.out.println("To bo implemented!");
+    }
 
     //TODO implement getItemId, isPable and yet to be written methods from Items class
     @FXML
-    private void pickUp(ActionEvent event) {System.out.println("To bo implemented!");}
+    private void pickUp(ActionEvent event) {
+        System.out.println("To bo implemented!");
+    }
 
     //TODO implement yet to be written methods
     @FXML
@@ -95,7 +99,7 @@ public class GameController {
 
     //TODO (maybe as Dialog?)
     @FXML
-    private void optionInGame(ActionEvent event){
+    private void optionInGame(ActionEvent event) {
         Parent root = Utilities.loadFxml(Resource.OPTION_SCREEN);
 
         Main.primaryStage.setScene(new Scene(root, Resource.OPTION_SCREEN.getStageWidth(), Resource.OPTION_SCREEN.getStageHeight()));

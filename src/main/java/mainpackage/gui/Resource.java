@@ -3,9 +3,9 @@ package mainpackage.gui;
 
 public enum Resource {
 
-    MENU_SCREEN          ("Main Screen",           "/fxml/mainMenu.fxml",                      600, 400),
-    OPTION_SCREEN        ("Option Screen",         "/fxml/optionScreen.fxml",                  600, 400),
-    GAME_SCREEN          ("Game Screen",           "/fxml/gameScreen/gameScreen.fxml",         600, 400);
+    MENU_SCREEN("Main Screen", "/fxml/mainMenu.fxml", 600, 400),
+    OPTION_SCREEN("Option Screen", "/fxml/optionScreen.fxml", 600, 400),
+    GAME_SCREEN("Game Screen", "/fxml/gameScreen/gameScreen.fxml", 600, 400);
 
     public static int optionBackBtn = 0;
     public static boolean fullScreen = false;

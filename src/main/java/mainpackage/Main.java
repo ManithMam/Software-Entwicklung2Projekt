@@ -14,6 +14,7 @@ public class Main extends Application {
 
     public static Stage primaryStage;
 
+
     @Override
     public void start(Stage primaryStage) {
         Parent root = Utilities.loadFxml(Resource.MENU_SCREEN);
