@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import mainpackage.controller.Resource;
+import mainpackage.gui.Resource;
 
 import java.io.IOException;
 import java.net.URL;

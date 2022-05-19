@@ -4,5 +4,5 @@ module SE2StartupProject {
 
     opens mainpackage;
     opens classes;
-    opens mainpackage.controller;
+    opens mainpackage.gui;
 }

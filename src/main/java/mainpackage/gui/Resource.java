@@ -1,21 +1,18 @@
-package mainpackage.controller;
+package mainpackage.gui;
 
 
 public enum Resource {
 
     MENU_SCREEN          ("Main Screen",           "/fxml/mainMenu.fxml",                      600, 400),
     OPTION_SCREEN        ("Option Screen",         "/fxml/optionScreen.fxml",                  600, 400),
-    GAME_SCREEN          ("Game Screen",           "/fxml/gameScreen/gameScreen.fxml",         600, 400),
-    OPTION_IN_GAME_SCREEN("Option In Game Screen", "/fxml/gameScreen/optionInGameScreen.fxml", 600, 400);
+    GAME_SCREEN          ("Game Screen",           "/fxml/gameScreen/gameScreen.fxml",         600, 400);
 
-
+    public static int optionBackBtn = 0;
     public static boolean fullScreen = false;
-    final private String name;
-    final private String url;
-    final private double stageWidth;
-    final private double stageHeight;
-    final public static int width = 600;
-    final public static int height = 400;
+    private final String name;
+    private final String url;
+    private final double stageWidth;
+    private final double stageHeight;
 
 
     Resource(String name, String url, double width, double height) {

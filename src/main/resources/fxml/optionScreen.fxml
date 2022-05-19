@@ -4,11 +4,11 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<VBox styleClass="options" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.controller.OptionController" alignment="CENTER">
+<VBox styleClass="options" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.gui.OptionController" alignment="CENTER">
     <Label text="Options"/>
-    <Button  prefWidth="100" text="Ray-Tracing On" onAction="#rayTracing"/>
-    <Button  prefWidth="100" text="FullScreen" onAction="#fullScreen"/>
-    <Button  prefWidth="100" text="Back to Menu" onAction="#backToMenu"/>
+    <Button fx:id="btnRayTracing" prefWidth="100" text="Ray-Tracing On" />
+    <Button fx:id="btnFullScreen" prefWidth="100" text="FullScreen" onAction="#fullScreen"/>
+    <Button fx:id="btnBack" prefWidth="100" text="Back to Menu" onAction="#backToMenu"/>
 
     <stylesheets>
         <URL value="@../css/optionScreen.css" />

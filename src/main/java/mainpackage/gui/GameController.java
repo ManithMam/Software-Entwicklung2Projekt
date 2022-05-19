@@ -1,14 +1,12 @@
-package mainpackage.controller;
+package mainpackage.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import mainpackage.Main;
 import mainpackage.Utilities;
 
@@ -57,24 +55,24 @@ public class GameController {
     //TODO add method to display text
 
     //TODO add other roomBtns and set to false (dynamically?)
-    //TODO add requestFocus()
     @FXML
     private void loadActions(ActionEvent event){
         roomOneBtns.setVisible(false);
         roomOneBtns.setManaged(false);
         actions.setVisible(true);
         actions.setManaged(true);
+        actions.requestFocus();
 
     }
 
     //TODO (dynamically?) set roomBtns of currently selected room to true
-    //TODO add requestFocus()
     @FXML
     private void backToRoomBtns(ActionEvent event){
         roomOneBtns.setVisible(true);
         roomOneBtns.setManaged(true);
         actions.setVisible(false);
         actions.setManaged(false);
+        roomOneBtns.requestFocus();
     }
 
     //TODO implement getItemId and getDesc method from Items class
@@ -95,35 +93,25 @@ public class GameController {
         System.out.println("To be implemented");
     }
 
-    //TODO change loading of primaryStage from middle of screen to last window position
     //TODO (maybe as Dialog?)
     @FXML
     private void optionInGame(ActionEvent event){
-        //Parent root = Utilities.loadFxml("/fxml/gameScreen/optionInGameScreen.fxml");
-        Parent root = Utilities.loadFxml(Resource.OPTION_IN_GAME_SCREEN);
+        Parent root = Utilities.loadFxml(Resource.OPTION_SCREEN);
 
-        Main.primaryStage.setScene(new Scene(root, Resource.OPTION_IN_GAME_SCREEN.getStageWidth(), Resource.OPTION_IN_GAME_SCREEN.getStageHeight()));
-        //Main.primaryStage.setFullScreenExitHint("");
+        Main.primaryStage.setScene(new Scene(root, Resource.OPTION_SCREEN.getStageWidth(), Resource.OPTION_SCREEN.getStageHeight()));
         Main.primaryStage.setFullScreen(Resource.fullScreen);
         root.requestFocus();
-
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);
-        Main.primaryStage.setY((primScreenBounds.getHeight() - Main.primaryStage.getHeight()) / 2);
     }
 
-    //TODO change loading of primaryStage from middle of screen to last window position
     @FXML
     private void backToMenu(ActionEvent event) {
-        //Parent root = Utilities.loadFxml("/fxml/mainMenu.fxml");
         Parent root = Utilities.loadFxml(Resource.MENU_SCREEN);
 
         Main.primaryStage.setScene(new Scene(root, Resource.MENU_SCREEN.getStageWidth(), Resource.MENU_SCREEN.getStageHeight()));
         root.requestFocus();
 
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        Main.primaryStage.setX((primScreenBounds.getWidth() - Main.primaryStage.getWidth()) / 2);
-        Main.primaryStage.setY((primScreenBounds.getHeight() - Main.primaryStage.getHeight()) / 2);
+        //changes action of back button
+        Resource.optionBackBtn = 0;
     }
 
 }
