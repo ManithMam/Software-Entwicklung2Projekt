@@ -22,7 +22,7 @@ public class MenuController {
         root.requestFocus();
 
         //changes action of back button
-        Resource.optionBackBtn = 1;
+        Resource.optionBackBtn = false;
     }
 
     @FXML

@@ -10,6 +10,8 @@ import javafx.scene.layout.VBox;
 import mainpackage.Main;
 import mainpackage.Utilities;
 
+import java.util.ArrayList;
+
 
 //TODO add documentation
 public class GameController {
@@ -49,13 +51,15 @@ public class GameController {
         room1Btn4.setOnAction(this::loadActions);
     }
 
-    //TODO add method to display itemlist
+    //TODO add method to display item list
 
     //TODO add method to display text
 
-    //TODO add other roomBtns and set to false (dynamically?)
+    //TODO add other roomBtns and set current roomBtns to false (dynamically?)
     @FXML
     private void loadActions(ActionEvent event) {
+        Resource.itemIndex = Integer.parseInt(((Button) event.getSource()).getText()) - 1;
+
         roomOneBtns.setVisible(false);
         roomOneBtns.setManaged(false);
         actions.setVisible(true);
@@ -80,6 +84,7 @@ public class GameController {
     }
 
     //TODO implement yet to be written methods
+
     @FXML
     private void use(ActionEvent event) {
         System.out.println("To bo implemented!");
@@ -88,7 +93,13 @@ public class GameController {
     //TODO implement getItemId, isPable and yet to be written methods from Items class
     @FXML
     private void pickUp(ActionEvent event) {
-        System.out.println("To bo implemented!");
+        //removes buttons if Item gets picked up
+        //TODO replace Main.Items with ArrayList of selected room
+        roomOneBtns.getChildren().removeIf(button -> Integer.parseInt(((Button) button).getText()) == Main.items.size());
+        //replace wit remove method from Room
+        Main.items.remove(Main.items.size() - 1);
+        System.out.println("To be implemented!");
+        System.out.println(Main.items.size());
     }
 
     //TODO implement yet to be written methods
@@ -115,7 +126,7 @@ public class GameController {
         root.requestFocus();
 
         //changes action of back button
-        Resource.optionBackBtn = 0;
+        Resource.optionBackBtn = true;
     }
 
 }

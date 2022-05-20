@@ -8,10 +8,14 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import mainpackage.gui.Resource;
 
+import java.util.ArrayList;
+
 
 public class Main extends Application {
 
     public static Stage primaryStage;
+    //Test for pickUp method in GameController
+    public static ArrayList<Object> items;
 
 
     @Override
@@ -32,6 +36,13 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        //Test for pickUp method in GameController
+        items = new ArrayList<>();
+        items.add("a");
+        items.add("a");
+        items.add("a");
+        items.add("a");
+
         launch(args);
     }
 }
