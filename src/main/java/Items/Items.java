@@ -6,15 +6,15 @@ import java.util.ArrayList;
 public class Items {
 
     private int id;
+    private static int idCount = 0;
     private String name;
     private boolean pickable;
     private String desc;
-    private boolean isKeyItem;                                      //questionable whether needed, or defined by item id
     private ArrayList<Items> itemList = new ArrayList<Items>();
 
 
-    public Items(int id, String name, boolean pickable, String desc){
-        this.id = id;
+    public Items(String name, boolean pickable, String desc){
+        this.id = ++idCount;
         this.name = name;
         this.pickable = pickable;
         this.desc = desc;
@@ -23,7 +23,7 @@ public class Items {
     }
 
     public Items(){
-        this.id = 0;
+        this.id = ++idCount;
         this.name = "No name found";
         this.pickable = false;
         this.desc = "No description found";

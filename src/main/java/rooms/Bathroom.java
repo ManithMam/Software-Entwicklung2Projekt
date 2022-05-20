@@ -5,6 +5,7 @@ import Items.Items;
 public class Bathroom extends Room {
 
     Items glasses = new Items();
+    Items bathroomKey = new Items();
 
     public Bathroom() {
         setId(1);
@@ -13,16 +14,9 @@ public class Bathroom extends Room {
         setDescription("This is the Bathroom");
         addItemsInRoom(glasses);
     }
-/*
-    public String openDoor(Items keyItem, Room currentRoom) {
-        if (currentRoom.getId() == this.getId()) {
-            if (keyItem.getItemId() == KitchenKey.getItemId()) {
-                this.setAccess(true);
-                return "You now have Access to the Bathroom!";
-            }
-        }
 
-        return "You can't open the Door";
+    public int neededItem()
+    {
+        return bathroomKey.getId();
     }
- */
 }
