@@ -15,8 +15,8 @@ import java.util.Objects;
 //TODO documentation
 public class Utilities {
 
-    //TODO Exception loggen
-    //TODO Fehler screen als Dialog?
+    //TODO logg Exception
+    //TODO error screen as dialog?
     public static Parent loadFxml(Resource resource) {
         final URL fxmlUrl = Utilities.class.getResource(resource.getUrl());
 
@@ -34,10 +34,5 @@ public class Utilities {
 
             return fail;
         }
-    }
-
-    //TODO method for positioning window on new loaded stage
-    public static void positionWindow() {
-
     }
 }

@@ -6,9 +6,9 @@
 <?import java.net.URL?>
 <VBox styleClass="menu" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.gui.MenuController" alignment="CENTER">
     <Label text="Main Menu"/>
-    <Button prefWidth="100" text="Start" onAction="#startGame"/>
-    <Button prefWidth="100" text="Options" onAction="#option"/>
-    <Button prefWidth="100" text="Exit" onAction="#exit"/>
+    <Button fx:id="startGameBtn" prefWidth="100" text="Start" onAction="#startGame"/>
+    <Button fx:id="optionBtn" prefWidth="100" text="Options" onAction="#option"/>
+    <Button fx:id="exitBtn" prefWidth="100" text="Exit" onAction="#exit"/>
 
     <stylesheets>
         <URL value="@../css/mainMenu.css"/>

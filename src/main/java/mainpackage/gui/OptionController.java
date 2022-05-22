@@ -10,20 +10,18 @@ import mainpackage.Utilities;
 
 
 //TODO add documentation
+//TODO stile fxml elements with css not with attribute
 public class OptionController {
 
     @FXML
-    private Button btnRayTracing;
-    @FXML
-    private Button btnFullScreen;
-    @FXML
-    private Button btnBack;
+    private Button btnRayTracing, btnFullScreen, btnBack;
 
 
     @FXML
     private void initialize() {
         btnRayTracing.setOnAction(this::rayTracing);
-        btnFullScreen.setOnAction(this::fullScreen);
+        //btnFullScreen.setOnAction(this::fullScreen);
+        btnFullScreen.setOnAction((e) -> Resource.fullScreen = !Resource.fullScreen);
         if (Resource.optionBackBtn) {
             btnBack.setOnAction(this::backToMenu);
         } else {

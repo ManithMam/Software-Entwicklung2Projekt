@@ -4,14 +4,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import mainpackage.Main;
 import mainpackage.Utilities;
 
 
 //TODO add documentation
+//TODO stile fxml elements with css not with attribute
 public class MenuController {
 
-    //TODO create initialize method and assign onAction attribute to stage buttons
+    @FXML
+    private Button startGameBtn, optionBtn, exitBtn;
+
+
+    @FXML
+    private void initialize() {
+        startGameBtn.setOnAction(this::startGame);
+        optionBtn.setOnAction(this::option);
+        exitBtn.setOnAction(this::exit);
+    }
 
     @FXML
     private void startGame(ActionEvent event) {
@@ -37,5 +48,4 @@ public class MenuController {
     private void exit(ActionEvent event) {
         Main.primaryStage.close();
     }
-
 }

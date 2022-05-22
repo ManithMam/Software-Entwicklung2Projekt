@@ -1,6 +1,6 @@
 package mainpackage.gui;
 
-
+//TODO add documentation
 public enum Resource {
 
     MENU_SCREEN("Main Screen", "/fxml/mainMenu.fxml", 600, 400),
