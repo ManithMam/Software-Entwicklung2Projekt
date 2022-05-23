@@ -57,7 +57,7 @@ public abstract class Room {
 
     public abstract int neededItem();
 
-    protected String removeItem(Items item) {
+    public String removeItem(Items item) {
         if (itemsInRoom.contains(item) && item != null)  //&& if pickable = true
         {
             itemsInRoom.remove(item);
