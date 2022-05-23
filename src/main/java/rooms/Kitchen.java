@@ -13,4 +13,9 @@ public class Kitchen extends Room {
         setDescription("Go cook something");
         addItemsInRoom(knife);
     }
+
+    public int neededItem()
+    {
+        return 0;
+    }
 }

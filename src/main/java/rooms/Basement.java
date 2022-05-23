@@ -17,4 +17,9 @@ public class Basement extends Room {
         addItemsInRoom(kitchenKey);
         addItemsInRoom(rope);
     }
+
+    public int neededItem()
+    {
+        return 0;
+    }
 }

@@ -16,9 +16,9 @@ public class Player {
 
     //TODO: Room could be accessible or inaccessible
     // -> Accessibility not yet implemented
-    private void changeRoom(Room newRoom) {
-        this.currentRoom = newRoom;
-    }
+    //private void changeRoom(Room newRoom) {
+   //     this.currentRoom = newRoom;
+   // }
 
     private void inspectRoom() {
         System.out.println(this.currentRoom.getDescription());

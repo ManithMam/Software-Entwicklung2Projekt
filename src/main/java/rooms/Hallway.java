@@ -13,4 +13,9 @@ public class Hallway extends Room {
         setDescription("It seems pretty empty");
         addItemsInRoom(carKey);
     }
+
+    public int neededItem()
+    {
+        return 0;
+    }
 }
