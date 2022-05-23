@@ -4,7 +4,7 @@ import Items.Items;
 
 public class Kitchen extends Room {
 
-    Items knife = new Items();
+    private final Items knife = new Items();
 
     public Kitchen() {
         setId(4);

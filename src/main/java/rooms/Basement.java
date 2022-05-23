@@ -4,9 +4,9 @@ import Items.Items;
 
 public class Basement extends Room {
 
-    Items baseballbat = new Items();
-    Items kitchenKey = new Items();
-    Items rope = new Items();
+    private final Items baseballbat = new Items();
+    private final Items kitchenKey = new Items();
+    private final Items rope = new Items();
 
     public Basement() {
         setId(0);

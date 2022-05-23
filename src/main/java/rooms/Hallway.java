@@ -4,7 +4,7 @@ import Items.Items;
 
 public class Hallway extends Room {
 
-    Items carKey = new Items();
+    private final Items carKey = new Items();
 
     public Hallway() {
         setId(2);
