@@ -18,11 +18,11 @@ import mainpackage.Utilities;
 public class GameController {
 
     @FXML
-    private HBox roomOneBtns;
+    private HBox selectItemBtns;
     @FXML
     private VBox actions, showText, inventory;
     @FXML
-    private Button btnBackToMenu, btnOptionsInGame, btnChangeRoom;
+    private Button btnBackToMenu, btnOptionsInGame, btnChangeRoom, btnInventory;
 
 
     @FXML
@@ -31,6 +31,7 @@ public class GameController {
         btnBackToMenu.setOnAction(this::backToMenu);
         btnOptionsInGame.setOnAction(this::optionInGame);
         btnChangeRoom.setOnAction(this::changeRoom);
+        btnInventory.setOnAction(this::inventory);
         Button btnInspect = (Button) actions.lookup("#btnInspect");
         btnInspect.setOnAction(this::inspect);
         Button btnUse = (Button) actions.lookup("#btnUse");
@@ -60,35 +61,46 @@ public class GameController {
     //TODO make it also work with inventory list
     @FXML
     private void createItemBtn() {
-        //TODO replace 4 with current room itemList size (foreach?)
-        for(int i = 1; i<= 4; i++) {
-            Button button = new Button();
-            button.setText("" + i);
-            button.setId("" + i);
-            button.setOnAction(this::selectItem);
-            roomOneBtns.getChildren().add(button);
+        if(Resource.inventoryList) {
+            for (int i = 1; i <= Main.inventoryList.size(); i++) {
+                Button button = new Button();
+                button.setText("" + i);
+                button.setId("" + i);
+                button.setOnAction(this::selectItem);
+                selectItemBtns.getChildren().add(button);
+            }
+        } else {
+            for (int i = 1; i <= Main.items.size(); i++) {
+                Button button = new Button();
+                button.setText("" + i);
+                button.setId("" + i);
+                button.setOnAction(this::selectItem);
+                selectItemBtns.getChildren().add(button);
+            }
         }
     }
 
-    //TODO combine displayInventory and display Items?
+    //TODO show selected Room name
     @FXML
     private void displayInventory() {
+        inventory.getChildren().clear();
         //TODO replace with foreach of items in inventory
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < Main.inventoryList.size(); i++) {
             Text text = new Text();
             //TODO replace with item name
-            text.setText("- Test text");
+            text.setText((i+1) + " " + Main.inventoryList.get(i));
             inventory.getChildren().add(text);
         }
     }
 
     @FXML
     private void displayItems() {
+        showText.getChildren().clear();
         //TODO replace with foreach of items in room
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < Main.items.size(); i++) {
             Text text = new Text();
             //TODO replace with item name
-            text.setText("Test text");
+            text.setText((i+1) + " " + Main.items.get(i));
             showText.getChildren().add(text);
         }
     }
@@ -97,8 +109,8 @@ public class GameController {
     private void selectItem(ActionEvent event) {
         Resource.itemIndex = Integer.parseInt(((Button) event.getSource()).getText()) - 1;
 
-        roomOneBtns.setVisible(false);
-        roomOneBtns.setManaged(false);
+        selectItemBtns.setVisible(false);
+        selectItemBtns.setManaged(false);
         actions.setVisible(true);
         actions.setManaged(true);
         actions.requestFocus();
@@ -106,11 +118,11 @@ public class GameController {
 
     @FXML
     private void backToItemsBtn(ActionEvent event) {
-        roomOneBtns.setVisible(true);
-        roomOneBtns.setManaged(true);
+        selectItemBtns.setVisible(true);
+        selectItemBtns.setManaged(true);
         actions.setVisible(false);
         actions.setManaged(false);
-        roomOneBtns.requestFocus();
+        selectItemBtns.requestFocus();
     }
 
     //TODO implement getItemId and getDesc method from Items class
@@ -131,12 +143,20 @@ public class GameController {
     private void pickUp(ActionEvent event) {
         //removes buttons if Item gets picked up
         //TODO replace Main.Items with ArrayList of selected room
-        roomOneBtns.getChildren().removeIf(button -> Integer.parseInt(((Button) button).getText()) == Main.items.size());
-        //replace with remove method from Room
-        Main.items.remove(Main.items.size() - 1);
-        System.out.println("To be implemented!");
-        System.out.println(Main.items.size());
+        if (Resource.inventoryList) {
+            selectItemBtns.getChildren().removeIf(button -> Integer.parseInt(((Button) button).getText()) == Main.inventoryList.size());
+            //replace with remove method from Room
+            Main.inventoryList.remove(Resource.itemIndex);
+            System.out.println(Main.inventoryList);
+        } else {
+            selectItemBtns.getChildren().removeIf(button -> Integer.parseInt(((Button) button).getText()) == Main.items.size());
+            //replace with remove method from Room
+            Main.items.remove(Resource.itemIndex);
+            System.out.println(Main.items);
+        }
         backToItemsBtn(event);
+        displayInventory();
+        displayItems();
     }
 
     //TODO implement yet to be written methods
@@ -147,8 +167,21 @@ public class GameController {
 
     //TODO select inventory list
     @FXML
-    private void inventory() {
+    private void inventory(ActionEvent event) {
+        if(!Resource.inventoryList) {
+            Resource.inventoryList = true;
+            btnInventory.setText("Back");
+            Button btnPickUp = (Button) actions.lookup("#btnPickUp");
+            btnPickUp.setText("Drop");
+        } else {
+            Resource.inventoryList = false;
+            btnInventory.setText("Inventory");
+            Button btnPickUp = (Button) actions.lookup("#btnPickUp");
+            btnPickUp.setText("Pick Up");
+        }
+        selectItemBtns.getChildren().clear();
         createItemBtn();
+        backToItemsBtn(event);
     }
 
     @FXML
@@ -168,7 +201,7 @@ public class GameController {
         root.requestFocus();
 
         //changes action of backTo button in optionScreen
-        Resource.optionBackBtn = true;
+        Resource.backToMenu = true;
     }
 
 }

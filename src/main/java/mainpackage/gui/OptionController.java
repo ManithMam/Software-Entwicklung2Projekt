@@ -22,7 +22,7 @@ public class OptionController {
         btnRayTracing.setOnAction(this::rayTracing);
         //btnFullScreen.setOnAction(this::fullScreen);
         btnFullScreen.setOnAction((e) -> Resource.fullScreen = !Resource.fullScreen);
-        if (Resource.optionBackBtn) {
+        if (Resource.backToMenu) {
             btnBack.setOnAction(this::backToMenu);
         } else {
             btnBack.setOnAction(this::backToGame);

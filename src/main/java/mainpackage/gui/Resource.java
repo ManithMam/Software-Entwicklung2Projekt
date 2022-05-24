@@ -7,8 +7,9 @@ public enum Resource {
     OPTION_SCREEN("Option Screen", "/fxml/optionScreen.fxml", 600, 400),
     GAME_SCREEN("Game Screen", "/fxml/gameScreen/gameScreen.fxml", 600, 400);
 
-    public static boolean optionBackBtn = true;
+    public static boolean backToMenu = true;
     public static boolean fullScreen = false;
+    public static boolean inventoryList = false;
     public static int itemIndex = 0;
     public static int roomIndex = 0;
     private final String name;

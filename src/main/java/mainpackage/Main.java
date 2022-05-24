@@ -16,6 +16,7 @@ public class Main extends Application {
     public static Stage primaryStage;
     //Test for pickUp method in GameController
     public static ArrayList<Object> items;
+    public static ArrayList<Object> inventoryList;
 
 
     @Override
@@ -38,10 +39,15 @@ public class Main extends Application {
     public static void main(String[] args) {
         //Test for pickUp method in GameController
         items = new ArrayList<>();
-        items.add("a");
-        items.add("a");
-        items.add("a");
-        items.add("a");
+        items.add("Hat");
+        items.add("Ball");
+        items.add("Chair");
+        items.add("Key");
+
+        inventoryList = new ArrayList<>();
+        inventoryList.add("Rope");
+        inventoryList.add("Egg");
+        inventoryList.add("Knife");
 
         launch(args);
     }
