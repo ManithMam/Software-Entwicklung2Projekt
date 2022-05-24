@@ -2,10 +2,14 @@ package rooms;
 
 import Items.Items;
 
+import java.util.ArrayList;
+
 public class Bathroom extends Room {
 
-    Items glasses = new Items();
-    Items bathroomKey = new Items();
+    private final Items glasses = new Items();
+    private final Items bathroomKey = new Items();
+
+
 
     public Bathroom() {
         setId(1);
@@ -13,10 +17,12 @@ public class Bathroom extends Room {
         setName("Bathroom");
         setDescription("This is the Bathroom");
         addItemsInRoom(glasses);
+
     }
 
     public int neededItem()
     {
         return bathroomKey.getId();
     }
+
 }

@@ -4,8 +4,8 @@ import Items.Items;
 
 public class Library extends Room {
 
-    Items cookbook = new Items();
-    Items libraryKey = new Items();
+    private final Items cookbook = new Items();
+    private final Items libraryKey = new Items();
 
     public Library() {
         setId(3);
@@ -15,5 +15,8 @@ public class Library extends Room {
         addItemsInRoom(cookbook);
     }
 
-
+    public int neededItem()
+    {
+        return libraryKey.getId();
+    }
 }

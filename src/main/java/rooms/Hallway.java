@@ -4,7 +4,7 @@ import Items.Items;
 
 public class Hallway extends Room {
 
-    Items carKey = new Items();
+    private final Items carKey = new Items();
 
     public Hallway() {
         setId(2);
@@ -12,5 +12,10 @@ public class Hallway extends Room {
         setName("Hallway");
         setDescription("It seems pretty empty");
         addItemsInRoom(carKey);
+    }
+
+    public int neededItem()
+    {
+        return 0;
     }
 }

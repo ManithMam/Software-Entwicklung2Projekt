@@ -3,21 +3,36 @@ package classes;
 import Items.Items;
 import rooms.Room;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 public class Player {
     private Room currentRoom;
-    private final HashSet<Items> inventory;
+    private final ArrayList<Items> inventory;
 
-    public Player(Room currentRoom, HashSet<Items> inventory) {
+    public Player(Room currentRoom, ArrayList<Items> inventory) {
         this.currentRoom = currentRoom;
         this.inventory = inventory;
     }
 
-    //TODO: Room could be accessible or inaccessible
-    // -> Accessibility not yet implemented
     private void changeRoom(Room newRoom) {
-        this.currentRoom = newRoom;
+        if(newRoom.getAccess()){
+            this.currentRoom = newRoom;
+        }
+        else if(itemInInventory(newRoom.neededItem())){
+            newRoom.setAccess(true);
+            this.currentRoom = newRoom;
+        }
+        else{
+            System.out.println("This room is not accessible. It appears the door is locked.");
+        }
+    }
+    private boolean itemInInventory(int itemId){
+        for(int i = 0; i < inventory.size(); i++){
+            if(inventory.get(i).getId() == itemId){
+                return true;
+            }
+        }
+        return false;
     }
 
     private void inspectRoom() {
@@ -29,13 +44,8 @@ public class Player {
     }
 
     private void pickUpItem(Items item) {
+
         inventory.add(item);
     }
-
-    //TODO: Room accessibility not yet implemented
-    private void useItem(Room lockedRoom, Items item) {
-
-    }
-
 
 }

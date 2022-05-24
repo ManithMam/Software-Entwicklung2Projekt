@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public abstract class Room {
 
     private String name;
-    private ArrayList<Items> itemsInRoom = new ArrayList<Items>();      //TODO nachfragen ob es Sinn macht private zu halten, und dann über Setter auf die Attribute zuzugreifen
+    private static ArrayList<Items> itemsInRoom = new ArrayList<Items>();      //TODO nachfragen ob es Sinn macht private zu halten, und dann über Setter auf die Attribute zuzugreifen
     private String description;
     private int id;                                                 //TODO nachfragen interface + vererbung oder nur interface etc
     private boolean access;
@@ -41,7 +41,7 @@ public abstract class Room {
         this.description = description;
     }
 
-    protected void setAccess(boolean access) {
+    public void setAccess(boolean access) {
         this.access = access;
     }
 
@@ -55,7 +55,9 @@ public abstract class Room {
         }
     }
 
-    protected String removeItem(Items item) {
+    public abstract int neededItem();
+
+    public String removeItem(Items item) {
         if (itemsInRoom.contains(item) && item != null)  //&& if pickable = true
         {
             itemsInRoom.remove(item);
