@@ -44,6 +44,7 @@
                         <VBox alignment="CENTER" prefHeight="125.0" prefWidth="130.0">
                            <children>
                               <Button fx:id="btnChangeRoom" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Change Room" />
+                              <Button mnemonicParsing="false" text="Inventory" />
                            </children>
                         </VBox>
                         <Separator orientation="VERTICAL" prefHeight="200.0" />

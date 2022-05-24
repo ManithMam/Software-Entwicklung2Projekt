@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -39,7 +38,7 @@ public class GameController {
         Button btnPickUp = (Button) actions.lookup("#btnPickUp");
         btnPickUp.setOnAction(this::pickUp);
         Button btnBackToChoseItem = (Button) actions.lookup("#btnBackToChoseItem");
-        btnBackToChoseItem.setOnAction(this::backToRoomBtns);
+        btnBackToChoseItem.setOnAction(this::backToItemsBtn);
 
         //Buttons of roomOneBtns
         /*
@@ -52,6 +51,15 @@ public class GameController {
         Button room1Btn4 = (Button) roomOneBtns.lookup("#room1Btn4");
         room1Btn4.setOnAction(this::selectItem);
          */
+
+        createItemBtn();
+        displayItems();
+        displayInventory();
+    }
+
+    //TODO make it also work with inventory list
+    @FXML
+    private void createItemBtn() {
         //TODO replace 4 with current room itemList size (foreach?)
         for(int i = 1; i<= 4; i++) {
             Button button = new Button();
@@ -60,27 +68,30 @@ public class GameController {
             button.setOnAction(this::selectItem);
             roomOneBtns.getChildren().add(button);
         }
+    }
 
-        //TODO make method out of it
-        for(int i = 0; i < 5; i++) {
-            Text text = new Text();
-            //replace with item name
-            text.setText("Test text");
-            showText.getChildren().add(text);
-        }
-
-        //TODO make method out of it
+    //TODO combine displayInventory and display Items?
+    @FXML
+    private void displayInventory() {
+        //TODO replace with foreach of items in inventory
         for(int i = 0; i < 20; i++) {
             Text text = new Text();
-            //replace with item name
+            //TODO replace with item name
             text.setText("- Test text");
             inventory.getChildren().add(text);
         }
     }
 
-    //TODO add method to display inventory list
-
-    //TODO add method to display text
+    @FXML
+    private void displayItems() {
+        //TODO replace with foreach of items in room
+        for(int i = 0; i < 5; i++) {
+            Text text = new Text();
+            //TODO replace with item name
+            text.setText("Test text");
+            showText.getChildren().add(text);
+        }
+    }
 
     @FXML
     private void selectItem(ActionEvent event) {
@@ -94,7 +105,7 @@ public class GameController {
     }
 
     @FXML
-    private void backToRoomBtns(ActionEvent event) {
+    private void backToItemsBtn(ActionEvent event) {
         roomOneBtns.setVisible(true);
         roomOneBtns.setManaged(true);
         actions.setVisible(false);
@@ -115,6 +126,7 @@ public class GameController {
     }
 
     //TODO implement getItemId, isPable and yet to be written methods from Items class
+    //TODO make it also work with inventory list
     @FXML
     private void pickUp(ActionEvent event) {
         //removes buttons if Item gets picked up
@@ -124,13 +136,19 @@ public class GameController {
         Main.items.remove(Main.items.size() - 1);
         System.out.println("To be implemented!");
         System.out.println(Main.items.size());
-        backToRoomBtns(event);
+        backToItemsBtn(event);
     }
 
     //TODO implement yet to be written methods
     @FXML
     private void changeRoom(ActionEvent event) {
         System.out.println("To be implemented");
+    }
+
+    //TODO select inventory list
+    @FXML
+    private void inventory() {
+        createItemBtn();
     }
 
     @FXML
