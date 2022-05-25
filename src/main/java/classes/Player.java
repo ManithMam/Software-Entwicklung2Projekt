@@ -3,7 +3,6 @@ package classes;
 import Items.Items;
 import rooms.Room;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -27,9 +26,9 @@ public class Player {
             System.out.println("This room is not accessible. It appears the door is locked.");
         }
     }
-    private boolean hasKeyInInventory(int itemId){
-        for (Items items : inventory) {
-            if (items.getId() == itemId) {
+    private boolean hasKeyInInventory(int keyItemId){
+        for (Items itemInInventory : inventory) {
+            if (itemInInventory.getId() == keyItemId) {
                 return true;
             }
         }
