@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import java.net.URL?>
-<VBox styleClass="options" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.gui.OptionController" alignment="CENTER">
-    <Label text="Options"/>
-    <Button fx:id="btnRayTracing" prefWidth="100" text="Ray-Tracing On" />
-    <Button fx:id="btnFullScreen" prefWidth="100" text="FullScreen" onAction="#fullScreen"/>
-    <Button fx:id="btnBack" prefWidth="100" text="Back to Menu" onAction="#backToMenu"/>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" styleClass="options" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="mainpackage.gui.OptionController">
+   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Options" />
+   <HBox>
+      <children>
+         <Label prefWidth="63.0" text="Ray-Tracing" />
+          <Button fx:id="btnRayTracing" text="&lt;" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="OFF" />
+         <Button mnemonicParsing="false" text="&gt;" />
+      </children>
+   </HBox>
+   <HBox>
+      <children>
+         <Label text="Fullscreen" />
+          <Button fx:id="btnFullScreen" onAction="#fullScreen" text="&lt;" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="OFF" />
+         <Button mnemonicParsing="false" text="&gt;" />
+      </children>
+   </HBox>
+    <Button fx:id="btnBack" onAction="#backToMenu" text="Back to Menu" />
 
     <stylesheets>
         <URL value="@../css/optionScreen.css" />

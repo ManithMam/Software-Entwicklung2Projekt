@@ -3,39 +3,50 @@ package classes;
 import Items.Items;
 import rooms.Room;
 
-import java.util.HashSet;
+import java.util.List;
 
 public class Player {
     private Room currentRoom;
-    private final HashSet<Items> inventory;
+    private final List<Items> inventory;
 
-    public Player(Room currentRoom, HashSet<Items> inventory) {
+    public Player(Room currentRoom, List<Items> inventory) {
         this.currentRoom = currentRoom;
         this.inventory = inventory;
     }
 
-    //TODO: Room could be accessible or inaccessible
-    // -> Accessibility not yet implemented
-    //private void changeRoom(Room newRoom) {
-   //     this.currentRoom = newRoom;
-   // }
-
-    private void inspectRoom() {
-        System.out.println(this.currentRoom.getDescription());
+    private void changeRoom(Room newRoom) {
+        if(newRoom.getAccess()){
+            this.currentRoom = newRoom;
+        }
+        else if(hasKeyInInventory(newRoom.neededItem())){
+            newRoom.setAccess(true);
+            this.currentRoom = newRoom;
+        }
+        else{
+            System.out.println("This room is not accessible. It appears the door is locked.");
+        }
+    }
+    private boolean hasKeyInInventory(int keyItemId){
+        for (Items itemInInventory : inventory) {
+            if (itemInInventory.getId() == keyItemId) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    private void inspectItem(Items item) {
-        item.getDesc();
+    private String inspectRoom() {
+        return this.currentRoom.getDescription();
+    }
+
+    private String inspectItem(Items item) {
+        return item.getDesc();
     }
 
     private void pickUpItem(Items item) {
+        this.currentRoom.removeItem(item);
         inventory.add(item);
+        System.out.println("You picked up " + item);
     }
-
-    //TODO: Room accessibility not yet implemented
-    private void useItem(Room lockedRoom, Items item) {
-
-    }
-
 
 }
