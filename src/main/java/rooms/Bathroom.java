@@ -2,8 +2,6 @@ package rooms;
 
 import Items.Items;
 
-import java.util.ArrayList;
-
 public class Bathroom extends Room {
 
     private final Items glasses = new Items();
@@ -12,7 +10,7 @@ public class Bathroom extends Room {
 
 
     public Bathroom() {
-        setId(1);
+        this.id = ++idCounter;
         setAccess(false);
         setName("Bathroom");
         setDescription("This is the Bathroom");

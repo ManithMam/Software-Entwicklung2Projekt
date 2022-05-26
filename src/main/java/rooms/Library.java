@@ -8,7 +8,7 @@ public class Library extends Room {
     private final Items libraryKey = new Items();
 
     public Library() {
-        setId(3);
+        this.id = ++idCounter;
         setAccess(false);
         setName("Library");
         setDescription("You should read something");

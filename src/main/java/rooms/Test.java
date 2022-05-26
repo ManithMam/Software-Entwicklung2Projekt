@@ -2,19 +2,12 @@ package rooms;
 
 public class Test {
 
-    static Room basement = new Basement();
-    static Room bathroom = new Bathroom();
-    static Room currentRoom = new Bathroom();
+   static RoomFactory roomFactory = new RoomFactory();
 
-    public static void main(String[] args) {
-        changeRoom(bathroom);
-    }
+   public static void main(String[] args) {
+      Room basement = roomFactory.createRoom("Basement");
+      Room kitchen = roomFactory.createRoom("Kitchen");
 
-    private static void changeRoom(Room newRoom) {
-        if (newRoom.getAccess()) {
-            currentRoom = newRoom;
-        } else {
-            System.out.printf("" + newRoom.neededItem());
-        }
-    }
+      System.out.println("" + basement.getDescription() + kitchen.getId());
+   }
 }

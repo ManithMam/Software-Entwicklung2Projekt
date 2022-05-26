@@ -9,7 +9,7 @@ public class Basement extends Room {
     private final Items rope = new Items();
 
     public Basement() {
-        setId(0);
+        this.id = ++idCounter;
         setAccess(true);
         setName("Basement");
         setDescription("This is the last Level");
