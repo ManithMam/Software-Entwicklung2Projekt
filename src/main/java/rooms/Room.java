@@ -3,13 +3,15 @@ package rooms;
 import Items.Items;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Room {
 
     private String name;
-    private static ArrayList<Items> itemsInRoom = new ArrayList<Items>();      //TODO nachfragen ob es Sinn macht private zu halten, und dann über Setter auf die Attribute zuzugreifen
+    private static List<Items> itemsInRoom = new ArrayList<Items>();
     private String description;
-    private int id;                                                 //TODO nachfragen interface + vererbung oder nur interface etc
+    protected static int idCounter = 0;
+    protected int id;
     private boolean access;
 
 
@@ -25,7 +27,7 @@ public abstract class Room {
         return access;
     }
 
-    public ArrayList<Items> getItemsInRoom() {
+    public List<Items> getItemsInRoom() {
         return itemsInRoom;
     }
 
@@ -45,10 +47,6 @@ public abstract class Room {
         this.access = access;
     }
 
-    protected void setId(int id) {
-        this.id = id;
-    }
-
     protected void addItemsInRoom(Items item) {
         if (itemsInRoom.contains(item) && item != null) {
             itemsInRoom.add(item);
@@ -58,7 +56,7 @@ public abstract class Room {
     public abstract int neededItem();
 
     public String removeItem(Items item) {
-        if (itemsInRoom.contains(item) && item != null)  //&& if pickable = true
+        if (itemsInRoom.contains(item) && item != null)
         {
             itemsInRoom.remove(item);
             return "You picked up the Item";

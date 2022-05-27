@@ -3,13 +3,13 @@ package classes;
 import Items.Items;
 import rooms.Room;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private Room currentRoom;
-    private final ArrayList<Items> inventory;
+    private final List<Items> inventory;
 
-    public Player(Room currentRoom, ArrayList<Items> inventory) {
+    public Player(Room currentRoom, List<Items> inventory) {
         this.currentRoom = currentRoom;
         this.inventory = inventory;
     }
@@ -18,7 +18,7 @@ public class Player {
         if(newRoom.getAccess()){
             this.currentRoom = newRoom;
         }
-        else if(itemInInventory(newRoom.neededItem())){
+        else if(hasKeyInInventory(newRoom.neededItem())){
             newRoom.setAccess(true);
             this.currentRoom = newRoom;
         }
@@ -26,26 +26,27 @@ public class Player {
             System.out.println("This room is not accessible. It appears the door is locked.");
         }
     }
-    private boolean itemInInventory(int itemId){
-        for(int i = 0; i < inventory.size(); i++){
-            if(inventory.get(i).getId() == itemId){
+    private boolean hasKeyInInventory(int keyItemId){
+        for (Items itemInInventory : inventory) {
+            if (itemInInventory.getId() == keyItemId) {
                 return true;
             }
         }
         return false;
     }
 
-    private void inspectRoom() {
-        System.out.println(this.currentRoom.getDescription());
+    private String inspectRoom() {
+        return this.currentRoom.getDescription();
     }
 
-    private void inspectItem(Items item) {
-        item.getDesc();
+    private String inspectItem(Items item) {
+        return item.getDesc();
     }
 
     private void pickUpItem(Items item) {
-
+        this.currentRoom.removeItem(item);
         inventory.add(item);
+        System.out.println("You picked up " + item);
     }
 
 }

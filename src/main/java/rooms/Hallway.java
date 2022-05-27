@@ -7,7 +7,7 @@ public class Hallway extends Room {
     private final Items carKey = new Items();
 
     public Hallway() {
-        setId(2);
+        this.id = ++idCounter;
         setAccess(true);
         setName("Hallway");
         setDescription("It seems pretty empty");
