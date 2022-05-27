@@ -28,8 +28,9 @@ public class MenuController {
     private void startGame(ActionEvent event) {
         Parent root = Utilities.loadFxml(Resource.GAME_SCREEN);
 
-        Main.primaryStage.setScene(new Scene(root, Resource.GAME_SCREEN.getStageWidth(), Resource.GAME_SCREEN.getStageHeight()));
-        Main.primaryStage.setFullScreen(Resource.fullScreen);
+        //Main.primaryStage.setScene(new Scene(root, Resource.GAME_SCREEN.getStageWidth(), Resource.GAME_SCREEN.getStageHeight()));
+        Main.primaryStage.getScene().setRoot(root);
+        //Main.primaryStage.setFullScreen(Resource.fullScreen);
         root.requestFocus();
 
         //changes action of back button
@@ -40,7 +41,9 @@ public class MenuController {
     private void option(ActionEvent event) {
         Parent root = Utilities.loadFxml(Resource.OPTION_SCREEN);
 
-        Main.primaryStage.setScene(new Scene(root, Resource.OPTION_SCREEN.getStageWidth(), Resource.OPTION_SCREEN.getStageHeight()));
+        //Main.primaryStage.setScene(new Scene(root, Resource.OPTION_SCREEN.getStageWidth(), Resource.OPTION_SCREEN.getStageHeight()));
+        Main.primaryStage.getScene().setRoot(root);
+        //Main.primaryStage.setFullScreen(Resource.fullScreen);
         root.requestFocus();
     }
 

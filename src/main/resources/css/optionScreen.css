@@ -1,4 +1,36 @@
 
-.options {
-    -fx-spacing: 10;
+.button {
+    -fx-min-width: 100px;
+    -fx-min-height: 30px;
+    -fx-background-color: grey;
+}
+
+.setting-button {
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-background-color: grey;
+}
+
+.margin-Buttons {
+    -fx-spacing: 10px;
+}
+
+.margin-Settings {
+    -fx-spacing: 10px;
+}
+
+.margin-Text {
+    -fx-spacing: 10px;
+}
+
+.margin-Select {
+    -fx-spacing: 10px;
+}
+
+.margin {
+    -fx-spacing: 10px;
+}
+
+VBox, HBox {
+    -fx-background-color: #121212;
 }

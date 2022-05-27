@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import java.net.URL?>
-<VBox styleClass="menu" xmlns:fx="http://javafx.com/fxml" fx:controller="mainpackage.gui.MenuController" alignment="CENTER">
-    <Label text="Main Menu"/>
-    <Button fx:id="startGameBtn" prefWidth="100" text="Start" onAction="#startGame"/>
-    <Button fx:id="optionBtn" prefWidth="100" text="Options" onAction="#option"/>
-    <Button fx:id="exitBtn" prefWidth="100" text="Exit" onAction="#exit"/>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-    <stylesheets>
-        <URL value="@../css/mainMenu.css"/>
-    </stylesheets>
-</VBox>
+
+<BorderPane stylesheets="@../css/mainMenu.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.gui.MenuController">
+   <center>
+      <VBox alignment="CENTER" styleClass="menu-Buttons">
+          <Label text="Main Menu" />
+          <Button fx:id="startGameBtn" onAction="#startGame" prefWidth="100" text="Start" />
+          <Button fx:id="optionBtn" onAction="#option" prefWidth="100" text="Options" />
+          <Button fx:id="exitBtn" onAction="#exit" prefWidth="100" text="Exit" />
+      </VBox>
+   </center>
+</BorderPane>

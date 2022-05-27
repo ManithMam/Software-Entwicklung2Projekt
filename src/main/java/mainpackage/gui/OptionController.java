@@ -3,8 +3,8 @@ package mainpackage.gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import mainpackage.Main;
 import mainpackage.Utilities;
 
@@ -14,20 +14,25 @@ import mainpackage.Utilities;
 public class OptionController {
 
     @FXML
-    private Button btnRayTracing, btnFullScreen, btnBack;
+    private Text textRayTracing, textFullScreen;
+    @FXML
+    private Button btnOffRayTracing, btnOnRayTracing, btnOffFullScreen, btnOnFullScreen, btnApply, btnBack;
 
 
     @FXML
     private void initialize() {
-        btnRayTracing.setOnAction(this::rayTracing);
+        btnOnRayTracing.setOnAction(event -> System.err.println("Your PC is to week to handle the might of Ray Tracing!"));
         //btnFullScreen.setOnAction(this::fullScreen);
-        btnFullScreen.setOnAction((e) -> Resource.fullScreen = !Resource.fullScreen);
-        if (Resource.backToMenu) {
-            btnBack.setOnAction(this::backToMenu);
-        } else {
-            btnBack.setOnAction(this::backToGame);
-            btnBack.setText("Back to Game");
-        }
+        btnOffFullScreen.setOnAction(event -> {
+            Resource.fullScreen = false;
+            textFullScreen.setText("OFF");
+        });
+        btnOnFullScreen.setOnAction(event -> {
+            Resource.fullScreen = true;
+            textFullScreen.setText("ON");
+        });
+        btnApply.setOnAction(event -> Main.primaryStage.setFullScreen(Resource.fullScreen));
+        backTo();
     }
 
     //TODO show text in stage or dialog
@@ -46,17 +51,39 @@ public class OptionController {
     private void backToMenu(ActionEvent event) {
         Parent root = Utilities.loadFxml(Resource.MENU_SCREEN);
 
-        Main.primaryStage.setScene(new Scene(root, Resource.MENU_SCREEN.getStageWidth(), Resource.MENU_SCREEN.getStageHeight()));
+        //Main.primaryStage.setScene(new Scene(root, Resource.MENU_SCREEN.getStageWidth(), Resource.MENU_SCREEN.getStageHeight()));
+        Main.primaryStage.getScene().setRoot(root);
+        //Main.primaryStage.setFullScreen(Resource.fullScreen);
         root.requestFocus();
     }
 
     @FXML
-    public void backToGame(ActionEvent event) {
+    private void backToGame(ActionEvent event) {
         Parent root = Utilities.loadFxml(Resource.GAME_SCREEN);
 
-        Main.primaryStage.setScene(new Scene(root, Resource.GAME_SCREEN.getStageWidth(), Resource.GAME_SCREEN.getStageHeight()));
-        Main.primaryStage.setFullScreen(Resource.fullScreen);
+
+        //Main.primaryStage.setScene(new Scene(root, Resource.GAME_SCREEN.getStageWidth(), Resource.GAME_SCREEN.getStageHeight()));
+        Main.primaryStage.getScene().setRoot(root);
+        //Main.primaryStage.setFullScreen(Resource.fullScreen);
         root.requestFocus();
+    }
+
+    @FXML
+    private void backTo() {
+        if (Resource.backToMenu) {
+            btnBack.setOnAction(event -> {
+                Parent root = Utilities.loadFxml(Resource.MENU_SCREEN);
+                Main.primaryStage.getScene().setRoot(root);
+                root.requestFocus();
+            });
+        } else {
+            btnBack.setOnAction(event -> {
+                Parent root = Utilities.loadFxml(Resource.GAME_SCREEN);
+                Main.primaryStage.getScene().setRoot(root);
+                root.requestFocus();
+            });
+            btnBack.setText("Back to Game");
+        }
     }
 
 }

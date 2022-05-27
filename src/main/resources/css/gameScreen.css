@@ -1,14 +1,14 @@
 
-.menu {
-    -fx-padding: 20 0 20 50;
-    -fx-spacing: 10;
+Button {
+    -fx-min-width: 100px;
+    -fx-min-height: 30px;
+    -fx-background-color: grey;
 }
 
-.actions {
-    -fx-padding: 20 50 20 50;
-    -fx-spacing: 10;
+.margin-Buttons {
+    -fx-spacing: 10px;
 }
 
-.action-Button {
-    -fx-spacing: 20;
+VBox, HBox, Seperator, .list-cell {
+    -fx-background-color: #121212;
 }

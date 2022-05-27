@@ -1,4 +1,14 @@
 
-.menu {
-    -fx-spacing: 10;
+Button {
+    -fx-min-width: 100px;
+    -fx-min-height: 30px;
+    -fx-background-color: grey;
+}
+
+.menu-Buttons {
+    -fx-spacing: 10px;
+}
+
+VBox, HBox {
+    -fx-background-color: #121212;
 }

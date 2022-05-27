@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.ListView?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/gameScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.gui.GameController">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="275.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox fx:id="showText" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="400.0" HBox.hgrow="ALWAYS">
+                     <ListView fx:id="roomView" styleClass="list-cell" prefHeight="0" VBox.vgrow="ALWAYS"/>
+                  </VBox>
+                  <Separator blendMode="COLOR_BURN" maxWidth="0.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="0.0" />
+                  <VBox fx:id="inventory" prefHeight="274.0" prefWidth="198.0" HBox.hgrow="ALWAYS">
+                     <ListView fx:id="invView" styleClass="list-cell" prefHeight="0" VBox.vgrow="ALWAYS"/>
+                  </VBox>
+               </children>
+            </HBox>
+            <Separator blendMode="COLOR_BURN" prefHeight="0.0" prefWidth="600.0" styleClass="separator" />
+            <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="125.0" prefWidth="600.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="125.0" prefWidth="130.0" styleClass="margin-Buttons">
+                     <children>
+                        <Button fx:id="btnOptionsInGame" mnemonicParsing="false" text="Options">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></Button>
+                        <Button fx:id="btnBackToMenu" mnemonicParsing="false" text="Back to Menu">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></Button>
+                     </children>
+                  </VBox>
+                  <Separator blendMode="COLOR_BURN" maxWidth="0.0" orientation="VERTICAL" prefHeight="125.0" prefWidth="0.0" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="125.0" prefWidth="470.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="125.0" prefWidth="130.0">
+                           <children>
+                              <Button fx:id="btnChangeRoom" mnemonicParsing="false" text="Change Room" />
+                           </children>
+                        </VBox>
+                        <Separator blendMode="COLOR_BURN" maxWidth="0.0" orientation="VERTICAL" prefHeight="125.0" prefWidth="0.0" />
+                        <HBox fx:id="action" alignment="CENTER" styleClass="margin-Buttons" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="btnInspect" mnemonicParsing="false" text="Inspect" />
+                              <Button fx:id="btnUse" mnemonicParsing="false" text="Use" />
+                              <Button fx:id="btnPickUp" mnemonicParsing="false" text="Pick Up" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
