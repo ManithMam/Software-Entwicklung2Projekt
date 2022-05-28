@@ -1,5 +1,9 @@
 package rooms;
 
+import items.commonItems.ItemFactory;
+import items.furniture.FurnitureFactory;
+import items.keyItems.KeyItemFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +28,13 @@ public class World {
         roomsList.add(kitchen);
         roomsList.add(library);
         roomsList.add(bathroom);
+
+        ItemFactory itemFactory = new ItemFactory();
+        itemFactory.createAllItems();
+        KeyItemFactory keyItemFactory = new KeyItemFactory();
+        keyItemFactory.createAllKeyItems();
+        FurnitureFactory furnitureFactory = new FurnitureFactory();
+        furnitureFactory.createAllFurniture();
     }
 
     public List<Room> getRoomsList()
