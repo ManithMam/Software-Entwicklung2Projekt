@@ -1,12 +1,15 @@
 package rooms;
 
-import Items.Items;
+import items.Item;
+import items.commonItems.BaseballBat;
+import items.keyItems.KitchenKey;
+import items.commonItems.Rope;
 
 public class Basement extends Room {
 
-    private final Items baseballbat = new Items();
-    private final Items kitchenKey = new Items();
-    private final Items rope = new Items();
+    private final Item baseballbat = new BaseballBat();
+    private final Item kitchenKey = new KitchenKey();
+    private final Item rope = new Rope();
 
     public Basement() {
         this.id = ++idCounter;

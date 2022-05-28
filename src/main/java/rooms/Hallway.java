@@ -1,10 +1,11 @@
 package rooms;
 
-import Items.Items;
+import items.Item;
+import items.keyItems.CarKey;
 
 public class Hallway extends Room {
 
-    private final Items carKey = new Items();
+    private final Item carKey = new CarKey();
 
     public Hallway() {
         this.id = ++idCounter;

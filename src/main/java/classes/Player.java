@@ -1,15 +1,15 @@
 package classes;
 
-import Items.Items;
+import items.Item;
 import rooms.Room;
 
 import java.util.List;
 
 public class Player {
     private Room currentRoom;
-    private final List<Items> inventory;
+    private final List<Item> inventory;
 
-    public Player(Room currentRoom, List<Items> inventory) {
+    public Player(Room currentRoom, List<Item> inventory) {
         this.currentRoom = currentRoom;
         this.inventory = inventory;
     }
@@ -27,7 +27,7 @@ public class Player {
         }
     }
     private boolean hasKeyInInventory(int keyItemId){
-        for (Items itemInInventory : inventory) {
+        for (Item itemInInventory : inventory) {
             if (itemInInventory.getId() == keyItemId) {
                 return true;
             }
@@ -39,11 +39,11 @@ public class Player {
         return this.currentRoom.getDescription();
     }
 
-    private String inspectItem(Items item) {
+    private String inspectItem(Item item) {
         return item.getDesc();
     }
 
-    private void pickUpItem(Items item) {
+    private void pickUpItem(Item item) {
         this.currentRoom.removeItem(item);
         inventory.add(item);
         System.out.println("You picked up " + item);

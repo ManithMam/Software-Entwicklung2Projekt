@@ -1,11 +1,13 @@
 package rooms;
 
-import Items.Items;
+import items.Item;
+import items.keyItems.BathroomKey;
+import items.commonItems.Glasses;
 
 public class Bathroom extends Room {
 
-    private final Items glasses = new Items();
-    private final Items bathroomKey = new Items();
+    private final Item glasses = new Glasses();
+    private final Item bathroomKey = new BathroomKey();
 
 
 

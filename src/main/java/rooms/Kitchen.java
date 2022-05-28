@@ -1,10 +1,11 @@
 package rooms;
 
-import Items.Items;
+import items.Item;
+import items.commonItems.Knife;
 
 public class Kitchen extends Room {
 
-    private final Items knife = new Items();
+    private final Item knife = new Knife();
 
     public Kitchen() {
         this.id = ++idCounter;

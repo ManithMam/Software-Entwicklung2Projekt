@@ -1,6 +1,6 @@
 package rooms;
 
-import Items.Items;
+import items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public abstract class Room {
 
     private String name;
-    private static List<Items> itemsInRoom = new ArrayList<Items>();
+    private static List<Item> itemInRoom = new ArrayList<Item>();
     private String description;
     protected static int idCounter = 0;
     protected int id;
@@ -27,8 +27,8 @@ public abstract class Room {
         return access;
     }
 
-    public List<Items> getItemsInRoom() {
-        return itemsInRoom;
+    public List<Item> getItemsInRoom() {
+        return itemInRoom;
     }
 
     public String getDescription() {
@@ -47,18 +47,18 @@ public abstract class Room {
         this.access = access;
     }
 
-    protected void addItemsInRoom(Items item) {
-        if (itemsInRoom.contains(item) && item != null) {
-            itemsInRoom.add(item);
+    protected void addItemsInRoom(Item item) {
+        if (itemInRoom.contains(item) && item != null) {
+            itemInRoom.add(item);
         }
     }
 
     public abstract int neededItem();
 
-    public String removeItem(Items item) {
-        if (itemsInRoom.contains(item) && item != null)
+    public String removeItem(Item item) {
+        if (itemInRoom.contains(item) && item != null)
         {
-            itemsInRoom.remove(item);
+            itemInRoom.remove(item);
             return "You picked up the Item";
         }
         return "You can't pick it up";

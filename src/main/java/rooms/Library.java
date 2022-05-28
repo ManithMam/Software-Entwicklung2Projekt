@@ -1,11 +1,13 @@
 package rooms;
 
-import Items.Items;
+import items.Item;
+import items.commonItems.Cookbook;
+import items.keyItems.LibraryKey;
 
 public class Library extends Room {
 
-    private final Items cookbook = new Items();
-    private final Items libraryKey = new Items();
+    private final Item cookbook = new Cookbook();
+    private final Item libraryKey = new LibraryKey();
 
     public Library() {
         this.id = ++idCounter;

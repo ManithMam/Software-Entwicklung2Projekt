@@ -1,35 +1,15 @@
-package Items;
-
+package items;
 
 import java.util.ArrayList;
 
-public class Items {
+public abstract class Item implements itemInterface{
 
-    private int id;
-    private static int idCount = 0;
+    protected int id;
+    protected static int idCount = 0;
     private String name;
     private boolean pickable;
     private String desc;
-    private ArrayList<Items> itemList = new ArrayList<Items>();
-
-
-    public Items(String name, boolean pickable, String desc){
-        this.id = ++idCount;
-        this.name = name;
-        this.pickable = pickable;
-        this.desc = desc;
-
-        itemList.add(this);
-    }
-
-    public Items(){
-        this.id = ++idCount;
-        this.name = "No name found";
-        this.pickable = false;
-        this.desc = "No description found";
-
-        itemList.add(this);
-    }
+    protected ArrayList<Item> itemList = new ArrayList<Item>();
 
     public int getId(){return this.id;}
 
