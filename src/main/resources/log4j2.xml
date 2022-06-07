@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <File name="File" fileName="logs/logFile.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+        <Console name="Console">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="classes.Player" level="info">
+            <AppenderRef ref="File"/>
+        </Logger>
+        <Logger name="items" level="info">
+            <AppenderRef ref="File"/>
+        </Logger>
+        <Logger name="rooms" level="info">
+            <AppenderRef ref="File"/>
+        </Logger>
+        <Logger name="mainpackage" level="info">
+            <AppenderRef ref="File"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
