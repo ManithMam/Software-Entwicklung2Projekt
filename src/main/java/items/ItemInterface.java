@@ -1,6 +1,6 @@
 package items;
 
-public interface itemInterface {
+public interface ItemInterface {
     int getId();
 
     boolean isPickable();

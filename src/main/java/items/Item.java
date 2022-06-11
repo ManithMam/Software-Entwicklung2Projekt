@@ -1,15 +1,17 @@
 package items;
 
+import java.util.List;
 import java.util.ArrayList;
 
-public abstract class Item implements itemInterface{
+public abstract class Item implements ItemInterface {
 
     protected int id;
     protected static int idCount = 0;
     private String name;
     private boolean pickable;
     private String desc;
-    protected ArrayList<Item> itemList = new ArrayList<Item>();
+    protected static List<Item> itemList = new ArrayList<Item>();
+    protected static List<Item> furnitureList = new ArrayList<Item>();
 
     public int getId(){return this.id;}
 

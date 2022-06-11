@@ -1,10 +1,10 @@
 package items.furniture;
 
-import items.Furniture;
+import items.Item;
 
 public class FurnitureFactory {
 
-    public Furniture createFurniture(String itemType){
+    public Item createFurniture(String itemType){
 
         switch (itemType){
             case "Sofa":
@@ -19,9 +19,9 @@ public class FurnitureFactory {
     }
 
     public void createAllFurniture(){
-        Furniture sofa = new Sofa();
-        Furniture chair = new Chair();
-        Furniture table = new Table();
+        Item sofa = new Sofa();
+        Item chair = new Chair();
+        Item table = new Table();
     }
 
 }
