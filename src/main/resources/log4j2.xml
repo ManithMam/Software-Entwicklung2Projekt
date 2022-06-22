@@ -9,16 +9,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="classes.Player" level="info">
-            <AppenderRef ref="File"/>
-        </Logger>
-        <Logger name="items" level="info">
-            <AppenderRef ref="File"/>
-        </Logger>
-        <Logger name="rooms" level="info">
-            <AppenderRef ref="File"/>
-        </Logger>
-        <Logger name="mainpackage" level="info">
+        <Logger name="de.stuttgart_hdm.mi.se2" level="info">
             <AppenderRef ref="File"/>
         </Logger>
         <Root level="info">
