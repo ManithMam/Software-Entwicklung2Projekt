@@ -54,18 +54,20 @@ public class GameController {
         });
         btnChangeRoom.setOnAction(this::changeRoom);
         btnInspect.setOnAction(event -> {
-            if (View.getGameView().isRoomViewSelected()) {
+            if (View.getGameView().isRoomViewSelected() && roomView.getSelectionModel().getSelectedItem() instanceof Item selectedItem) {
+                dialog.setText(selectedItem.getDesc());
                 System.out.println("Do stuff");
-            } else if (View.getGameView().isInvViewSelected()) {
+            } else if (View.getGameView().isInvViewSelected() && invView.getSelectionModel().getSelectedItem() instanceof Item selectedItem) {
+                dialog.setText(selectedItem.getDesc());
                 System.out.println("Do stuff");
             } else {
-                System.out.println("Select Item");
+                dialog.setText("Select Item");
             }
-            System.out.println("To bo implemented!");
             Audio.playAudio();
         });
         btnUse.setOnAction(event -> {
-            if (View.getGameView().isRoomViewSelected()) {
+            if (View.getGameView().isRoomViewSelected() && roomView.getSelectionModel().getSelectedItem() instanceof Item) {
+
                 System.out.println("Do stuff");
             } else if (View.getGameView().isInvViewSelected()) {
                 System.out.println("Do stuff");
@@ -78,24 +80,24 @@ public class GameController {
         //btnPickUp.setOnAction(this::pickUp);
         btnPickUp.setOnAction(event -> {
 
-            if (View.getGameView().isRoomViewSelected() && roomView.getSelectionModel().getSelectedItem() != null) {
-                Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom().remove(roomView.getSelectionModel().getSelectedItem());
+            if (View.getGameView().isRoomViewSelected() && roomView.getSelectionModel().getSelectedItem() instanceof Item selectedItem) {
+                Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom().remove(selectedItem);
                 Model.getModel().getInventory().add((Item) roomView.getSelectionModel().getSelectedItem());
 
                 System.out.println("Roomview was selected");
-                System.out.println("Moved item: " + ((Item) roomView.getSelectionModel().getSelectedItem()).getName() +
-                        " from room: " + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getName() + " to inventory"
+                System.out.println("Moved item: " + selectedItem.getName() + " from room: "
+                        + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getName() + " to inventory"
                 );
                 //log.info("Moved item: " + ((Item) roomView.getSelectionModel().getSelectedItem()).getName() +
                 //                        " from room: " + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getName() + " to inventory"
                 //);
 
-            } else if (View.getGameView().isInvViewSelected() && invView.getSelectionModel().getSelectedItem() != null) {
-                Model.getModel().getInventory().remove(invView.getSelectionModel().getSelectedItem());
-                Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom().add((Item) invView.getSelectionModel().getSelectedItem());
+            } else if (View.getGameView().isInvViewSelected() && invView.getSelectionModel().getSelectedItem() instanceof Item selectedItem) {
+                Model.getModel().getInventory().remove(selectedItem);
+                Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom().add(selectedItem);
 
                 System.out.println("invview was selected");
-                System.out.println("Moved item: " + ((Item) invView.getSelectionModel().getSelectedItem()).getName() +
+                System.out.println("Moved item: " + selectedItem.getName() +
                         " from inventory to: " + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getName()
                 );
 
@@ -154,10 +156,10 @@ public class GameController {
             }
 
             Audio.playAudio();
+            currentRoom.setText("Current room: " + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()));
             View.getGameView().setInvViewSelected(false);
             View.getGameView().setRoomViewSelected(false);
         });
-
 
 
         roomView.setItems(View.getGameView().getRoomItems());
@@ -232,7 +234,6 @@ public class GameController {
     private void displayItems() {
         View.getGameView().getRoomItems().setAll(Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom());
 
-
         //de.stuttgart_hdm.mi.se2.classes.items.getSelectionModel().selectedItemProperty().addListener();
         /*
         showText.getChildren().clear();
@@ -295,6 +296,7 @@ public class GameController {
             System.out.println("Select Item");
         }
         System.out.println("To bo implemented!");
+
         Audio.playAudio();
     }
 
@@ -353,8 +355,7 @@ public class GameController {
             btnPickRoom.setVisible(true);
             btnPickRoom.setManaged(true);
         }
-
-
+        currentRoom.setText("Previous room: " + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getName());
 
         Audio.playAudio();
     }

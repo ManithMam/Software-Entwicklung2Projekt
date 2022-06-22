@@ -5,6 +5,10 @@ Button {
     -fx-background-color: grey;
 }
 
+Label {
+    -fx-text-fill: #ffa500;
+}
+
 .margin-Buttons {
     -fx-spacing: 5px;
 }
