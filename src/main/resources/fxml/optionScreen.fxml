@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<BorderPane stylesheets="@../css/optionScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainpackage.gui.OptionController">
+<BorderPane stylesheets="@../css/optionScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.OptionController">
    <center>
       <VBox alignment="CENTER" styleClass="margin">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Options" />
