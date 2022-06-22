@@ -11,9 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-
-import java.util.stream.Collectors;
 
 
 //TODO add documentation
@@ -30,7 +27,7 @@ public class GameController {
     @FXML
     private VBox showText, inventory;
     @FXML
-    private Button btnBackToMenu, btnOptionsInGame, btnChangeRoom, btnInspect, btnUse, btnPickUp;
+    private Button btnBackToMenu, btnOptionsInGame, btnChangeRoom, btnInspect, btnUse, btnPickUp, btnPickRoom;
     @FXML
     private ListView roomView, invView;
 
@@ -80,10 +77,12 @@ public class GameController {
         });
         //btnPickUp.setOnAction(this::pickUp);
         btnPickUp.setOnAction(event -> {
-            if (View.getGameView().isRoomViewSelected()) {
+
+            if (View.getGameView().isRoomViewSelected() && roomView.getSelectionModel().getSelectedItem() != null) {
                 Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom().remove(roomView.getSelectionModel().getSelectedItem());
                 Model.getModel().getInventory().add((Item) roomView.getSelectionModel().getSelectedItem());
 
+                System.out.println("Roomview was selected");
                 System.out.println("Moved item: " + ((Item) roomView.getSelectionModel().getSelectedItem()).getName() +
                         " from room: " + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getName() + " to inventory"
                 );
@@ -91,23 +90,74 @@ public class GameController {
                 //                        " from room: " + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getName() + " to inventory"
                 //);
 
-                displayItems();
-                displayInventory();
-            } else if (View.getGameView().isInvViewSelected()) {
+            } else if (View.getGameView().isInvViewSelected() && invView.getSelectionModel().getSelectedItem() != null) {
                 Model.getModel().getInventory().remove(invView.getSelectionModel().getSelectedItem());
                 Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom().add((Item) invView.getSelectionModel().getSelectedItem());
 
+                System.out.println("invview was selected");
                 System.out.println("Moved item: " + ((Item) invView.getSelectionModel().getSelectedItem()).getName() +
                         " from inventory to: " + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getName()
                 );
 
-                displayItems();
-                displayInventory();
             } else {
-                System.out.println("Select Item");
+                dialog.setText("Select Item");
             }
             Audio.playAudio();
+            displayItems();
+            displayInventory();
+            View.getGameView().setInvViewSelected(false);
+            View.getGameView().setRoomViewSelected(false);
         });
+
+        btnPickRoom.setOnAction(event -> {
+            if(View.getGameView().isRoomViewSelected() && roomView.getSelectionModel().getSelectedItem() instanceof Room selectedRoom) {
+                //System.out.println("needed Item:" + selectedRoom.neededItem());
+                //System.out.println("Itemid in inventory" + Model.getModel().getInventory().stream().map(item -> item.getId()).collect(Collectors.toList()));
+                //System.out.println("Current roomid" + Model.getModel().getRoomIndex());
+                //System.out.println("access rights of current room" + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getAccess());
+                //System.out.println("access rights of selected room" + selectedRoom.getAccess());
+                if (selectedRoom.getAccess()) {
+                    Model.getModel().setRoomIndex(roomView.getSelectionModel().getSelectedIndex());
+                    View.getGameView().getRoomItems().setAll(Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom());
+
+                    btnInspect.setVisible(true);
+                    btnInspect.setManaged(true);
+                    btnUse.setVisible(true);
+                    btnUse.setManaged(true);
+                    btnPickUp.setVisible(true);
+                    btnPickUp.setManaged(true);
+                    btnPickRoom.setVisible(false);
+                    btnPickRoom.setManaged(false);
+                } else if (Model.getModel().getInventory().stream().map(Item::getId).toList().contains((selectedRoom.neededItem()))) {
+                    Model.getModel().setRoomIndex(roomView.getSelectionModel().getSelectedIndex());
+                    //System.out.println("Test");
+                    //System.out.println("access rights of current room before" + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getAccess());
+                    Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).setAccess(true);
+                    //System.out.println("access rights of current room after" + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getAccess());
+
+
+                    View.getGameView().getRoomItems().setAll(Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom());
+
+                    btnInspect.setVisible(true);
+                    btnInspect.setManaged(true);
+                    btnUse.setVisible(true);
+                    btnUse.setManaged(true);
+                    btnPickUp.setVisible(true);
+                    btnPickUp.setManaged(true);
+                    btnPickRoom.setVisible(false);
+                    btnPickRoom.setManaged(false);
+                } else {
+                    dialog.setText("The room is locked!\nMaybe i can find something to open it...");
+                }
+            } else {
+                dialog.setText("Please select a room!");
+            }
+
+            Audio.playAudio();
+            View.getGameView().setInvViewSelected(false);
+            View.getGameView().setRoomViewSelected(false);
+        });
+
 
 
         roomView.setItems(View.getGameView().getRoomItems());
@@ -290,60 +340,22 @@ public class GameController {
     //TODO implement yet to be written methods
     @FXML
     private void changeRoom(ActionEvent event) {
-        View.getGameView().getRoomItems().setAll(Model.getModel().getRoomsList());
-        btnInspect.setVisible(false);
-        btnInspect.setManaged(false);
-        btnUse.setVisible(false);
-        btnUse.setManaged(false);
-        btnPickUp.setVisible(false);
-        btnPickUp.setManaged(false);
-        Button button = new Button();
-        button.setText("Pick Room");
-        button.setOnAction(event1 -> {
-
-            if(roomView.getSelectionModel().getSelectedItem() instanceof Room) {
-                Room selectedRoom = (Room) roomView.getSelectionModel().getSelectedItem();
-                //System.out.println("needed Item:" + selectedRoom.neededItem());
-                //System.out.println("Itemid in inventory" + Model.getModel().getInventory().stream().map(item -> item.getId()).collect(Collectors.toList()));
-                //System.out.println("Current roomid" + Model.getModel().getRoomIndex());
-                //System.out.println("access rights of current room" + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getAccess());
-                //System.out.println("access rights of selected room" + selectedRoom.getAccess());
-                if (selectedRoom.getAccess()) {
-                    Model.getModel().setRoomIndex(roomView.getSelectionModel().getSelectedIndex());
-                    View.getGameView().getRoomItems().setAll(Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom());
-
-                    btnInspect.setVisible(true);
-                    btnInspect.setManaged(true);
-                    btnUse.setVisible(true);
-                    btnUse.setManaged(true);
-                    btnPickUp.setVisible(true);
-                    btnPickUp.setManaged(true);
-                    action.getChildren().remove(3);
-                    System.out.println(Model.getModel().getRoomIndex());
-                } else if(Model.getModel().getInventory().stream().map(item -> item.getId()).collect(Collectors.toList()).contains((selectedRoom.neededItem()))) {
-                    Model.getModel().setRoomIndex(roomView.getSelectionModel().getSelectedIndex());
-                    //System.out.println("Test");
-                    //System.out.println("access rights of current room before" + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getAccess());
-                    Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).setAccess(true);
-                    //System.out.println("access rights of current room after" + Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getAccess());
+        if(btnPickRoom.isVisible()) {
+            dialog.setText("Please select a room and use \"Pick Room\" button!");
+        } else {
+            View.getGameView().getRoomItems().setAll(Model.getModel().getRoomsList());
+            btnInspect.setVisible(false);
+            btnInspect.setManaged(false);
+            btnUse.setVisible(false);
+            btnUse.setManaged(false);
+            btnPickUp.setVisible(false);
+            btnPickUp.setManaged(false);
+            btnPickRoom.setVisible(true);
+            btnPickRoom.setManaged(true);
+        }
 
 
-                    View.getGameView().getRoomItems().setAll(Model.getModel().getRoomsList().get(Model.getModel().getRoomIndex()).getItemsInRoom());
 
-                    btnInspect.setVisible(true);
-                    btnInspect.setManaged(true);
-                    btnUse.setVisible(true);
-                    btnUse.setManaged(true);
-                    btnPickUp.setVisible(true);
-                    btnPickUp.setManaged(true);
-                    action.getChildren().remove(3);
-                } else {
-                    dialog.setText("The room is locked!\nMaybe i can find something to open it...");
-                }
-            }
-
-        });
-        action.getChildren().add(button);
         Audio.playAudio();
     }
 }
