@@ -1,4 +1,4 @@
-package timer;
+package de.stuttgart_hdm.mi.se2.timer;
 
 import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.View;
