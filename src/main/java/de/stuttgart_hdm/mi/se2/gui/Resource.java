@@ -8,6 +8,7 @@ public enum Resource {
     MENU_SCREEN("Main Screen", "/fxml/mainMenu.fxml", 600, 400),
     OPTION_SCREEN("Option Screen", "/fxml/optionScreen.fxml", 600, 400),
     GAME_SCREEN("Game Screen", "/fxml/gameScreen.fxml", 600, 400),
+    LOSING_SCREEN("Losing Screen", "/fxml/losingScreen.fxml", 600, 400),
     BTN_AUDIO("Button Sound", "src/main/resources/buttonClick4.mp3");
 
     private static boolean inventoryList = false;

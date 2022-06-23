@@ -1,0 +1,17 @@
+Button {
+    -fx-min-width: 100px;
+    -fx-min-height: 30px;
+    -fx-background-color: grey;
+}
+
+Label {
+    -fx-text-fill: #ffa500;
+}
+
+.menu-Buttons {
+    -fx-spacing: 10px;
+}
+
+VBox, HBox {
+    -fx-background-color: #121212;
+}

@@ -12,14 +12,17 @@ import de.stuttgart_hdm.mi.se2.gui.Resource;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import timer.Timer;
 public class Main extends Application {
 
     //Test for pickUp method in GameController
     public static ArrayList<Object> items;
     public static ArrayList<Object> inventoryList;
 
-
+    private static final Logger log = LogManager.getLogger(Main.class);
 
     @Override
     public void start(Stage primaryStage) {
@@ -39,6 +42,14 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+
+        Timer timer = new Timer();
+        Thread thread = new Thread(timer);
+        thread.setDaemon(true);
+        thread.start();
+
+        log.info("test");
+
         Model model = new Model();
         //System.out.println(model.getRoomsList().get(0).getName());
         System.out.println(model.getRoomsList().get(0).getItemsInRoom().get(0).getName());

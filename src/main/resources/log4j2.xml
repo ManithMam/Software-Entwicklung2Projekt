@@ -9,7 +9,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="de.stuttgart_hdm.mi.se2" level="info">
+        <Logger name="de.stuttgart_hdm.mi.se2" level="debug" additivity="true">
             <AppenderRef ref="File"/>
         </Logger>
         <Root level="info">

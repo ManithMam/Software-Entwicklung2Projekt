@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@../css/losingScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.LosingController">
+    <center>
+        <VBox alignment="CENTER" styleClass="menu-Buttons">
+            <Label text="You Lost" />
+            <Button fx:id="exitBtn" onAction="#exit" prefWidth="100" text="Exit" />
+        </VBox>
+    </center>
+</BorderPane>
