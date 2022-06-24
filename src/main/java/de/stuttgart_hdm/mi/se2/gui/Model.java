@@ -9,6 +9,7 @@ import de.stuttgart_hdm.mi.se2.rooms.RoomFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class Model {
 
@@ -28,26 +29,28 @@ public class Model {
         this.roomIndex = 0;
         this.inventory = new ArrayList<Item>();
 
-        final RoomFactory roomFactory = new RoomFactory();
-        final Room basement = roomFactory.createRoom("Basement");
-        final Room hallway = roomFactory.createRoom("Hallway");
-        final Room kitchen = roomFactory.createRoom("Kitchen");
-        final Room library = roomFactory.createRoom("Library");
-        final Room bathroom = roomFactory.createRoom("Bathroom");
-        startingRoom = hallway;
-        this.roomsList = new ArrayList<>();
-        roomsList.add(hallway);
-        roomsList.add(basement);
-        roomsList.add(kitchen);
-        roomsList.add(library);
-        roomsList.add(bathroom);
 
-        ItemFactory itemFactory = new ItemFactory();
-        itemFactory.createAllItems();
-        KeyItemFactory keyItemFactory = new KeyItemFactory();
-        keyItemFactory.createAllKeyItems();
-        FurnitureFactory furnitureFactory = new FurnitureFactory();
-        furnitureFactory.createAllFurniture();
+            final RoomFactory roomFactory = new RoomFactory();
+            final Room basement = roomFactory.createRoom("Basement");                       //TODO: IllegalRuntimeException wird hier geworfen, daher noch fangen + logger informieren
+            final Room hallway = roomFactory.createRoom("Hallway");
+            final Room kitchen = roomFactory.createRoom("Kitchen");
+            final Room library = roomFactory.createRoom("Library");
+            final Room bathroom = roomFactory.createRoom("Bathroom");                       //TODO Logger informieren ?
+            startingRoom = hallway;
+            this.roomsList = new ArrayList<>();
+            roomsList.add(hallway);
+            roomsList.add(basement);
+            roomsList.add(kitchen);
+            roomsList.add(library);
+            roomsList.add(bathroom);
+
+            ItemFactory itemFactory = new ItemFactory();
+            itemFactory.createAllItems();
+            KeyItemFactory keyItemFactory = new KeyItemFactory();
+            keyItemFactory.createAllKeyItems();
+            FurnitureFactory furnitureFactory = new FurnitureFactory();
+            furnitureFactory.createAllFurniture();
+
     }
 
     public int getRoomIndex() {

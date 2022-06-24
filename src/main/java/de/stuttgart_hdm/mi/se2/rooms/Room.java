@@ -4,6 +4,9 @@ import de.stuttgart_hdm.mi.se2.items.Item;
 import de.stuttgart_hdm.mi.se2.items.commonItems.ItemFactory;
 import de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory;
+import de.stuttgart_hdm.mi.se2.timer.Timer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +18,13 @@ public abstract class Room {
     private static final ItemFactory itemFactory = new ItemFactory();
     private static final List<Item> keyItemList = keyItemFactory.createAllKeyItems();
     private String name;
-    private final List<Item> itemInRoom = new ArrayList<Item>();
+    private final List<Item> itemInRoom = new ArrayList<>();
     private String description;
     protected static int idCounter = 0;
     protected int id;
     private boolean access;
+
+    private static final Logger log = LogManager.getLogger(Room.class);
 
     public FurnitureFactory getFurnitureFactory() {
         return furnitureFactory;
@@ -68,22 +73,16 @@ public abstract class Room {
     }
 
     protected void addItemsInRoom(Item item) {
-        if (!itemInRoom.contains(item) && item != null) {
-            itemInRoom.add(item);
-            System.out.println("added item in room");
-        }
+
+            if (!itemInRoom.contains(item) && item != null) {
+                itemInRoom.add(item);
+                log.info(item.getName() + " was added into the Room");
+            }
+
     }
 
-    public abstract int neededItem();
+    public abstract int neededItem();           //TODO Exception werfen statt 0 ? --> muss dann gehandelt werden
 
-    public String removeItem(Item item) {
-        if (itemInRoom.contains(item) && item != null)
-        {
-            itemInRoom.remove(item);
-            return "You picked up the Item";
-        }
-        return "You can't pick it up";
-    }
 
     @Override
     public String toString() {
