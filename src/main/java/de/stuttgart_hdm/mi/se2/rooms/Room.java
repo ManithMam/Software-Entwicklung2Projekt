@@ -72,7 +72,7 @@ public abstract class Room {
         this.access = access;
     }
 
-    protected void addItemsInRoom(Item item) {
+    public void addItemsInRoom(Item item) {
 
             if (!itemInRoom.contains(item) && item != null) {
                 itemInRoom.add(item);

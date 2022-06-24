@@ -45,7 +45,7 @@ public class Model {
             roomsList.add(bathroom);
 
             ItemFactory itemFactory = new ItemFactory();
-            itemFactory.createAllItems();
+            itemFactory.createAllItems();                                                           //TODO creieren wir das hier oder doch in Room-Subklassen ?
             KeyItemFactory keyItemFactory = new KeyItemFactory();
             keyItemFactory.createAllKeyItems();
             FurnitureFactory furnitureFactory = new FurnitureFactory();
