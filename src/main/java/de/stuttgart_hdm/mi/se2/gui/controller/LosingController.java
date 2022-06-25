@@ -1,5 +1,6 @@
-package de.stuttgart_hdm.mi.se2.gui;
+package de.stuttgart_hdm.mi.se2.gui.controller;
 
+import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,6 +16,6 @@ public class LosingController {
 
     @FXML
     private void exit(ActionEvent event) {
-        View.getPrimaryStage().close();
+        GameView.getPrimaryStage().close();
     }
 }

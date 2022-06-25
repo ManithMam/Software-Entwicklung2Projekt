@@ -5,8 +5,12 @@ import de.stuttgart_hdm.mi.se2.items.commonItems.ItemFactory;
 import de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory;
 import de.stuttgart_hdm.mi.se2.items.keyItems.BathroomKey;
 import de.stuttgart_hdm.mi.se2.items.commonItems.Glasses;
+import de.stuttgart_hdm.mi.se2.items.keyItems.CarKey;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory;
+import de.stuttgart_hdm.mi.se2.items.keyItems.LibraryKey;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Bathroom extends Room {
@@ -25,9 +29,9 @@ public class Bathroom extends Room {
 
     }
 
-    public int neededItem()
+    public List<Integer> neededItem()
     {
-        return getKeyItemList().stream().filter(item -> item.getName() == "Aluminum Baseball bat").collect(Collectors.toList()).get(0).getId();
+        return getKeyItemList().stream().filter(BathroomKey.class::isInstance).map(Item::getId).toList();
     }
 
 }

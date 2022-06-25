@@ -1,9 +1,9 @@
 package de.stuttgart_hdm.mi.se2.items.keyItems;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class KeyItemFactory {
 
@@ -18,9 +18,9 @@ public class KeyItemFactory {
         };
     }
 
-    public List<Item> createAllKeyItems(){
+    public ObservableList<Item> createAllKeyItems(){
 
-        final List keyItemList = new ArrayList<Item>();
+        final ObservableList <Item> keyItemList = FXCollections.observableArrayList();
         keyItemList.add(createItem("Bathroom key"));
         keyItemList.add(createItem("Car key"));
         keyItemList.add(createItem("Kitchen key"));

@@ -1,7 +1,8 @@
 package de.stuttgart_hdm.mi.se2.timer;
 
 import de.stuttgart_hdm.mi.se2.gui.Resource;
-import de.stuttgart_hdm.mi.se2.gui.View;
+import de.stuttgart_hdm.mi.se2.gui.Utils;
+import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import org.apache.logging.log4j.LogManager;
@@ -24,8 +25,8 @@ public class Timer implements Runnable{
             if(i == 0){
                 Platform.runLater(() -> {
                     log.info("Player lost the game");
-                    Parent root = View.loadFxml(Resource.LOSING_SCREEN);
-                    View.getPrimaryStage().getScene().setRoot(root);
+                    Parent root = Utils.loadFxml(Resource.LOSING_SCREEN);
+                    GameView.getPrimaryStage().getScene().setRoot(root);
                     root.requestFocus();
                 });
             }

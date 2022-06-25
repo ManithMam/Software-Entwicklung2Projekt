@@ -12,4 +12,7 @@ module SE2StartupProject {
     opens de.stuttgart_hdm.mi.se2.items.commonItems;
     opens de.stuttgart_hdm.mi.se2.items.furniture;
     opens de.stuttgart_hdm.mi.se2.items.keyItems;
+    opens de.stuttgart_hdm.mi.se2.gui.controller;
+    opens de.stuttgart_hdm.mi.se2.gui.model;
+    opens de.stuttgart_hdm.mi.se2.gui.view;
 }

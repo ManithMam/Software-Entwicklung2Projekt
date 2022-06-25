@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane stylesheets="@../css/mainMenu.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.MenuController">
+<BorderPane stylesheets="@../css/mainMenu.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.controller.MenuController">
    <center>
       <VBox alignment="CENTER" styleClass="menu-Buttons">
           <Label text="Main Menu" />

@@ -1,8 +1,11 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
+import de.stuttgart_hdm.mi.se2.items.keyItems.BathroomKey;
 import de.stuttgart_hdm.mi.se2.items.keyItems.CarKey;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Hallway extends Room {
@@ -14,11 +17,11 @@ public class Hallway extends Room {
         setAccess(true);
         setName("Hallway");
         setDescription("It seems pretty empty");
-        addItemsInRoom(getKeyItemList().stream().filter(item -> item.getName() == "Aluminum Baseball bat").collect(Collectors.toList()).get(0));
+        addItemsInRoom(getKeyItemList().stream().filter(BathroomKey.class::isInstance).toList().get(0));
     }
 
-    public int neededItem()
+    public List<Integer> neededItem()
     {
-        return 0;
+        return new ArrayList<>();
     }
 }

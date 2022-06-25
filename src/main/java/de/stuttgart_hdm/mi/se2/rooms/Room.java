@@ -4,6 +4,8 @@ import de.stuttgart_hdm.mi.se2.items.Item;
 import de.stuttgart_hdm.mi.se2.items.commonItems.ItemFactory;
 import de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +15,11 @@ public abstract class Room {
     private static final FurnitureFactory furnitureFactory = new FurnitureFactory();
     private static final KeyItemFactory keyItemFactory = new KeyItemFactory();
     private static final ItemFactory itemFactory = new ItemFactory();
-    private static final List<Item> keyItemList = keyItemFactory.createAllKeyItems();
+    //private static final List<Item> keyItemList = keyItemFactory.createAllKeyItems();
+    private static final ObservableList<Item> keyItemList = keyItemFactory.createAllKeyItems();
     private String name;
-    private final List<Item> itemInRoom = new ArrayList<Item>();
+    //private final List<Item> itemInRoom = new ArrayList<Item>();
+    private final ObservableList<Item> itemInRoom = FXCollections.observableArrayList();
     private String description;
     protected static int idCounter = 0;
     protected int id;
@@ -33,6 +37,7 @@ public abstract class Room {
         return itemFactory;
     }
 
+    /*public static List<Item> getKeyItemList() {return keyItemList;}*/
     public static List<Item> getKeyItemList() {return keyItemList;}
 
     public int getId() {
@@ -47,7 +52,10 @@ public abstract class Room {
         return this.access;
     }
 
-    public List<Item> getItemsInRoom() {
+    /*public List<Item> getItemsInRoom() {
+        return itemInRoom;
+    }*/
+    public ObservableList<Item> getItemsInRoom() {
         return itemInRoom;
     }
 
@@ -74,7 +82,7 @@ public abstract class Room {
         }
     }
 
-    public abstract int neededItem();
+    public abstract List<Integer> neededItem();
 
     public String removeItem(Item item) {
         if (itemInRoom.contains(item) && item != null)

@@ -1,11 +1,16 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
+import de.stuttgart_hdm.mi.se2.items.keyItems.BathroomKey;
+import de.stuttgart_hdm.mi.se2.items.keyItems.LibraryKey;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Basement extends Room {
 
-    private final Item kitchenKey = getKeyItemFactory().createItem("Kitchen key");
+    //private final Item kitchenKey = getKeyItemFactory().createItem("Kitchen key");
 
     protected Basement() {
         this.id = ++idCounter;
@@ -16,12 +21,12 @@ public class Basement extends Room {
         final Item baseballbat = getItemFactory().createItem("BaseballBat");
         final Item rope = getItemFactory().createItem("Rope");
         addItemsInRoom(baseballbat);
-        addItemsInRoom(kitchenKey);
+        //addItemsInRoom(kitchenKey);
         addItemsInRoom(rope);
     }
 
-    public int neededItem()
+    public List<Integer> neededItem()
     {
-        return kitchenKey.getId();
+        return getKeyItemList().stream().filter(BathroomKey.class::isInstance).map(Item::getId).toList();
     }
 }
