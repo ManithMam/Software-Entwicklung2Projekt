@@ -43,10 +43,12 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-      /*  Timer timer = new Timer();
+        /*Timer timer = new Timer();                                                                          //TODO Timer an der gui einzeigen
         Thread thread = new Thread(timer);
         thread.setDaemon(true);
-        thread.start();*/
+        thread.start();
+
+         */
 
         log.info("test");
 

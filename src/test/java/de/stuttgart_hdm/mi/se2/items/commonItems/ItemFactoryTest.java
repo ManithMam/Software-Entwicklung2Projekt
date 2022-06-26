@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+
 public class ItemFactoryTest {
     BaseballBat baseballBat = new BaseballBat();
     Cookbook cookBook = new Cookbook();
@@ -26,3 +28,5 @@ public class ItemFactoryTest {
     }
 
 }
+
+ */

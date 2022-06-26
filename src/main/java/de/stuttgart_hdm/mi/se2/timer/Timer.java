@@ -18,8 +18,8 @@ public class Timer implements Runnable{
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                log.warn("Thread was interrupted and did not sleep." + e.getMessage());
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
+                log.warn("Thread was interrupted and did not sleep." + e.getMessage());         //TODO pls restart the game
             }
             if(i == 0){
                 Platform.runLater(() -> {

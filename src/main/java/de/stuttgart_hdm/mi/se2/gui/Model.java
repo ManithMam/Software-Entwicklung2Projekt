@@ -35,7 +35,7 @@ public class Model {
             final Room hallway = roomFactory.createRoom("Hallway");
             final Room kitchen = roomFactory.createRoom("Kitchen");
             final Room library = roomFactory.createRoom("Library");
-            final Room bathroom = roomFactory.createRoom("Bathroom");                       //TODO Logger informieren ?
+            final Room bathroom = roomFactory.createRoom("Bathroom");
             startingRoom = hallway;
             this.roomsList = new ArrayList<>();
             roomsList.add(hallway);
@@ -45,7 +45,7 @@ public class Model {
             roomsList.add(bathroom);
 
             ItemFactory itemFactory = new ItemFactory();
-            itemFactory.createAllItems();                                                           //TODO creieren wir das hier oder doch in Room-Subklassen ?
+            itemFactory.createAllItems();
             KeyItemFactory keyItemFactory = new KeyItemFactory();
             keyItemFactory.createAllKeyItems();
             FurnitureFactory furnitureFactory = new FurnitureFactory();

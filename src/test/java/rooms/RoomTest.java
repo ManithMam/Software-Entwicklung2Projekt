@@ -31,7 +31,6 @@ public class RoomTest {
         RoomFactory roomFactory = new RoomFactory();
         ItemFactory itemFactory = new ItemFactory();
 
-        Room bathroom = roomFactory.createRoom("Bathroom");
         Room basement = roomFactory.createRoom("Basement");
         Room hallway = roomFactory.createRoom("Hallway");
 

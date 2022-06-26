@@ -17,8 +17,8 @@ public class Bathroom extends Room {
         this.id = ++idCounter;
         setAccess(false);
         setName("Bathroom");
-        setDescription("This is the Bathroom");
-
+        setDescription("That´s not the time to take a crap!\nBah!! The toilet is disgusting and the sink is filthy.\nUnderneath it there is a cabinet placed. It´s pretty tight in here.");
+        setDoorDescription("It´s a old-fashioned wooden door.\nIt looks breakable");
         final Item glasses = getItemFactory().createItem("Glasses");
         addItemsInRoom(glasses);
         //addItemsInRoom(bathroomKey);

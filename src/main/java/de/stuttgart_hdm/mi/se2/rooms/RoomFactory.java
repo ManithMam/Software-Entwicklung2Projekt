@@ -7,15 +7,38 @@ public class RoomFactory {
 
     private static final Logger log = LogManager.getLogger(RoomFactory.class);
 
-    public Room createRoom(String roomType)
-    {
-        return switch (roomType) {
-            case "Basement" -> new Basement();                                                      //TODO: ist es hier möglich Logger zu informieren ?
-            case "Kitchen" -> new Kitchen();
-            case "Hallway" -> new Hallway();
-            case "Library" -> new Library();
-            case "Bathroom" -> new Bathroom();
+    public Room createRoom(String roomType) throws IllegalArgumentException{
+        switch (roomType) {
+            case "Basement" -> {
+                log.info("Basement was created");
+                return new Basement();
+
+            }
+            case "Kitchen" -> {
+                log.info("Kitchen was created");
+                return new Kitchen();
+
+            }
+            case "Hallway" -> {
+                log.info("Hallway was created");
+                return new Hallway();
+
+
+            }
+            case "Library" -> {
+                log.info("Library was created");
+                return new Library();
+
+
+            }
+            case "Bathroom" -> {
+                log.info("Bathroom was created");
+                return new Bathroom();
+
+
+            }
             default -> throw new IllegalArgumentException("Roomtype not existing");
-        };
+
+        }
     }
 }

@@ -12,8 +12,8 @@ public class Library extends Room {
         this.id = ++idCounter;
         setAccess(false);
         setName("Library");
-        setDescription("You should read something");
-
+        setDescription("I can probably find some useful information in the books.\nHere are three bookshelf all filled up to the brim.\nThat could take some time.");
+        setDoorDescription("The door knob feels colder then my ex´s heart.\nThe knob looks frozen\nI can barely touch it now");
         final Item cookbook = getItemFactory().createItem("Cookbook");
         addItemsInRoom(cookbook);
         addItemsInRoom(libraryKey);

@@ -4,7 +4,6 @@ import de.stuttgart_hdm.mi.se2.items.Item;
 import de.stuttgart_hdm.mi.se2.items.commonItems.ItemFactory;
 import de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory;
-import de.stuttgart_hdm.mi.se2.timer.Timer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,13 +12,14 @@ import java.util.List;
 
 public abstract class Room {
 
-    private static final FurnitureFactory furnitureFactory = new FurnitureFactory();
+    private static final FurnitureFactory furnitureFactory = new FurnitureFactory();                                //TODO: Doordescription
     private static final KeyItemFactory keyItemFactory = new KeyItemFactory();
     private static final ItemFactory itemFactory = new ItemFactory();
     private static final List<Item> keyItemList = keyItemFactory.createAllKeyItems();
     private String name;
     private final List<Item> itemInRoom = new ArrayList<>();
     private String description;
+    private String doorDescription;
     protected static int idCounter = 0;
     protected int id;
     private boolean access;
@@ -68,6 +68,16 @@ public abstract class Room {
         this.description = description;
     }
 
+
+    public String getDoorDescription() {
+        return doorDescription;
+    }
+
+    public void setDoorDescription(String doorDescription) {
+        this.doorDescription = doorDescription;
+    }
+
+
     public void setAccess(boolean access) {
         this.access = access;
     }
@@ -76,12 +86,12 @@ public abstract class Room {
 
             if (!itemInRoom.contains(item) && item != null) {
                 itemInRoom.add(item);
-                log.info(item.getName() + " was added into the Room");
+                log.info(item.getName() + " was added into " + this.getName());
             }
 
     }
 
-    public abstract int neededItem();           //TODO Exception werfen statt 0 ? --> muss dann gehandelt werden
+    public abstract int neededItem();
 
 
     @Override

@@ -7,7 +7,6 @@ public class ItemFactory{
     public Item createItem(String itemType){
 
         return switch (itemType) {
-            case "BaseballBat" -> new BaseballBat();
             case "Cookbook" -> new Cookbook();
             case "Glasses" -> new Glasses();
             case "Hammer" -> new Hammer();
@@ -18,7 +17,6 @@ public class ItemFactory{
     }
 
     public void createAllItems(){
-        Item baseballBat = new BaseballBat();
         Item cookbook = new Cookbook();
         Item glasses = new Glasses();
         Item hammer = new Hammer();
