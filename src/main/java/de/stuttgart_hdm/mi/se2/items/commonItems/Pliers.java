@@ -2,12 +2,12 @@ package de.stuttgart_hdm.mi.se2.items.commonItems;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 
-public class Knife extends Item {
+public class Pliers extends Item {
 
-    protected Knife(){
+    protected Pliers(){
         this.id = ++idCount;
-        setName("Knife");
-        setDesc("Looks barely sharp enough to cut an apple");
+        setName("Pliers");
+        setDesc("Some pretty decent pliers.");
         setPickable(true);
         itemList.add(this);
     }

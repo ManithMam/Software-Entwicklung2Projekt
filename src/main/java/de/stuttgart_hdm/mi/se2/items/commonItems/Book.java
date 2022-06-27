@@ -2,12 +2,12 @@ package de.stuttgart_hdm.mi.se2.items.commonItems;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 
-public class Hammer extends Item {
+public class Book extends Item {
 
-    protected Hammer(){
+    protected Book(){
         this.id = ++idCount;
-        setName("Rope");
-        setDesc("A strong rope that could be useful later");
+        setName("Book");
+        setDesc("\"Java for dummies\"...\nI think I know someone who needs it.");
         setPickable(true);
         itemList.add(this);
     }

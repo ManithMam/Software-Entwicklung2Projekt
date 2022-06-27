@@ -2,12 +2,12 @@ package de.stuttgart_hdm.mi.se2.items.keyItems;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 
-public class CarKey extends Item {
+public class Toothbrush extends Item {
 
-    protected CarKey(){
+    protected Toothbrush(){
         this.id = ++idCount;
-        setName("Car key");
-        setDesc("A key to my Benz AMG");
+        setName("Broken toothbrush");
+        setDesc("A broken toothbrush...\nWho on earth keeps this around!?");
         setPickable(true);
         itemList.add(this);
     }

@@ -37,6 +37,12 @@ public class RoomFactory {
 
 
             }
+            case "Exit" -> {
+                log.info("Exitroom was created");
+                return new Exit();
+
+
+            }
             default -> throw new IllegalArgumentException("Roomtype not existing");
 
         }

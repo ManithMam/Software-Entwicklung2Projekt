@@ -35,6 +35,7 @@ public class GameModel {
         final Room kitchen = roomFactory.createRoom("Kitchen");
         final Room library = roomFactory.createRoom("Library");
         final Room bathroom = roomFactory.createRoom("Bathroom");
+        final Room exit = roomFactory.createRoom("Exit");
         startingRoom = hallway;
         this.roomsList = FXCollections.observableArrayList();
         roomsList.add(hallway);
@@ -42,6 +43,7 @@ public class GameModel {
         roomsList.add(kitchen);
         roomsList.add(library);
         roomsList.add(bathroom);
+        roomsList.add(exit);
 
         CommonItemFactory commonItemFactory = new CommonItemFactory();
         commonItemFactory.createAllItems();

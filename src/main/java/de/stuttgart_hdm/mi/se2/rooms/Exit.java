@@ -1,6 +1,8 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
+import de.stuttgart_hdm.mi.se2.items.keyItems.BaseballBat;
+import de.stuttgart_hdm.mi.se2.items.keyItems.ExitKey;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,6 @@ public class Exit extends Room {
 
     public List<Integer> neededItem()
     {
-        return new ArrayList<>();
+        return getKeyItemList().stream().filter(ExitKey.class::isInstance).map(Item::getId).toList();
     }
 }

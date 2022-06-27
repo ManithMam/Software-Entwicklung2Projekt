@@ -10,21 +10,28 @@ public class KeyItemFactory {
     public Item createItem(String itemType){
 
         return switch (itemType) {
-            case "Bathroom key" -> new BathroomKey();
-            case "Car key" -> new CarKey();
-            case "Kitchen key" -> new KitchenKey();
-            case "Library key" -> new LibraryKey();
-            default -> null;
+            case "Baseball bat" -> new BaseballBat();
+            case "Clock" -> new Clock();
+            case "Exit key" -> new ExitKey();
+            case "Flashlight" -> new Flashlight();
+            case "Kitchen torch" -> new KitchenTorch();
+            case "Knife" -> new Knife();
+            case "Toothbrush" -> new Toothbrush();
+            default -> throw new IllegalArgumentException("KeyItem not existing");
         };
     }
 
     public ObservableList<Item> createAllKeyItems(){
 
         final ObservableList <Item> keyItemList = FXCollections.observableArrayList();
-        keyItemList.add(createItem("Bathroom key"));
-        keyItemList.add(createItem("Car key"));
-        keyItemList.add(createItem("Kitchen key"));
+        keyItemList.add(createItem("Baseball bat"));
+        keyItemList.add(createItem("Clock"));
+        keyItemList.add(createItem("Kitchen torch"));
         keyItemList.add(createItem("Library key"));
+        keyItemList.add(createItem("Knife"));
+        keyItemList.add(createItem("Exit key"));
+        keyItemList.add(createItem("Toothbrush"));
+        keyItemList.add(createItem("Flashlight"));
         return keyItemList;
     }
 

@@ -14,7 +14,10 @@ public class FurnitureFactory {
             case "Sofa" -> new Sofa();
             case "Chair" -> new Chair();
             case "Table" -> new Table();
-            default -> null;
+            case "Bed" -> new Bed();
+            case "Sink" -> new Sink();
+            case "Toilet" -> new Toilet();
+            default -> throw new IllegalArgumentException("Furniture not existing");
         };
     }
 
@@ -22,6 +25,9 @@ public class FurnitureFactory {
         Item sofa = new Sofa();
         Item chair = new Chair();
         Item table = new Table();
+        Item bed = new Bed();
+        Item toilet = new Toilet();
+        Item sink = new Sink();
     }
 
 }

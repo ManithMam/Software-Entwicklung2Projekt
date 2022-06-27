@@ -2,12 +2,12 @@ package de.stuttgart_hdm.mi.se2.items.commonItems;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 
-public class Glasses extends Item {
+public class CD extends Item {
 
-    protected Glasses(){
+    protected CD(){
         this.id = ++idCount;
-        setName("Glasses");
-        setDesc("Maybe with these I could \nunderstand what I saw in her");
+        setName("CD");
+        setDesc("\"JBG2\", now thats the real deal");
         setPickable(true);
         itemList.add(this);
     }

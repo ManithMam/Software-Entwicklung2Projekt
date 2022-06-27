@@ -2,12 +2,12 @@ package de.stuttgart_hdm.mi.se2.items.keyItems;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 
-public class LibraryKey extends Item {
+public class KitchenTorch extends Item {
 
-    protected LibraryKey(){
+    protected KitchenTorch(){
         this.id = ++idCount;
-        setName("Library key");
-        setDesc("A key to access the library");
+        setName("Kitchen torch");
+        setDesc("Could be used as a pretty good lighter");
         setPickable(true);
         itemList.add(this);
     }
