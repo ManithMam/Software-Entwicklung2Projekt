@@ -2,7 +2,7 @@ package de.stuttgart_hdm.mi.se2.items.commonItems;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 
-public class ItemFactory{
+public class CommonItemFactory {
 
     public Item createItem(String itemType){
 

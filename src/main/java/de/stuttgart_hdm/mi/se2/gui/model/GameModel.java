@@ -1,7 +1,7 @@
 package de.stuttgart_hdm.mi.se2.gui.model;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
-import de.stuttgart_hdm.mi.se2.items.commonItems.ItemFactory;
+import de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory;
 import de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory;
 import de.stuttgart_hdm.mi.se2.rooms.Room;
@@ -9,7 +9,6 @@ import de.stuttgart_hdm.mi.se2.rooms.RoomFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameModel {
@@ -44,8 +43,8 @@ public class GameModel {
         roomsList.add(library);
         roomsList.add(bathroom);
 
-        ItemFactory itemFactory = new ItemFactory();
-        itemFactory.createAllItems();
+        CommonItemFactory commonItemFactory = new CommonItemFactory();
+        commonItemFactory.createAllItems();
         KeyItemFactory keyItemFactory = new KeyItemFactory();
         keyItemFactory.createAllKeyItems();
         FurnitureFactory furnitureFactory = new FurnitureFactory();

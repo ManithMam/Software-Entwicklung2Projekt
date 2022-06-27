@@ -2,7 +2,7 @@ package rooms;
 
 
 import de.stuttgart_hdm.mi.se2.items.Item;
-import de.stuttgart_hdm.mi.se2.items.commonItems.ItemFactory;
+import de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory;
 import de.stuttgart_hdm.mi.se2.rooms.Room;
 import de.stuttgart_hdm.mi.se2.rooms.RoomFactory;
 
@@ -29,13 +29,13 @@ public class RoomTest {
     @Test
     public void testAddItemInRoom() {
         RoomFactory roomFactory = new RoomFactory();
-        ItemFactory itemFactory = new ItemFactory();
+        CommonItemFactory commonItemFactory = new CommonItemFactory();
 
         Room basement = roomFactory.createRoom("Basement");
         Room hallway = roomFactory.createRoom("Hallway");
 
-        Item glasses = itemFactory.createItem("Glasses");
-        Item rope = itemFactory.createItem("Rope");
+        Item glasses = commonItemFactory.createItem("Glasses");
+        Item rope = commonItemFactory.createItem("Rope");
 
         List<Item> itemInRoom = new ArrayList<>();
 

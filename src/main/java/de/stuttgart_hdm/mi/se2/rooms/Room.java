@@ -1,23 +1,21 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
-import de.stuttgart_hdm.mi.se2.items.commonItems.ItemFactory;
+import de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory;
 import de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import de.stuttgart_hdm.mi.se2.timer.Timer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Room {
 
     private static final FurnitureFactory furnitureFactory = new FurnitureFactory();
     private static final KeyItemFactory keyItemFactory = new KeyItemFactory();
-    private static final ItemFactory itemFactory = new ItemFactory();
+    private static final CommonItemFactory COMMON_ITEM_FACTORY = new CommonItemFactory();
     //private static final List<Item> keyItemList = keyItemFactory.createAllKeyItems();
     private static final ObservableList<Item> keyItemList = keyItemFactory.createAllKeyItems();
     private String name;
@@ -39,8 +37,8 @@ public abstract class Room {
         return keyItemFactory;
     }
 
-    public static ItemFactory getItemFactory() {
-        return itemFactory;
+    public static CommonItemFactory getItemFactory() {
+        return COMMON_ITEM_FACTORY;
     }
 
     public static List<Item> getKeyItemList() {return keyItemList;}
