@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Kitchen extends Room {
 
-    //private final Item kitchenKey = getKeyItemFactory().createItem("Kitchen key");
 
     protected Kitchen() {
         this.id = ++idCounter;
@@ -17,7 +16,6 @@ public class Kitchen extends Room {
         setDoorDescription("It´s a heavy sliding door.\nIt´s too sturdy to break it.\nBut maybe I can pick the lock");
         final Item knife = getItemFactory().createItem("Knife");
         addItemsInRoom(knife);
-        //addItemsInRoom(kitchenKey);
     }
 
     public List<Integer> neededItem()

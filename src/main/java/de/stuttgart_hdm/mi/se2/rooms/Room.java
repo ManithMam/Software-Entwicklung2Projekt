@@ -24,6 +24,7 @@ public abstract class Room {
     //private final List<Item> itemInRoom = new ArrayList<Item>();
     private final ObservableList<Item> itemInRoom = FXCollections.observableArrayList();
     private String description;
+    private String doorDescription;
     protected static int idCounter = 0;
     protected int id;
     private boolean access;
@@ -74,6 +75,16 @@ public abstract class Room {
     protected void setDescription(String description) {
         this.description = description;
     }
+
+
+    public String getDoorDescription() {
+        return doorDescription;
+    }
+
+    public void setDoorDescription(String doorDescription) {
+        this.doorDescription = doorDescription;
+    }
+
 
     public void setAccess(boolean access) {
         this.access = access;

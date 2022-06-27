@@ -16,7 +16,8 @@ public class Hallway extends Room {
         this.id = ++idCounter;
         setAccess(true);
         setName("Hallway");
-        setDescription("It seems pretty empty");
+        setDescription("The Hallway is really long.\nThere is grandfather clock in the end.");
+        setDoorDescription("The door is wide open");
         addItemsInRoom(getKeyItemList().stream().filter(BathroomKey.class::isInstance).toList().get(0));
     }
 

@@ -2,9 +2,11 @@ package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Exit extends Room {
 
-    private final Item kitchenKey = getKeyItemFactory().createItem("Kitchen key");
 
     protected Exit() {
         this.id = ++idCounter;
@@ -14,8 +16,8 @@ public class Exit extends Room {
         setDoorDescription("It´s a heavy metal door with a huge lock.");
     }
 
-    public int neededItem()
+    public List<Integer> neededItem()
     {
-        return kitchenKey.getId();
+        return new ArrayList<>();
     }
 }

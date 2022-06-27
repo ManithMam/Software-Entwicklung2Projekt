@@ -1,8 +1,7 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
-import de.stuttgart_hdm.mi.se2.items.commonItems.Cookbook;
-import de.stuttgart_hdm.mi.se2.items.keyItems.BathroomKey;
+
 import de.stuttgart_hdm.mi.se2.items.keyItems.LibraryKey;
 
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import java.util.List;
 
 public class Library extends Room {
 
-    //private final Item libraryKey = getKeyItemFactory().createItem("Library key");
 
     protected Library() {
         this.id = ++idCounter;
@@ -20,7 +18,6 @@ public class Library extends Room {
         setDoorDescription("The door knob feels colder then my ex´s heart.\nThe knob looks frozen\nI can barely touch it now");
         final Item cookbook = getItemFactory().createItem("Cookbook");
         addItemsInRoom(cookbook);
-        //addItemsInRoom(libraryKey);
     }
 
     public List<Integer> neededItem()
