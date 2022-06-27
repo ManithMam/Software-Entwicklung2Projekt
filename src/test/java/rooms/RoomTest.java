@@ -21,7 +21,7 @@ public class RoomTest {
         Room basement = roomFactory.createRoom("Basement");
         Room hallway = roomFactory.createRoom("Hallway");
 
-        assertEquals(1, bathroom.neededItem());
+        assertEquals(1, bathroom.neededItem());                                                     //TODO: rewrite
         assertEquals(6, basement.neededItem());
         assertEquals(0, hallway.neededItem());
     }

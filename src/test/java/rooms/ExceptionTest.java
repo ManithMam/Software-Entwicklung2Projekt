@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ExceptionTest {
 
-    RoomFactory roomFactory = new RoomFactory();
-    Room disneyland;
+    private RoomFactory roomFactory = new RoomFactory();
+    private Room disneyland;
 
     @Test
     public void testCreatingRoom()

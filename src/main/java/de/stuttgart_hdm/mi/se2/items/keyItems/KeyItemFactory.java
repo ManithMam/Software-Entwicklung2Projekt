@@ -27,7 +27,6 @@ public class KeyItemFactory {
         keyItemList.add(createItem("Baseball bat"));
         keyItemList.add(createItem("Clock"));
         keyItemList.add(createItem("Kitchen torch"));
-        keyItemList.add(createItem("Library key"));
         keyItemList.add(createItem("Knife"));
         keyItemList.add(createItem("Exit key"));
         keyItemList.add(createItem("Toothbrush"));
