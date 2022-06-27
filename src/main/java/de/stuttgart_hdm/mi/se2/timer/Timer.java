@@ -19,7 +19,7 @@ public class Timer implements Runnable{
     public void run() {
         int time = 10;
         for (int i = time; i >= 0; i--) {
-            //Room.getKeyItemList().stream().filter(Clock.class::isInstance).toList().get(0).setDesc("You have " + i + " seconds left.");
+            Room.getKeyItemList().stream().filter(Clock.class::isInstance).toList().get(0).setDesc("I feel a sudden uneasiness watching at the watch.\n The number on the watch says " + i + " .");
             log.info("Player has " + i + " seconds left.");
             try {
                 Thread.sleep(1000);
@@ -34,7 +34,7 @@ public class Timer implements Runnable{
             }
             if(i == 0){
                 Platform.runLater(() -> {
-                    log.info("Player lost the game");
+                    log.info("I suddenly feel dizzy and my legs are shaking. I feel like I am loosing consciousness....");
                     Parent root = Utils.loadFxml(Resource.LOSING_SCREEN);
                     GameView.getPrimaryStage().getScene().setRoot(root);
                     root.requestFocus();

@@ -3,6 +3,7 @@ package de.stuttgart_hdm.mi.se2.gui.controller;
 import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
+import de.stuttgart_hdm.mi.se2.timer.Timer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -35,6 +36,15 @@ public class MenuController {
 
         //changes action of back button
         GameView.getGameView().setOptionBackBtn(false);
+
+        Timer timer = new Timer();                                                                          //TODO Timer an der gui einzeigen
+        Thread thread = new Thread(timer);
+        thread.setDaemon(true);
+        thread.start();
+
+
+
+        
     }
 
     @FXML
