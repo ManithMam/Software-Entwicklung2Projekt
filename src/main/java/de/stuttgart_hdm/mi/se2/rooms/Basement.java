@@ -1,11 +1,6 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
-import de.stuttgart_hdm.mi.se2.items.keyItems.BathroomKey;
-import de.stuttgart_hdm.mi.se2.items.keyItems.LibraryKey;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Basement extends Room {

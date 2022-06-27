@@ -6,6 +6,9 @@ import de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import de.stuttgart_hdm.mi.se2.timer.Timer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,8 @@ public abstract class Room {
     protected int id;
     private boolean access;
 
+    private static final Logger log = LogManager.getLogger(Room.class);
+
     public FurnitureFactory getFurnitureFactory() {
         return furnitureFactory;
     }
@@ -37,7 +42,6 @@ public abstract class Room {
         return itemFactory;
     }
 
-    /*public static List<Item> getKeyItemList() {return keyItemList;}*/
     public static List<Item> getKeyItemList() {return keyItemList;}
 
     public int getId() {
@@ -75,23 +79,17 @@ public abstract class Room {
         this.access = access;
     }
 
-    protected void addItemsInRoom(Item item) {
-        if (!itemInRoom.contains(item) && item != null) {
-            itemInRoom.add(item);
-            System.out.println("added item in room");
-        }
+    public void addItemsInRoom(Item item) {
+
+            if (!itemInRoom.contains(item) && item != null) {
+                itemInRoom.add(item);
+                log.info(item.getName() + " was succesfully added into the Room");
+            }
+
     }
 
     public abstract List<Integer> neededItem();
 
-    public String removeItem(Item item) {
-        if (itemInRoom.contains(item) && item != null)
-        {
-            itemInRoom.remove(item);
-            return "You picked up the Item";
-        }
-        return "You can't pick it up";
-    }
 
     @Override
     public String toString() {
