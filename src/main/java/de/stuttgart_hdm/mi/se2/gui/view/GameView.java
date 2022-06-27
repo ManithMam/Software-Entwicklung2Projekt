@@ -1,36 +1,28 @@
-package de.stuttgart_hdm.mi.se2.gui;
+package de.stuttgart_hdm.mi.se2.gui.view;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
-public class View {
+public class GameView {
 
     //private final Player player = new Player();
+
     private boolean backToMenu;
     private boolean fullScreen;
     private boolean roomViewSelected;
     private boolean invViewSelected;
     private static Stage primaryStage;
 
-    private static final View gameView = new View();
+    private static final GameView gameView = new GameView();
 
-    private final ObservableList roomItems;
-    private final ObservableList inventoryItems;
+    private final ObservableList<Object> roomItems;
+    private final ObservableList<Object> inventoryItems;
 
 
-    public View(){
+    public GameView(){
         this.backToMenu = true;
         this.fullScreen = false;
         this.roomViewSelected = false;
@@ -89,29 +81,9 @@ public class View {
         return this.inventoryItems;
     }
 
-    public static View getGameView() {
+    public static GameView getGameView() {
         return gameView;
     }
 
 
-    //TODO logg Exception
-    //TODO error screen as dialog?
-    public static Parent loadFxml(Resource resource) {
-        final URL fxmlUrl = View.class.getResource(resource.getUrl());
-
-        try {
-            return FXMLLoader.load(Objects.requireNonNull(fxmlUrl));
-        } catch (IOException e) {
-            e.printStackTrace();
-
-            VBox fail = new VBox();
-            Label label = new Label("Failed to load " + resource.getName());
-
-            label.setTextFill(Color.web("#FF9494"));
-            fail.getChildren().add(label);
-            fail.setAlignment(Pos.CENTER);
-
-            return fail;
-        }
-    }
 }

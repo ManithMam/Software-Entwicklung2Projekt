@@ -7,12 +7,24 @@ Button {
 
 Label {
     -fx-text-fill: #ffa500;
+    -fx-font-size: 15px;
+}
+
+#roomView {
+    -fx-background-image: url(../gameImages/cameron-hillman-highresscreenshot00002.jpg);
+    -fx-background-repeat: no-repeat no-repeat;
+    -fx-background-size: cover, auto;
+}
+.list-cell{
+    -fx-text-fill: #ffa500;
+    -fx-font-size: 13px;
+    -fx-background-color: null;
 }
 
 .margin-Buttons {
     -fx-spacing: 5px;
 }
 
-VBox, HBox, Seperator, .list-cell {
+VBox, HBox, Seperator {
     -fx-background-color: #121212;
 }

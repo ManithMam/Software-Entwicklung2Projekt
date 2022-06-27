@@ -1,5 +1,8 @@
-package de.stuttgart_hdm.mi.se2.gui;
+package de.stuttgart_hdm.mi.se2.gui.controller;
 
+import de.stuttgart_hdm.mi.se2.gui.Resource;
+import de.stuttgart_hdm.mi.se2.gui.Utils;
+import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -22,14 +25,14 @@ public class OptionController {
         btnOnRayTracing.setOnAction(event -> System.err.println("Your PC is to week to handle the might of Ray Tracing!"));
         //btnFullScreen.setOnAction(this::fullScreen);
         btnOffFullScreen.setOnAction(event -> {
-            View.getGameView().setFullScreen(false);
+            GameView.getGameView().setFullScreen(false);
             textFullScreen.setText("OFF");
         });
         btnOnFullScreen.setOnAction(event -> {
-            View.getGameView().setFullScreen(true);
+            GameView.getGameView().setFullScreen(true);
             textFullScreen.setText("ON");
         });
-        btnApply.setOnAction(event -> View.getPrimaryStage().setFullScreen(View.getGameView().isFullScreen()));
+        btnApply.setOnAction(event -> GameView.getPrimaryStage().setFullScreen(GameView.getGameView().isFullScreen()));
         backTo();
     }
 
@@ -42,42 +45,42 @@ public class OptionController {
     //TODO Dialog or text display fullScreen on or of
     @FXML
     public void fullScreen(ActionEvent event) {
-        View.getGameView().setFullScreen(!View.getGameView().isFullScreen());
+        GameView.getGameView().setFullScreen(!GameView.getGameView().isFullScreen());
     }
 
     @FXML
     private void backToMenu(ActionEvent event) {
-        Parent root = View.loadFxml(Resource.MENU_SCREEN);
+        Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
 
         //Main.primaryStage.setScene(new Scene(root, Resource.MENU_SCREEN.getStageWidth(), Resource.MENU_SCREEN.getStageHeight()));
-        View.getPrimaryStage().getScene().setRoot(root);
+        GameView.getPrimaryStage().getScene().setRoot(root);
         //Main.primaryStage.setFullScreen(Resource.fullScreen);
         root.requestFocus();
     }
 
     @FXML
     private void backToGame(ActionEvent event) {
-        Parent root = View.loadFxml(Resource.GAME_SCREEN);
+        Parent root = Utils.loadFxml(Resource.GAME_SCREEN);
 
 
         //Main.primaryStage.setScene(new Scene(root, Resource.GAME_SCREEN.getStageWidth(), Resource.GAME_SCREEN.getStageHeight()));
-        View.getPrimaryStage().getScene().setRoot(root);
+        GameView.getPrimaryStage().getScene().setRoot(root);
         //Main.primaryStage.setFullScreen(Resource.fullScreen);
         root.requestFocus();
     }
 
     @FXML
     private void backTo() {
-        if (View.getGameView().isOptionBackBtn()) {
+        if (GameView.getGameView().isOptionBackBtn()) {
             btnBack.setOnAction(event -> {
-                Parent root = View.loadFxml(Resource.MENU_SCREEN);
-                View.getPrimaryStage().getScene().setRoot(root);
+                Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
+                GameView.getPrimaryStage().getScene().setRoot(root);
                 root.requestFocus();
             });
         } else {
             btnBack.setOnAction(event -> {
-                Parent root = View.loadFxml(Resource.GAME_SCREEN);
-                View.getPrimaryStage().getScene().setRoot(root);
+                Parent root = Utils.loadFxml(Resource.GAME_SCREEN);
+                GameView.getPrimaryStage().getScene().setRoot(root);
                 root.requestFocus();
             });
             btnBack.setText("Back to Game");

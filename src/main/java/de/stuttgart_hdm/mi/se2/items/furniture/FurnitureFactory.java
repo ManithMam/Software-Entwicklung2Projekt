@@ -4,7 +4,7 @@ package de.stuttgart_hdm.mi.se2.items.furniture;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 
-import static de.stuttgart_hdm.mi.se2.Main.items;
+//import static de.stuttgart_hdm.mi.se2.Main.items;
 
 public class FurnitureFactory {
 

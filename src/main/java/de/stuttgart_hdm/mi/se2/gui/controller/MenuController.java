@@ -1,5 +1,8 @@
-package de.stuttgart_hdm.mi.se2.gui;
+package de.stuttgart_hdm.mi.se2.gui.controller;
 
+import de.stuttgart_hdm.mi.se2.gui.Resource;
+import de.stuttgart_hdm.mi.se2.gui.Utils;
+import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -23,29 +26,29 @@ public class MenuController {
 
     @FXML
     private void startGame(ActionEvent event) {
-        Parent root = View.loadFxml(Resource.GAME_SCREEN);
+        Parent root = Utils.loadFxml(Resource.GAME_SCREEN);
 
         //Main.primaryStage.setScene(new Scene(root, Resource.GAME_SCREEN.getStageWidth(), Resource.GAME_SCREEN.getStageHeight()));
-        View.getPrimaryStage().getScene().setRoot(root);
+        GameView.getPrimaryStage().getScene().setRoot(root);
         //Main.primaryStage.setFullScreen(Resource.fullScreen);
         root.requestFocus();
 
         //changes action of back button
-        View.getGameView().setOptionBackBtn(false);
+        GameView.getGameView().setOptionBackBtn(false);
     }
 
     @FXML
     private void option(ActionEvent event) {
-        Parent root = View.loadFxml(Resource.OPTION_SCREEN);
+        Parent root = Utils.loadFxml(Resource.OPTION_SCREEN);
 
         //Main.primaryStage.setScene(new Scene(root, Resource.OPTION_SCREEN.getStageWidth(), Resource.OPTION_SCREEN.getStageHeight()));
-        View.getPrimaryStage().getScene().setRoot(root);
+        GameView.getPrimaryStage().getScene().setRoot(root);
         //Main.primaryStage.setFullScreen(Resource.fullScreen);
         root.requestFocus();
     }
 
     @FXML
     private void exit(ActionEvent event) {
-        View.getPrimaryStage().close();
+        GameView.getPrimaryStage().close();
     }
 }
