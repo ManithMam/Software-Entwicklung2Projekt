@@ -43,7 +43,10 @@ public class RoomFactory {
 
 
             }
-            default -> throw new IllegalArgumentException("Roomtype not existing");
+            default -> {
+                log.warn("IllegalArgument was given. IllegalArgumentExceptions gets thrown.");
+                throw new IllegalArgumentException("Roomtype not existing");
+            }
 
         }
     }
