@@ -2,6 +2,7 @@ package de.stuttgart_hdm.mi.se2;
 
 import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
+import de.stuttgart_hdm.mi.se2.timer.Timer;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
@@ -38,9 +39,7 @@ public class Main extends Application {
         /*Timer timer = new Timer();                                                                          //TODO Timer an der gui einzeigen
         Thread thread = new Thread(timer);
         thread.setDaemon(true);
-        thread.start();
-
-         */
+        thread.start();*/
 
         log.info("test");
 
