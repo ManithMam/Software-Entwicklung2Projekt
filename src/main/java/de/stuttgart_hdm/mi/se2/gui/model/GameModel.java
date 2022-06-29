@@ -197,6 +197,18 @@ public class GameModel {
         this.thread.start();
     }
 
+    public void pauseThread() {
+        try {
+            this.thread.wait();
+        } catch (InterruptedException e) {
+            log.error(e);
+        }
+    }
+
+    public void resumeThread() {
+        this.thread.notify();
+    }
+
     public void stopThread() {
         this.thread.interrupt();
     }
@@ -215,5 +227,13 @@ public class GameModel {
         } else {
             throw new IllegalArgumentException("Cant pickUp item because Provided object is not an Item or not in current room");
         }
+    }
+
+    public String getUsedItemNames(List<String> list) {
+        StringBuilder s = new StringBuilder();
+        for (Object o : list) {
+            s.append(o).append(" ");
+        }
+        return s.toString();
     }
 }

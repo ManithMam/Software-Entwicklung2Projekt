@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/gameScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.controller.GameController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/gameScreen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.controller.GameController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -28,7 +28,11 @@
                      </HBox>
                      <VBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
                         <children>
-                           <ListView fx:id="roomView" prefHeight="0.0" styleClass="list-cell" VBox.vgrow="ALWAYS" />
+                           <VBox fx:id="background" alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                              <children>
+                                 <ListView fx:id="roomView" styleClass="list-cell" />
+                              </children>
+                           </VBox>
                            <Label fx:id="dialog" minHeight="50.0" textAlignment="CENTER" wrapText="true" />
                         </children>
                      </VBox>
@@ -67,7 +71,6 @@
                         <HBox fx:id="action" alignment="CENTER" styleClass="margin-Buttons" HBox.hgrow="ALWAYS">
                            <children>
                               <Button fx:id="btnInspect" mnemonicParsing="false" text="Inspect" />
-                              <Button fx:id="btnUse" mnemonicParsing="false" text="Use" />
                               <Button fx:id="btnPickUp" mnemonicParsing="false" text="Pick Up" />
                               <Button fx:id="btnPickRoom" managed="false" mnemonicParsing="false" text="Pick Room" visible="false" />
                            </children>

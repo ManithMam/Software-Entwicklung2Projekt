@@ -31,14 +31,14 @@
                      <HBox alignment="CENTER" styleClass="margin-Select">
                         <children>
                             <Button fx:id="btnOffFullScreen" styleClass="setting-button" text="&lt;" />
-                           <Label fx:id="textFullScreen" minWidth="23.0" text="OFF" />
+                           <Label fx:id="textFullScreen" minWidth="27.0" text="OFF" />
                            <Button fx:id="btnOnFullScreen" styleClass="setting-button" text="&gt;" />
                         </children>
                      </HBox>
                      <HBox alignment="CENTER" styleClass="margin-Select">
                         <children>
                            <Button fx:id="btnOffCheatMode" styleClass="setting-button" text="&lt;" />
-                           <Label fx:id="textCheatMode" minWidth="23.0" text="OFF" />
+                           <Label fx:id="textCheatMode" minWidth="27.0" text="OFF" />
                            <Button fx:id="btnOnCheatMode" styleClass="setting-button" text="&gt;" />
                         </children>
                      </HBox>
