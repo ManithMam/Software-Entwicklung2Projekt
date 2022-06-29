@@ -18,12 +18,10 @@ public abstract class Room {
     private static final FurnitureFactory FURNITURE_FACTORY = new FurnitureFactory();
     private static final KeyItemFactory KEY_ITEM_FACTORY = new KeyItemFactory();
     private static final CommonItemFactory COMMON_ITEM_FACTORY = new CommonItemFactory();
-    //private static final List<Item> keyItemList = keyItemFactory.createAllKeyItems();
     private static final ObservableList<Item> keyItemList = KEY_ITEM_FACTORY.createAllKeyItems();
     private static final ObservableList<Item> furnitureList = FURNITURE_FACTORY.createAllFurniture();
     private static final ObservableList<Item> itemList = COMMON_ITEM_FACTORY.createAllItems();
     private String name;
-    //private final List<Item> itemInRoom = new ArrayList<Item>();
     private final ObservableList<Item> itemInRoom = FXCollections.observableArrayList();
     private String description;
     private String doorDescription;
@@ -32,18 +30,6 @@ public abstract class Room {
     private boolean access;
 
     private static final Logger log = LogManager.getLogger(Room.class);
-
-    public FurnitureFactory getFurnitureFactory() {
-        return FURNITURE_FACTORY;
-    }
-
-    public KeyItemFactory getKeyItemFactory() {
-        return KEY_ITEM_FACTORY;
-    }
-
-    public CommonItemFactory getItemFactory() {
-        return COMMON_ITEM_FACTORY;
-    }
 
     public static List<Item> getKeyItemList() {return keyItemList;}
 

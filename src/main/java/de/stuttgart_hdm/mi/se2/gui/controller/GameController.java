@@ -5,7 +5,6 @@ import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.model.GameModel;
 import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
-import de.stuttgart_hdm.mi.se2.rooms.Room;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -28,7 +27,7 @@ public class GameController {
     @FXML
     private Label currentRoomLabel, currentRoom, inventoryLabel, dialog;
     @FXML
-    private Button  btnBackToMenu, btnOptionsInGame, btnChangeRoom, btnInspect, btnUse, btnPickUp, btnPickRoom;
+    private Button btnBackToMenu, btnOptionsInGame, btnChangeRoom, btnInspect, btnUse, btnPickUp, btnPickRoom;
     @FXML
     private ListView roomView, invView;
 
@@ -98,25 +97,63 @@ public class GameController {
 
     private String getText(int number) {
         switch (number) {
-            case 0 -> {return "Please select a room and use \"Pick Room\" button!";}
-            case 1 -> {return "Please select a room!";}
-            case 2 -> {return "You cant pick that up.";}
-            case 3 -> {return "The room is locked!%n%s%nMaybe i can find something to open it...";}
-            case 4 -> {return "Select Item!";}
-            case 5 -> {return "No case: %d available";}
-            case 6 -> {return "ERROR";}
-            case 7 -> {return "Inventory (%d/3)";}
-            case 8 -> {return "Current room: ";}
-            case 9 -> {return "Changed access rights of %s to true.";}
-            case 10 -> {return "Pick Room button was pressed";}
-            case 11 -> {return "Previous room: ";}
-            case 12 -> {return "";}
-            case 13 -> {return "Change Room button was pressed";}
-            case 14 -> {return "Inspect button was pressed";}
-            case 15 -> {return "Option button was pressed in game";}
-            case 16 -> {return "Back to Menu button was pressed in game";}
-            case 17 -> {return "Pick up button was pressed";}
-            case 18 -> {return "Use Ctr-Click to unselect Item!";}
+            case 0 -> {
+                return "Please select a room and use \"Pick Room\" button!";
+            }
+            case 1 -> {
+                return "Please select a room!";
+            }
+            case 2 -> {
+                return "You cant pick that up.";
+            }
+            case 3 -> {
+                return "The room is locked!%n%s%nMaybe i can find something to open it...";
+            }
+            case 4 -> {
+                return "Select Item!";
+            }
+            case 5 -> {
+                return "No case: %d available";
+            }
+            case 6 -> {
+                return "ERROR";
+            }
+            case 7 -> {
+                return "Inventory (%d/3)";
+            }
+            case 8 -> {
+                return "Current room: ";
+            }
+            case 9 -> {
+                return "Changed access rights of %s to true.";
+            }
+            case 10 -> {
+                return "Pick Room button was pressed";
+            }
+            case 11 -> {
+                return "Previous room: ";
+            }
+            case 12 -> {
+                return "";
+            }
+            case 13 -> {
+                return "Change Room button was pressed";
+            }
+            case 14 -> {
+                return "Inspect button was pressed";
+            }
+            case 15 -> {
+                return "Option button was pressed in game";
+            }
+            case 16 -> {
+                return "Back to Menu button was pressed in game";
+            }
+            case 17 -> {
+                return "Pick up button was pressed";
+            }
+            case 18 -> {
+                return "Use Ctr-Click to unselect Item!";
+            }
             default -> throw new IllegalArgumentException(String.format(getText(5), number));
         }
     }
@@ -190,7 +227,9 @@ public class GameController {
 
     private void inspect(ActionEvent event) {
         Audio.playAudio();
+
         log.info(getText(14));
+
         if (gameView.isRoomViewSelected()) {
             showDesc(getSelected());
         } else if (gameView.isInvViewSelected()) {
@@ -241,9 +280,8 @@ public class GameController {
                     currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));
                     dialog.setText(gameModel.getRoomDescription(gameModel.getCurrentRoom()));
                     showItemsInSelectedRoom();
-                    // } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).anyMatch(item -> gameModel.getNededItem(getSelected()).contains(item))) {
-                } else if(gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).toList().containsAll(gameModel.getNeededItem(getSelected())) || gameModel.isCheatMode()) {
-                    if(!gameModel.getExit(getSelected())) {
+                } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).toList().containsAll(gameModel.getNeededItem(getSelected())) || gameModel.isCheatMode()) {
+                    if (!gameModel.getExit(getSelected())) {
                         gameModel.setCurrentRoom(getSelected());
                         gameModel.setRoomAccess(gameModel.getCurrentRoom());
                         try {

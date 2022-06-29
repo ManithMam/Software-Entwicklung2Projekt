@@ -14,7 +14,6 @@ import org.apache.logging.log4j.Logger;
 
 
 //TODO add documentation
-//TODO stile fxml elements with css not with attribute
 public class OptionController {
 
     private static final Logger log = LogManager.getLogger(OptionController.class);
