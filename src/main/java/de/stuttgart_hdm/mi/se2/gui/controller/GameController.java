@@ -5,8 +5,6 @@ import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.model.GameModel;
 import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
-import de.stuttgart_hdm.mi.se2.items.Item;
-import de.stuttgart_hdm.mi.se2.rooms.Room;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -14,54 +12,54 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Objects;
+import java.io.File;
 
 
 //TODO add documentation
 public class GameController {
 
     Logger log = LogManager.getLogger(GameController.class);
-    
+
     private GameModel gameModel;
     private GameView gameView;
 
 
     @FXML
-    private Label currentRoom, dialog;
+    private Label currentRoomLabel, currentRoom, inventoryLabel, dialog;
     @FXML
-    private Button btnBackToMenu, btnOptionsInGame, btnChangeRoom, btnInspect, btnUse, btnPickUp, btnPickRoom;
+    private Button  btnBackToMenu, btnOptionsInGame, btnChangeRoom, btnInspect, btnUse, btnPickUp, btnPickRoom;
     @FXML
     private ListView roomView, invView;
 
 
     @FXML
     private void initialize() {
-        gameModel = new GameModel();
-        gameView = new GameView();
+        gameModel = GameModel.getGameModel();
+        gameView = GameView.getGameView();
 
         btnBackToMenu.setOnAction(event -> {
+            Audio.playAudio();
+            log.info(getText(16));
             Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
-
             GameView.getPrimaryStage().getScene().setRoot(root);
             root.requestFocus();
-
             //changes action of backTo button in optionScreen
-            GameView.getGameView().setOptionBackBtn(true);
-            Audio.playAudio();
+            gameView.setOptionBackBtn(true);
+            gameModel.stopThread();
         });
 
         btnOptionsInGame.setOnAction(event -> {
+            Audio.playAudio();
+            log.info(getText(15));
             Parent root = Utils.loadFxml(Resource.OPTION_SCREEN);
-
             GameView.getPrimaryStage().getScene().setRoot(root);
             root.requestFocus();
-            Audio.playAudio();
         });
 
         btnChangeRoom.setOnAction(this::changeRoom);
@@ -72,28 +70,106 @@ public class GameController {
 
         btnPickRoom.setOnAction(this::pickRoom);
 
-
-        roomView.setItems(gameModel.getRoomsList().get(gameModel.getRoomIndex()).getItemsInRoom());
+        try {
+            roomView.setItems(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
+        } catch (IllegalArgumentException e) {
+            log.error(e);
+            Parent root = Utils.loadFxml(Resource.ERROR_SCREEN);
+            GameView.getPrimaryStage().getScene().setRoot(root);
+            root.requestFocus();
+        }
         roomView.setOnMouseClicked(mouseEvent -> {
+            Audio.playAudio();
             gameView.setRoomViewSelected(true);
             gameView.setInvViewSelected(false);
             btnPickUp.setText("Pick Up");
+            dialog.setText(getText(18));
         });
 
         invView.setItems(gameModel.getInventory());
         invView.setOnMouseClicked(mouseEvent -> {
+            Audio.playAudio();
             gameView.setRoomViewSelected(false);
             gameView.setInvViewSelected(true);
             btnPickUp.setText("Drop");
+            dialog.setText(getText(18));
         });
 
-        currentRoom.setText("Current room: " + GameModel.getModel().getRoomsList().get(GameModel.getModel().getRoomIndex()));
-        dialog.setText("Welcome to PAIN!\nYour mission is to escape the strange building you have been trapped in with the help of items found in the rooms.\nGood Luck!");
+        inventoryLabel.setText(String.format(getText(7), gameModel.getInventory().size()));
+        setCurrentRoom(0);
+        setInventoryLabel();
     }
 
+    private String getText(int number) {
+        switch (number) {
+            case 0 -> {return "Please select a room and use \"Pick Room\" button!";}
+            case 1 -> {return "Please select a room!";}
+            case 2 -> {return "You cant pick that up.";}
+            case 3 -> {return "The room is locked!%n%s%nMaybe i can find something to open it...";}
+            case 4 -> {return "Select Item!";}
+            case 5 -> {return "No case: %d available";}
+            case 6 -> {return "ERROR";}
+            case 7 -> {return "Inventory (%d/3)";}
+            case 8 -> {return "Current room: ";}
+            case 9 -> {return "Changed access rights of %s to true.";}
+            case 10 -> {return "Pick Room button was pressed";}
+            case 11 -> {return "Previous room: ";}
+            case 12 -> {return "";}
+            case 13 -> {return "Change Room button was pressed";}
+            case 14 -> {return "Inspect button was pressed";}
+            case 15 -> {return "Option button was pressed in game";}
+            case 16 -> {return "Back to Menu button was pressed in game";}
+            case 17 -> {return "Pick up button was pressed";}
+            case 18 -> {return "Use Ctr-Click to unselect Item!";}
+            default -> throw new IllegalArgumentException(String.format(getText(5), number));
+        }
+    }
 
-    private void showDesc(Item selectedItem) {
-        dialog.setText(gameModel.getItemDescription(selectedItem));
+    private void showDesc(Object object) {
+        try {
+            dialog.setText(gameModel.getItemDescription(object));
+        } catch (IllegalArgumentException e) {
+            log.error(e);
+            dialog.setText(getText(6));
+        }
+    }
+
+    private void setInventoryLabel() {
+        inventoryLabel.setText(String.format(getText(7), gameModel.getInventory().size()));
+    }
+
+    private void setCurrentRoom(final int number) {
+        try {
+            switch (number) {
+                case 0 -> currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));
+                case 1 -> currentRoom.setText(gameModel.getRoomName(getSelected()));
+                default -> throw new IllegalArgumentException(String.format(getText(5), number));
+            }
+        } catch (IllegalArgumentException e) {
+            log.error(e);
+            currentRoom.setText(getText(6));
+        }
+    }
+
+    private void showItemsInSelectedRoom() {
+        try {
+            roomView.setItems(gameModel.getItemsInSelectedRoom(getSelected()));
+        } catch (IllegalArgumentException e) {
+            log.error(e);
+            Parent root = Utils.loadFxml(Resource.ERROR_SCREEN);
+            GameView.getPrimaryStage().getScene().setRoot(root);
+            root.requestFocus();
+        }
+    }
+
+    private Object getSelected() {
+        if (gameView.isRoomViewSelected()) {
+            return roomView.getSelectionModel().getSelectedItem();
+        } else if (gameView.isInvViewSelected()) {
+            return invView.getSelectionModel().getSelectedItem();
+        } else {
+            throw new IllegalArgumentException("roomView or invView where not selected");
+        }
     }
 
     private void roomSelection() {
@@ -106,14 +182,17 @@ public class GameController {
         btnPickRoom.setVisible(false);
         btnPickRoom.setManaged(false);
     }
-
+    /*
     private void setBackground(Resource resource) {
         roomView.setBackground(new Background(new BackgroundImage(new Image(resource.getUrl()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
     }
+     */
 
     private void changeRoom(ActionEvent event) {
-        if(btnPickRoom.isVisible()) {
-            dialog.setText("Please select a room and use \"Pick Room\" button!");
+        Audio.playAudio();
+        log.info(getText(13));
+        if (btnPickRoom.isVisible()) {
+            dialog.setText(getText(0));
         } else {
             roomView.setItems(gameModel.getRoomsList());
             btnInspect.setVisible(false);
@@ -125,68 +204,111 @@ public class GameController {
             btnPickRoom.setVisible(true);
             btnPickRoom.setManaged(true);
         }
-        currentRoom.setText("Previous room: " + GameModel.getModel().getRoomsList().get(GameModel.getModel().getRoomIndex()).getName());
 
-        Audio.playAudio();
+        currentRoomLabel.setText(getText(11));
+        try {
+            currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));
+        } catch (IllegalArgumentException e) {
+            log.error(e);
+            currentRoom.setText(getText(8));
+        }
     }
 
     private void inspect(ActionEvent event) {
-        if (gameView.isRoomViewSelected() && roomView.getSelectionModel().getSelectedItem() instanceof Item selectedItem) {
-            showDesc(selectedItem);
-        } else if (gameView.isInvViewSelected() && invView.getSelectionModel().getSelectedItem() instanceof Item selectedItem) {
-            showDesc(selectedItem);
-        } else {
-            dialog.setText("Select Item");
-        }
         Audio.playAudio();
+        log.info(getText(14));
+        if (gameView.isRoomViewSelected()) {
+            showDesc(getSelected());
+        } else if (gameView.isInvViewSelected()) {
+            showDesc(getSelected());
+        } else {
+            dialog.setText(getText(4));
+        }
     }
 
     private void pickUp(ActionEvent event) {
-        if (gameView.isRoomViewSelected() && roomView.getSelectionModel().getSelectedItem() instanceof Item selectedItem) {
-
-            if (selectedItem.isPickable()) {
-                gameModel.pickUp(gameModel, selectedItem, true);
-                log.info(String.format("Moved item: %s from room: %s to inventory", gameModel.getItemName(selectedItem), gameModel.getRoomName(gameModel.getRoomsList().get(gameModel.getRoomIndex()))));
-            } else {
-                dialog.setText("You cant pick that up.");
-            }
-
-        } else if (gameView.isInvViewSelected() && invView.getSelectionModel().getSelectedItem() instanceof Item selectedItem) {
-            gameModel.pickUp(gameModel, selectedItem, false);
-            log.info(String.format("Moved item: %s from inventory to: %s", gameModel.getItemName(selectedItem), gameModel.getRoomName(gameModel.getRoomsList().get(gameModel.getRoomIndex()))));
-        } else {
-            dialog.setText("Select Item");
-        }
         Audio.playAudio();
+        log.info(getText(17));
+        try {
+            if (gameView.isRoomViewSelected()) {
+                if (gameModel.isItemMovable(getSelected()) && gameModel.getInventory().size() < 3) {
+                    gameModel.pickUp(getSelected(), true);
+                    setInventoryLabel();
+                    dialog.setText(getText(12));
+                } else {
+                    dialog.setText(getText(2));
+                }
+            } else if (gameView.isInvViewSelected()) {
+                gameModel.pickUp(getSelected(), false);
+                setInventoryLabel();
+                dialog.setText(getText(12));
+            } else {
+                dialog.setText(getText(4));
+            }
+        } catch (IllegalArgumentException e) {
+            log.error(e);
+            dialog.setText(getText(4));
+        }
 
         gameView.setInvViewSelected(false);
         gameView.setRoomViewSelected(false);
     }
 
     private void pickRoom(ActionEvent event) {
-        if(gameView.isRoomViewSelected() && roomView.getSelectionModel().getSelectedItem() instanceof Room selectedRoom) {
+        Audio.playAudio();
+        log.info(getText(10));
 
-            if (selectedRoom.getAccess()) {
-                gameModel.setRoomIndex(roomView.getSelectionModel().getSelectedIndex());
-                roomView.setItems(gameModel.getItemsInSelectedRoom(selectedRoom));
+        if (gameView.isRoomViewSelected()) {
+            try {
+                if (gameModel.getRoomAccess(getSelected())) {
+                    gameModel.setCurrentRoom(getSelected());
+                    showItemsInSelectedRoom();
+                    roomSelection();
+                    currentRoomLabel.setText(getText(8));
+                    setCurrentRoom(0);
+                    dialog.setText(getText(12));
+                } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).anyMatch(item -> gameModel.getNededItem(getSelected()).contains(item))) {
+                    if(!gameModel.getExit(getSelected())) {
+                        gameModel.setCurrentRoom(getSelected());
+                        gameModel.setRoomAccess(getSelected());
+                        try {
+                            log.info(String.format(getText(9), gameModel.getRoomName(getSelected())));
+                        } catch (IllegalArgumentException e) {
+                            log.error(e);
+                        }
+                        showItemsInSelectedRoom();
+                        roomSelection();
+                        currentRoomLabel.setText(getText(8));
+                        setCurrentRoom(1);
+                        dialog.setText(getText(12));
+                        System.out.println("TEST.......................................");
+                        System.out.println(gameModel.getExit(getSelected()));
+                    } else {
 
-                roomSelection();
-            } else if (gameModel.getInventory().stream().map(item-> gameModel.getItemId(item)).anyMatch(item -> gameModel.getNededItem(selectedRoom).contains(item))) {
-                gameModel.setRoomIndex(roomView.getSelectionModel().getSelectedIndex());
-                gameModel.setRoomAccess(selectedRoom);
-                log.info(String.format("Changed access rights of %s to true.", gameModel.getRoomName(selectedRoom)));
-                roomView.setItems(selectedRoom.getItemsInRoom());
+                        System.out.println(gameModel.getExit(getSelected()));
+                        Parent root = Utils.loadFxml(Resource.WINNING_SCREEN);
+                        GameView.getPrimaryStage().getScene().setRoot(root);
+                        root.requestFocus();
+                        System.out.println("YOU WON");
+                        gameModel.stopThread();
+                    }
 
-                roomSelection();
-            } else {
-                dialog.setText("The room is locked!\nMaybe i can find something to open it...");
+                } else {
+                    try {
+                        dialog.setText(String.format(getText(1), gameModel.getRoomDescription(getSelected())));
+                    } catch (IllegalArgumentException e) {
+                        log.error(e);
+                        dialog.setText(String.format(getText(1), getText(6)));
+                    }
+                }
+            } catch (IllegalArgumentException e) {
+                log.error(e);
+                dialog.setText(getText(1));
             }
         } else {
-            dialog.setText("Please select a room!");
+            dialog.setText(getText(1));
         }
 
-        Audio.playAudio();
-        currentRoom.setText("Current room: " + GameModel.getModel().getRoomsList().get(GameModel.getModel().getRoomIndex()));
         gameView.setInvViewSelected(false);
         gameView.setRoomViewSelected(false);
     }

@@ -11,9 +11,9 @@
    <center>
       <VBox alignment="CENTER" styleClass="menu-Buttons">
           <Label text="Main Menu" />
-          <Button fx:id="startGameBtn" onAction="#startGame" prefWidth="100" text="Start" />
-          <Button fx:id="optionBtn" onAction="#option" prefWidth="100" text="Options" />
-          <Button fx:id="exitBtn" onAction="#exit" prefWidth="100" text="Exit" />
+          <Button fx:id="startGameBtn" text="Start" />
+          <Button fx:id="optionBtn" text="Options" />
+          <Button fx:id="exitBtn" text="Exit" />
       </VBox>
    </center>
 </BorderPane>

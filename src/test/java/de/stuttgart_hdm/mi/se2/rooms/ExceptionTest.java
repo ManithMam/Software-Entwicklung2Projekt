@@ -1,14 +1,18 @@
-package rooms;
+package de.stuttgart_hdm.mi.se2.rooms;
 
-import de.stuttgart_hdm.mi.se2.rooms.Room;
-import de.stuttgart_hdm.mi.se2.rooms.RoomFactory;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ExceptionTest {
 
-    private RoomFactory roomFactory = new RoomFactory();
+    private RoomFactory roomFactory;
     private Room disneyland;
+
+    @BeforeEach
+    public void before() {
+        roomFactory = new RoomFactory();
+    }
 
     @Test
     public void testCreatingRoom()

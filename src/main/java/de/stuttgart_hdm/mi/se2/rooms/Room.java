@@ -37,7 +37,7 @@ public abstract class Room {
         return keyItemFactory;
     }
 
-    public static CommonItemFactory getItemFactory() {
+    public CommonItemFactory getItemFactory() {
         return COMMON_ITEM_FACTORY;
     }
 
@@ -55,9 +55,6 @@ public abstract class Room {
         return this.access;
     }
 
-    /*public List<Item> getItemsInRoom() {
-        return itemInRoom;
-    }*/
     public ObservableList<Item> getItemsInRoom() {
         return itemInRoom;
     }
@@ -88,14 +85,28 @@ public abstract class Room {
         this.access = access;
     }
 
+    //TODO throw exception
     public void addItemsInRoom(Item item) {
 
-            if (!itemInRoom.contains(item) && item != null) {
-                itemInRoom.add(item);
-                log.info(item.getName() + " was succesfully added into the Room");
-            }
+        if (!this.itemInRoom.contains(item) && item != null) {
+            this.itemInRoom.add(item);
+            log.info(item.getName() + " was succesfully added into the Room");
+        }
 
     }
+
+    /*
+    //TODO throw exception
+    public void removeItemInRoom(Object object) {
+        Item item = (Item) object;
+
+        if (!this.itemInRoom.contains(item) && item != null) {
+            this.itemInRoom.remove(item);
+            log.info(item.getName() + " was succesfully removed from the Room");
+        }
+    }
+
+     */
 
     public abstract List<Integer> neededItem();
 

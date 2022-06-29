@@ -8,12 +8,12 @@ public enum Resource {
     GAME_SCREEN("gameScreen.fxml","Game Screen", "/fxml/gameScreen.fxml", 600, 400),
     LOSING_SCREEN("losingScreen.fxml", "Losing Screen", "/fxml/losingScreen.fxml", 600, 400),
     ERROR_SCREEN("errorScreen.fxml", "Warning Screen", "/fxml/errorScreen.fxml", 600, 400),
-    BTN_AUDIO("buttonClick4.mp3", "Button Audio", "src/main/resources/gameSounds/buttonClick4.mp3"),
-    BACKGROUND_HALLWAY("gameImages/cameron-hillman-highresscreenshot00002.jpg", "Hallway Background", "resources/cameron-hillman-highresscreenshot00002.jpg");
+    START_GAME_SCREEN("startGame.fxml", "Start Game Screen", "/fxml/startGame.fxml", 500, 200),
+    WINNING_SCREEN("winningScreen.fxml", "Winning Screen", "/fxml/winningScreen.fxml", 600, 400),
+    BTN_AUDIO("buttonClick2.wav", "Button Audio", "src/main/resources/gameSounds/buttonClick2.wav"),
+    BACKGROUND_HALLWAY("gameImages/Hallway.jpg", "Hallway Background", "resources/Hallway.jpg");
 
 
-    private static boolean inventoryList = false;
-    private static int itemIndex = 0;
     private final String name;
     private final String desc;
     private final String url;
@@ -37,23 +37,6 @@ public enum Resource {
     }
 
     //TODO get and set methods for public variables
-
-
-    public static int getItemIndex() {
-        return itemIndex;
-    }
-
-    public static void setItemIndex(int index) {
-        itemIndex = index;
-    }
-
-    public static boolean isInventoryList() {
-        return inventoryList;
-    }
-
-    public static void setInventoryList(boolean inventoryList) {
-        Resource.inventoryList = inventoryList;
-    }
 
     public String getName() {
         return this.name;

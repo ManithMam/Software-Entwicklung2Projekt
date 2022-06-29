@@ -8,13 +8,12 @@ import javafx.stage.Stage;
 
 public class GameView {
 
-    //private final Player player = new Player();
-
     private boolean backToMenu;
-    private boolean fullScreen;
+    private static boolean fullScreen;
     private boolean roomViewSelected;
     private boolean invViewSelected;
     private static Stage primaryStage;
+    private static Stage startStage;
 
     private static final GameView gameView = new GameView();
 
@@ -24,7 +23,6 @@ public class GameView {
 
     public GameView(){
         this.backToMenu = true;
-        this.fullScreen = false;
         this.roomViewSelected = false;
         this.invViewSelected = false;
         this.roomItems = FXCollections.observableArrayList();
@@ -40,12 +38,12 @@ public class GameView {
         this.backToMenu = showMenuOptions;
     }
 
-    public boolean isFullScreen() {
-        return this.fullScreen;
+    public static boolean isFullScreen() {
+        return fullScreen;
     }
 
-    public void setFullScreen(boolean status) {
-        this.fullScreen = status;
+    public static void setFullScreen(boolean status) {
+        fullScreen = status;
     }
 
     public boolean isRoomViewSelected() {
@@ -70,6 +68,14 @@ public class GameView {
 
     public static void setPrimaryStage(Stage stage) {
         primaryStage = stage;
+    }
+
+    public static Stage getStartStage() {
+        return startStage;
+    }
+
+    public static void setStartStage(Stage stage) {
+        startStage = stage;
     }
 
 

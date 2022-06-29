@@ -1,8 +1,27 @@
 
+@font-face {
+    font-family: "Friday13";
+    src: url("../font/Friday13v12.ttf");
+}
+
+@font-face {
+    font-family: "True Crimes";
+    src: url("../font/crimes.ttf");
+}
+
 Button {
     -fx-min-width: 100px;
     -fx-min-height: 30px;
     -fx-background-color: grey;
+    -fx-font-family: "Friday13";
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+Label {
+    -fx-text-fill: #ffa500;
+    -fx-font-size: 16px;
+    -fx-font-family: "True Crimes";
 }
 
 .menu-Buttons {

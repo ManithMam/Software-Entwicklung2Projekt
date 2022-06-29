@@ -23,9 +23,8 @@ public class Utils {
     //TODO logg Exception
     //TODO error screen as dialog?
     public static Parent loadFxml(Resource resource) {
-        final URL fxmlUrl = GameView.class.getResource(resource.getUrl());
-
         try {
+            final URL fxmlUrl = GameView.class.getResource(resource.getUrl());
             return FXMLLoader.load(Objects.requireNonNull(fxmlUrl));
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();

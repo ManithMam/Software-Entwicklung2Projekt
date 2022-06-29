@@ -1,10 +1,8 @@
-package rooms;
+package de.stuttgart_hdm.mi.se2.rooms;
 
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 import de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory;
-import de.stuttgart_hdm.mi.se2.rooms.Room;
-import de.stuttgart_hdm.mi.se2.rooms.RoomFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;

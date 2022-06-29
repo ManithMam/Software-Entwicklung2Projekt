@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.controller.StartController">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/gameScreen.css">
+         <children>
+            <Label text="Welcome to PAIN!&#10;Your mission is to escape the strange building you have been trapped in&#10;with the help of items found in the rooms.&#10;&#10;You awake in a run down Hallway and something is ticking..." textAlignment="CENTER" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="btnStart" mnemonicParsing="false" text="Start" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

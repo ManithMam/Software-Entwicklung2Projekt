@@ -17,10 +17,10 @@ public class Timer implements Runnable{
 
     @Override
     public void run() {
-        int time = 20;
+        int time = 600;
         for (int i = time; i >= 0; i--) {
-            Room.getKeyItemList().stream().filter(Clock.class::isInstance).toList().get(0).setDesc("I feel a sudden uneasiness looking at the watch.\n The number on the watch says " + i + " .");
-            log.info("Player has " + i + " seconds left.");
+            Room.getKeyItemList().stream().filter(Clock.class::isInstance).toList().get(0).setDesc(String.format("I feel a sudden uneasiness looking at the watch.\nIt's a countdown.\nThe number on the watch says %d:%d.", (i/60)%60, i%60));
+            log.info(String.format("Player has %d:%d minutes left.", (i/60)%60, i%60 ));
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

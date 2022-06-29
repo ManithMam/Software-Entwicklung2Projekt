@@ -5,18 +5,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
-
 
 <BorderPane stylesheets="@../css/optionScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.controller.OptionController">
    <center>
       <VBox alignment="CENTER" styleClass="margin">
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Options" />
+         <Label text="Options" />
          <HBox alignment="CENTER" styleClass="margin-Settings">
             <children>
-               <VBox alignment="CENTER" styleClass="margin-Text">
+               <VBox alignment="CENTER_LEFT" styleClass="margin-Text">
                   <children>
-                     <Label prefWidth="63.0" text="Ray-Tracing" />
+                     <Label minWidth="63.0" text="Ray-Tracing" />
                      <Label text="Fullscreen" />
                   </children>
                </VBox>
@@ -25,14 +23,14 @@
                      <HBox alignment="CENTER" styleClass="margin-Select">
                         <children>
                             <Button fx:id="btnOffRayTracing" styleClass="setting-button" text="&lt;" />
-                           <Text fx:id="textRayTracing" strokeType="OUTSIDE" strokeWidth="0.0" text="OFF" />
+                           <Label fx:id="textRayTracing" text="OFF" />
                            <Button fx:id="btnOnRayTracing" styleClass="setting-button" text="&gt;" />
                         </children>
                      </HBox>
                      <HBox alignment="CENTER" styleClass="margin-Select">
                         <children>
                             <Button fx:id="btnOffFullScreen" styleClass="setting-button" text="&lt;" />
-                           <Text fx:id="textFullScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="OFF" />
+                           <Label fx:id="textFullScreen" minWidth="23.0" text="OFF" />
                            <Button fx:id="btnOnFullScreen" styleClass="setting-button" text="&gt;" />
                         </children>
                      </HBox>
@@ -42,6 +40,7 @@
          </HBox>
          <VBox alignment="CENTER" styleClass="margin-Buttons">
             <children>
+               <Label fx:id="errorText"/>
                <Button fx:id="btnApply" text="Apply" />
                 <Button fx:id="btnBack" text="Back to Menu" />
             </children>
