@@ -7,7 +7,6 @@ public enum Resource {
     OPTION_SCREEN("optionScreen.fxml", "Option Screen", "/fxml/optionScreen.fxml", 600, 400),
     GAME_SCREEN("gameScreen.fxml","Game Screen", "/fxml/gameScreen.fxml", 600, 400),
     LOSING_SCREEN("losingScreen.fxml", "Losing Screen", "/fxml/losingScreen.fxml", 600, 400),
-    ERROR_SCREEN("errorScreen.fxml", "Warning Screen", "/fxml/errorScreen.fxml", 600, 400),
     START_GAME_SCREEN("startGame.fxml", "Start Game Screen", "/fxml/startGame.fxml", 500, 200),
     WINNING_SCREEN("winningScreen.fxml", "Winning Screen", "/fxml/winningScreen.fxml", 600, 400),
     BTN_AUDIO("buttonClick2.wav", "Button Audio", "src/main/resources/gameSounds/buttonClick2.wav"),
