@@ -7,6 +7,12 @@ import de.stuttgart_hdm.mi.se2.items.keyItems.Knife;
 
 import java.util.List;
 
+/**
+ * Inheritance from the abstract class Room
+ * sets the properties through getters to keep encapsulation
+ * Item objects are created in the constructor with the corresponding factory
+ */
+
 public class Library extends Room {
 
 
@@ -27,6 +33,9 @@ public class Library extends Room {
         addItemsInRoom(book);
     }
 
+    /**
+     * @return a List of needed Items to access the room
+     */
     public List<Integer> neededItem()
     {
         return getKeyItemList().stream().filter(KitchenTorch.class::isInstance).map(Item::getId).toList();

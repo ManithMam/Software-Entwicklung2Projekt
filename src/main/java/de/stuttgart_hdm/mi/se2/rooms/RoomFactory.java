@@ -7,7 +7,14 @@ public class RoomFactory {
 
     private static final Logger log = LogManager.getLogger(RoomFactory.class);
 
+    /**
+     * @param roomType
+     * @return corresponding Room
+     * @throws IllegalArgumentException when @param is invalid
+     */
+
     public Room createRoom(String roomType) throws IllegalArgumentException{
+
         switch (roomType) {
             case "Basement" -> {
                 log.info("Basement was created");

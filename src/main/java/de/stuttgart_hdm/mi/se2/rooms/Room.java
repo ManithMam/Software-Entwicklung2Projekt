@@ -11,6 +11,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+
+
 public abstract class Room {
 
     private static final FurnitureFactory furnitureFactory = new FurnitureFactory();
@@ -85,6 +87,10 @@ public abstract class Room {
         this.access = access;
     }
 
+    /**
+     * If item is created it gets add in the Room to the belonging itemList
+     * @param item
+     */
     //TODO throw exception
     public void addItemsInRoom(Item item) {
 
@@ -108,6 +114,10 @@ public abstract class Room {
 
      */
 
+    /**
+     * Abstract because its individual for every Room
+     * @return a List of the needed Item to access the Room
+     */
     public abstract List<Integer> neededItem();
 
 

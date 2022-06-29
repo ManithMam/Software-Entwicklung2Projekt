@@ -7,6 +7,12 @@ import de.stuttgart_hdm.mi.se2.items.keyItems.Knife;
 
 import java.util.List;
 
+/**
+ * Inheritance from the abstract class Room
+ * sets the properties through getters to keep encapsulation
+ * Item objects are created in the constructor with the corresponding factory
+ */
+
 
 public class Basement extends Room {
 
@@ -24,6 +30,9 @@ public class Basement extends Room {
         addItemsInRoom(note2);
     }
 
+    /**
+     * @return a List of needed Items to access the room
+     */
     public List<Integer> neededItem()
     {
         return getKeyItemList().stream().filter(BaseballBat.class::isInstance).map(Item::getId).toList();

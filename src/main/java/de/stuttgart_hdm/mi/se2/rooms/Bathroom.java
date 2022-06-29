@@ -7,7 +7,14 @@ import de.stuttgart_hdm.mi.se2.items.keyItems.Toothbrush;
 
 import java.util.List;
 
+/**
+ * Inheritance from the abstract class Room
+ * sets the properties through getters to keep encapsulation
+ * Item objects are created in the constructor with the corresponding factory
+ */
+
 public class Bathroom extends Room {
+
 
     protected Bathroom() {
         this.id = ++idCounter;
@@ -23,6 +30,9 @@ public class Bathroom extends Room {
 
     }
 
+    /**
+     * @return a List of needed Items to access the room
+     */
     public List<Integer> neededItem()
     {
         return getKeyItemList().stream().filter(BaseballBat.class::isInstance).map(Item::getId).toList();

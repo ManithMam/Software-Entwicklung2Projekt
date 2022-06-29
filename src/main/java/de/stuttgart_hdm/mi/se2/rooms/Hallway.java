@@ -6,6 +6,12 @@ import de.stuttgart_hdm.mi.se2.items.keyItems.Clock;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Inheritance from the abstract class Room
+ * sets the properties through getters to keep encapsulation
+ * Item objects are created in the constructor with the corresponding factory
+ */
+
 public class Hallway extends Room {
 
     protected Hallway() {
@@ -19,6 +25,9 @@ public class Hallway extends Room {
 
     }
 
+    /**
+     * @return a List of needed Items to access the room
+     */
     public List<Integer> neededItem()
     {
         return new ArrayList<>();
