@@ -24,13 +24,13 @@ public class Timer implements Runnable{
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
                 log.warn("Thread was interrupted and did not sleep." + e.getMessage());
                 Platform.runLater(() -> {
-                    Parent root = Utils.loadFxml(Resource.ERROR_SCREEN);
+                    Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
                     GameView.getPrimaryStage().getScene().setRoot(root);
                     root.requestFocus();
                 });
+                return;
             }
             if(i == 0){
                 Platform.runLater(() -> {

@@ -20,7 +20,7 @@ public class GameModel {
 
     private static final Logger log = LogManager.getLogger(GameModel.class);
 
-    private final Thread thread;
+    private Thread thread;
     private int roomIndex;
     private final ObservableList<Room> roomsList;
     private final ObservableList<Item> inventory;
@@ -55,10 +55,6 @@ public class GameModel {
             GameView.getPrimaryStage().getScene().setRoot(root);
             root.requestFocus();
         }
-
-        Timer timer = new Timer();
-        this.thread = new Thread(timer);
-        thread.setDaemon(true);
     }
 
     public static void restartGame() {
@@ -66,11 +62,14 @@ public class GameModel {
     }
 
     public void startThread() {
+        this.thread = new Thread(new Timer());
+        thread.setDaemon(true);
         this.thread.start();
+
     }
 
     public void stopThread() {
-        this.thread.stop();
+        this.thread.interrupt();
     }
 
     public int getRoomIndex() {
