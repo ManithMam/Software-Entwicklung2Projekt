@@ -242,7 +242,7 @@ public class GameController {
                     dialog.setText(gameModel.getRoomDescription(gameModel.getCurrentRoom()));
                     showItemsInSelectedRoom();
                     // } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).anyMatch(item -> gameModel.getNededItem(getSelected()).contains(item))) {
-                } else if(gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).toList().containsAll(gameModel.getNeededItem(getSelected()))) {
+                } else if(gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).toList().containsAll(gameModel.getNeededItem(getSelected())) || gameModel.isCheatMode()) {
                     if(!gameModel.getExit(getSelected())) {
                         gameModel.setCurrentRoom(getSelected());
                         gameModel.setRoomAccess(gameModel.getCurrentRoom());
@@ -258,12 +258,10 @@ public class GameController {
                         showItemsInSelectedRoom();
                     } else {
 
-                        System.out.println(gameModel.getExit(getSelected()));
+                        gameModel.stopThread();
                         Parent root = Utils.loadFxml(Resource.WINNING_SCREEN);
                         GameView.getPrimaryStage().getScene().setRoot(root);
                         root.requestFocus();
-                        System.out.println("YOU WON");
-                        gameModel.stopThread();
                     }
 
                 } else {

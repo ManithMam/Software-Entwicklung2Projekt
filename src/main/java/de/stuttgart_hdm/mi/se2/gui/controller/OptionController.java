@@ -3,6 +3,7 @@ package de.stuttgart_hdm.mi.se2.gui.controller;
 import de.stuttgart_hdm.mi.se2.gui.Audio;
 import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.Utils;
+import de.stuttgart_hdm.mi.se2.gui.model.GameModel;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -19,25 +20,35 @@ public class OptionController {
     private static final Logger log = LogManager.getLogger(OptionController.class);
 
     private GameView gameView;
+    private GameModel gameModel;
 
     @FXML
-    private Label textRayTracing, textFullScreen, errorText;
+    private Label textFullScreen, textCheatMode, errorText;
     @FXML
-    private Button btnOffRayTracing, btnOnRayTracing, btnOffFullScreen, btnOnFullScreen, btnApply, btnBack;
+    private Button btnOffRayTracing, btnOnRayTracing, btnOffFullScreen, btnOnFullScreen, btnOffCheatMode, btnOnCheatMode, btnApply, btnBack;
 
 
     @FXML
     private void initialize() {
         gameView = GameView.getGameView();
+        gameModel = GameModel.getGameModel();
 
         final String text1 = "OFF";
         final String text2 = "ON";
         final String text3 = "Fullscreen has been set to: ";
+        final String text4 = "Cheat Mode has been set to: ";
+        final String text5 = "";
 
         if(GameView.isFullScreen()) {
             textFullScreen.setText(text2);
         } else {
             textFullScreen.setText(text1);
+        }
+
+        if(gameModel.isCheatMode()){
+            textCheatMode.setText(text2);
+        } else {
+            textCheatMode.setText(text1);
         }
 
         btnOffRayTracing.setOnAction(event -> Audio.playAudio());
@@ -53,6 +64,7 @@ public class OptionController {
             GameView.setFullScreen(false);
             textFullScreen.setText(text1);
             log.info(text3 + text1);
+            errorText.setText(text5);
         });
 
         btnOnFullScreen.setOnAction(event -> {
@@ -62,10 +74,26 @@ public class OptionController {
             log.info(text3 + text2);
         });
 
+        btnOffCheatMode.setOnAction(event -> {
+            Audio.playAudio();
+            gameModel.setCheatMode(false);
+            textCheatMode.setText(text1);
+            log.info(text4 + text1);
+            errorText.setText(text5);
+        });
+
+        btnOnCheatMode.setOnAction(event -> {
+            Audio.playAudio();
+            gameModel.setCheatMode(true);
+            textCheatMode.setText(text2);
+            log.info(text4 + text2);
+            errorText.setText("All rooms are unlocked now.");
+        });
+
         btnApply.setOnAction(event -> {
             Audio.playAudio();
             GameView.getPrimaryStage().setFullScreen(GameView.isFullScreen());
-            errorText.setText("");
+            errorText.setText(text5);
             log.info("Settings were applied");
         });
 

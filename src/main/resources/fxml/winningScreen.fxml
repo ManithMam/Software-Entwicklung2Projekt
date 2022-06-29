@@ -7,7 +7,7 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/gameScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.controller.WinningController">
    <children>
-      <Label text="You Won!">
+      <Label text="You Won!"> <!-- TODO change -->
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></Label>
