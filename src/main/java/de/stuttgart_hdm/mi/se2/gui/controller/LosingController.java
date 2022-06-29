@@ -32,7 +32,5 @@ public class LosingController {
         GameView.getPrimaryStage().getScene().setRoot(root);
         root.requestFocus();
         GameModel.restartGame();
-
-        GameModel.restartGame();
     }
 }

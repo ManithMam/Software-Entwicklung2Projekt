@@ -5,6 +5,7 @@ import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.model.GameModel;
 import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
+import de.stuttgart_hdm.mi.se2.rooms.Room;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -46,6 +47,7 @@ public class GameController {
             //changes action of backTo button in optionScreen
             gameView.setOptionBackBtn(true);
             gameModel.stopThread();
+            GameModel.restartGame();
         });
 
         btnOptionsInGame.setOnAction(event -> {
@@ -90,8 +92,8 @@ public class GameController {
         });
 
         inventoryLabel.setText(String.format(getText(7), gameModel.getInventory().size()));
-        setCurrentRoom(0);
-        setInventoryLabel();
+        currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));
+        dialog.setText(gameModel.getRoomDescription(gameModel.getCurrentRoom()));
     }
 
     private String getText(int number) {
@@ -128,23 +130,6 @@ public class GameController {
         }
     }
 
-    private void setInventoryLabel() {
-        inventoryLabel.setText(String.format(getText(7), gameModel.getInventory().size()));
-    }
-
-    private void setCurrentRoom(final int number) {
-        try {
-            switch (number) {
-                case 0 -> currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));
-                case 1 -> currentRoom.setText(gameModel.getRoomName(getSelected()));
-                default -> throw new IllegalArgumentException(String.format(getText(5), number));
-            }
-        } catch (IllegalArgumentException e) {
-            log.error(e);
-            currentRoom.setText(getText(6));
-        }
-    }
-
     private void showItemsInSelectedRoom() {
         try {
             roomView.setItems(gameModel.getItemsInSelectedRoom(getSelected()));
@@ -176,11 +161,6 @@ public class GameController {
         btnPickRoom.setVisible(false);
         btnPickRoom.setManaged(false);
     }
-    /*
-    private void setBackground(Resource resource) {
-        roomView.setBackground(new Background(new BackgroundImage(new Image(resource.getUrl()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
-    }
-     */
 
     private void changeRoom(ActionEvent event) {
         Audio.playAudio();
@@ -227,14 +207,14 @@ public class GameController {
             if (gameView.isRoomViewSelected()) {
                 if (gameModel.isItemMovable(getSelected()) && gameModel.getInventory().size() < 3) {
                     gameModel.pickUp(getSelected(), true);
-                    setInventoryLabel();
+                    inventoryLabel.setText(String.format(getText(7), gameModel.getInventory().size()));
                     dialog.setText(getText(12));
                 } else {
                     dialog.setText(getText(2));
                 }
             } else if (gameView.isInvViewSelected()) {
                 gameModel.pickUp(getSelected(), false);
-                setInventoryLabel();
+                inventoryLabel.setText(String.format(getText(7), gameModel.getInventory().size()));
                 dialog.setText(getText(12));
             } else {
                 dialog.setText(getText(4));
@@ -256,27 +236,26 @@ public class GameController {
             try {
                 if (gameModel.getRoomAccess(getSelected())) {
                     gameModel.setCurrentRoom(getSelected());
-                    showItemsInSelectedRoom();
                     roomSelection();
                     currentRoomLabel.setText(getText(8));
-                    setCurrentRoom(0);
-                    dialog.setText(getText(12));
-                } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).anyMatch(item -> gameModel.getNeededItem(getSelected()).contains(item))) {
+                    currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));
+                    dialog.setText(gameModel.getRoomDescription(gameModel.getCurrentRoom()));
+                    showItemsInSelectedRoom();
+                    // } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).anyMatch(item -> gameModel.getNededItem(getSelected()).contains(item))) {
+                } else if(gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).toList().containsAll(gameModel.getNeededItem(getSelected()))) {
                     if(!gameModel.getExit(getSelected())) {
                         gameModel.setCurrentRoom(getSelected());
-                        gameModel.setRoomAccess(getSelected());
+                        gameModel.setRoomAccess(gameModel.getCurrentRoom());
                         try {
-                            log.info(String.format(getText(9), gameModel.getRoomName(getSelected())));
+                            log.info(String.format(getText(9), gameModel.getRoomName(gameModel.getCurrentRoom())));
                         } catch (IllegalArgumentException e) {
                             log.error(e);
                         }
-                        showItemsInSelectedRoom();
                         roomSelection();
                         currentRoomLabel.setText(getText(8));
-                        setCurrentRoom(1);
-                        dialog.setText(getText(12));
-                        System.out.println("TEST.......................................");
-                        System.out.println(gameModel.getExit(getSelected()));
+                        currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));
+                        dialog.setText(gameModel.getRoomDescription(gameModel.getCurrentRoom()));
+                        showItemsInSelectedRoom();
                     } else {
 
                         System.out.println(gameModel.getExit(getSelected()));
@@ -289,10 +268,10 @@ public class GameController {
 
                 } else {
                     try {
-                        dialog.setText(String.format(getText(1), gameModel.getRoomDescription(getSelected())));
+                        dialog.setText(String.format(getText(3), gameModel.getRoomDoorDescription(getSelected())));
                     } catch (IllegalArgumentException e) {
                         log.error(e);
-                        dialog.setText(String.format(getText(1), getText(6)));
+                        dialog.setText(String.format(getText(3), getText(6)));
                     }
                 }
             } catch (IllegalArgumentException e) {

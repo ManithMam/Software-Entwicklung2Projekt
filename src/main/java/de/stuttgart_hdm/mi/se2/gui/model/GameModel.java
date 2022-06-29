@@ -55,6 +55,10 @@ public class GameModel {
             GameView.getPrimaryStage().getScene().setRoot(root);
             root.requestFocus();
         }
+
+        Timer timer = new Timer();
+        this.thread = new Thread(timer);
+        thread.setDaemon(true);
     }
 
     public static void restartGame() {
@@ -65,7 +69,6 @@ public class GameModel {
         this.thread = new Thread(new Timer());
         thread.setDaemon(true);
         this.thread.start();
-
     }
 
     public void stopThread() {
@@ -150,6 +153,15 @@ public class GameModel {
             return selectedRoom.getDescription();
         } else {
             throw new IllegalArgumentException("Cant get roomDescription because provided object is not a Room");
+        }
+    }
+
+
+    public String getRoomDoorDescription(Object object) throws IllegalArgumentException{
+        if(object instanceof Room selectedRoom) {
+            return selectedRoom.getDoorDescription();
+        } else {
+            throw new IllegalArgumentException("Cant get roomDoorDescription because provided object is not a Room");
         }
     }
 

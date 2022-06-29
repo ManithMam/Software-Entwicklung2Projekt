@@ -21,8 +21,8 @@ public class Bathroom extends Room {
         this.id = ++idCounter;
         setAccess(false);
         setName("Bathroom");
-        setDescription("That´s not the time to take a crap!\nBah!! The toilet is disgusting and the sink is filthy.\nUnderneath it there is a cabinet placed. It´s pretty tight in here.");
-        setDoorDescription("It´s a old-fashioned wooden door.\nIt looks breakable");
+        setDescription("That´s not the time to take a crap!\nBah!! The toilet is disgusting and the sink is filthy.\nUnderneath the sink is a little cabinet.\n It´s pretty tight in here.");
+        setDoorDescription("It´s an old-fashioned wooden door.\nIt looks breakable");
         addItemsInRoom(getKeyItemList().stream().filter(Toothbrush.class::isInstance).toList().get(0));
         addItemsInRoom(getFurnitureList().stream().filter(Sink.class::isInstance).toList().get(0));
         addItemsInRoom(getFurnitureList().stream().filter(Toilet.class::isInstance).toList().get(0));
