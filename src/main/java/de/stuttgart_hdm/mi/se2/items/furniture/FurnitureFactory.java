@@ -3,31 +3,59 @@ package de.stuttgart_hdm.mi.se2.items.furniture;
 
 
 import de.stuttgart_hdm.mi.se2.items.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 //import static de.stuttgart_hdm.mi.se2.Main.items;
 
 public class FurnitureFactory {
 
-    public Item createFurniture(String itemType){
+    private static final Logger log = LogManager.getLogger(FurnitureFactory.class);
 
-        return switch (itemType) {
-            case "Sofa" -> new Sofa();
-            case "Chair" -> new Chair();
-            case "Table" -> new Table();
-            case "Bed" -> new Bed();
-            case "Sink" -> new Sink();
-            case "Toilet" -> new Toilet();
+    public Item createFurniture(String itemType) throws IllegalArgumentException{
+
+        switch (itemType) {
+            case "Sofa" -> {
+                log.info("Sofa has been created");
+                return new Sofa();
+            }
+            case "Chair" -> {
+                log.info("Chair has been created");
+                return new Chair();
+            }
+            case "Table" -> {
+                log.info("Table has been created");
+                return new Table();
+            }
+            case "Bed" -> {
+                log.info("Bed has been created");
+                return new Bed();
+            }
+            case "Sink" -> {
+                log.info("Sink has been created");
+                return new Sink();
+            }
+            case "Toilet" -> {
+                log.info("Toilet has been created");
+                return new Toilet();
+            }
             default -> throw new IllegalArgumentException("Furniture not existing");
-        };
+        }
     }
 
-    public void createAllFurniture(){
-        Item sofa = new Sofa();
-        Item chair = new Chair();
-        Item table = new Table();
-        Item bed = new Bed();
-        Item toilet = new Toilet();
-        Item sink = new Sink();
+    public ObservableList<Item> createAllFurniture(){
+
+        final ObservableList <Item> furnitureList = FXCollections.observableArrayList();
+        furnitureList.add(createFurniture("Bed"));
+        furnitureList.add(createFurniture("Chair"));
+        furnitureList.add(createFurniture("Sink"));
+        furnitureList.add(createFurniture("Sofa"));
+        furnitureList.add(createFurniture("Table"));
+        furnitureList.add(createFurniture("Toilet"));
+
+        return furnitureList;
     }
 
 }

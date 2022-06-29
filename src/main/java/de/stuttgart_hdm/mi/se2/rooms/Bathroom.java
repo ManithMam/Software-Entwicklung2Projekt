@@ -1,6 +1,7 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
+import de.stuttgart_hdm.mi.se2.items.furniture.Sink;
 import de.stuttgart_hdm.mi.se2.items.furniture.Toilet;
 import de.stuttgart_hdm.mi.se2.items.keyItems.BaseballBat;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Toothbrush;
@@ -23,10 +24,9 @@ public class Bathroom extends Room {
         setDescription("That´s not the time to take a crap!\nBah!! The toilet is disgusting and the sink is filthy.\nUnderneath it there is a cabinet placed. It´s pretty tight in here.");
         setDoorDescription("It´s a old-fashioned wooden door.\nIt looks breakable");
         addItemsInRoom(getKeyItemList().stream().filter(Toothbrush.class::isInstance).toList().get(0));
-        final Item toilet = getFurnitureFactory().createFurniture("Toilet");
-        final Item sink = getFurnitureFactory().createFurniture("Sink");
-        addItemsInRoom(toilet);
-        addItemsInRoom(sink);
+        addItemsInRoom(getFurnitureList().stream().filter(Sink.class::isInstance).toList().get(0));
+        addItemsInRoom(getFurnitureList().stream().filter(Toilet.class::isInstance).toList().get(0));
+
 
     }
 

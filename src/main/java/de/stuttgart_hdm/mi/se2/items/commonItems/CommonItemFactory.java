@@ -1,6 +1,8 @@
 package de.stuttgart_hdm.mi.se2.items.commonItems;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -55,22 +57,31 @@ public class CommonItemFactory {
                 log.info("Book was created");
                 return new Book();
             }
+            case "CD" -> {
+                log.info("CD was created");
+                return new CD();
+            }
             default -> throw new IllegalArgumentException("Item not existing");
         }
     }
 
-    public void createAllItems(){
-        Item cookbook = new Cookbook();
-        Item glasses = new Glasses();
-        Item note1 = new Note1();
-        Item note2 = new Note2();
-        Item note3 = new Note3();
-        Item note4 = new Note4();
-        Item note5 = new Note5();
-        Item note6 = new Note6();
-        Item pliers = new Pliers();
-        Item rope = new Rope();
-        Item book = new Book();
+    public ObservableList<Item> createAllItems(){
+
+        final ObservableList<Item> itemList = FXCollections.observableArrayList();
+        itemList.add(createItem("Book"));
+        itemList.add(createItem("CD"));
+        itemList.add(createItem("Cookbook"));
+        itemList.add(createItem("Glasses"));
+        itemList.add(createItem("Note1"));
+        itemList.add(createItem("Note2"));
+        itemList.add(createItem("Note3"));
+        itemList.add(createItem("Note4"));
+        itemList.add(createItem("Note5"));
+        itemList.add(createItem("Note6"));
+        itemList.add(createItem("Pliers"));
+        itemList.add(createItem("Rope"));
+
+        return itemList;
 
     }
 

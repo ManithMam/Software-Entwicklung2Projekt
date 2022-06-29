@@ -154,7 +154,7 @@ public class GameModel {
         }
     }
 
-    public List<Integer> getNededItem(Object object) throws IllegalArgumentException {
+    public List<Integer> getNeededItem(Object object) throws IllegalArgumentException {
         if(object instanceof Room selectedRoom) {
             return selectedRoom.neededItem();
         } else {

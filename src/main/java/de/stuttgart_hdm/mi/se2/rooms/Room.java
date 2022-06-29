@@ -15,11 +15,13 @@ import java.util.List;
 
 public abstract class Room {
 
-    private static final FurnitureFactory furnitureFactory = new FurnitureFactory();
-    private static final KeyItemFactory keyItemFactory = new KeyItemFactory();
+    private static final FurnitureFactory FURNITURE_FACTORY = new FurnitureFactory();
+    private static final KeyItemFactory KEY_ITEM_FACTORY = new KeyItemFactory();
     private static final CommonItemFactory COMMON_ITEM_FACTORY = new CommonItemFactory();
     //private static final List<Item> keyItemList = keyItemFactory.createAllKeyItems();
-    private static final ObservableList<Item> keyItemList = keyItemFactory.createAllKeyItems();
+    private static final ObservableList<Item> keyItemList = KEY_ITEM_FACTORY.createAllKeyItems();
+    private static final ObservableList<Item> furnitureList = FURNITURE_FACTORY.createAllFurniture();
+    private static final ObservableList<Item> itemList = COMMON_ITEM_FACTORY.createAllItems();
     private String name;
     //private final List<Item> itemInRoom = new ArrayList<Item>();
     private final ObservableList<Item> itemInRoom = FXCollections.observableArrayList();
@@ -32,11 +34,11 @@ public abstract class Room {
     private static final Logger log = LogManager.getLogger(Room.class);
 
     public FurnitureFactory getFurnitureFactory() {
-        return furnitureFactory;
+        return FURNITURE_FACTORY;
     }
 
     public KeyItemFactory getKeyItemFactory() {
-        return keyItemFactory;
+        return KEY_ITEM_FACTORY;
     }
 
     public CommonItemFactory getItemFactory() {
@@ -44,6 +46,10 @@ public abstract class Room {
     }
 
     public static List<Item> getKeyItemList() {return keyItemList;}
+
+    public static List<Item> getFurnitureList() {return furnitureList;}
+
+    public static List<Item> getItemList() {return itemList;}
 
     public int getId() {
         return this.id;

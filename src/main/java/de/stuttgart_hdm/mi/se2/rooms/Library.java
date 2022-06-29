@@ -2,6 +2,10 @@ package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 
+import de.stuttgart_hdm.mi.se2.items.commonItems.Book;
+import de.stuttgart_hdm.mi.se2.items.commonItems.Glasses;
+import de.stuttgart_hdm.mi.se2.items.commonItems.Note6;
+import de.stuttgart_hdm.mi.se2.items.furniture.Chair;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KitchenTorch;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Knife;
 
@@ -23,14 +27,10 @@ public class Library extends Room {
         setDescription("I can probably find some useful information in the books.\nHere are three bookshelf all filled up to the brim.\nThat could take some time.");
         setDoorDescription("The door knob feels colder then my ex´s heart.\nThe knob looks frozen\nI can barely touch it now");
         addItemsInRoom(getKeyItemList().stream().filter(Knife.class::isInstance).toList().get(0));
-        final Item glasses = getItemFactory().createItem("Glasses");
-        final Item chair = getFurnitureFactory().createFurniture("Chair");
-        final Item book = getItemFactory().createItem("Book");
-        final Item note6 = getItemFactory().createItem("Note6");
-        addItemsInRoom(note6);
-        addItemsInRoom(glasses);
-        addItemsInRoom(chair);
-        addItemsInRoom(book);
+        addItemsInRoom(getFurnitureList().stream().filter(Chair.class::isInstance).toList().get(0));
+        addItemsInRoom(getItemList().stream().filter(Glasses.class::isInstance).toList().get(0));
+        addItemsInRoom(getItemList().stream().filter(Book.class::isInstance).toList().get(0));
+        addItemsInRoom(getItemList().stream().filter(Note6.class::isInstance).toList().get(0));
     }
 
     /**

@@ -3,7 +3,7 @@ package de.stuttgart_hdm.mi.se2.timer;
 import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
-import de.stuttgart_hdm.mi.se2.items.keyItems.Clock;
+import de.stuttgart_hdm.mi.se2.items.keyItems.Watch;
 import de.stuttgart_hdm.mi.se2.rooms.Room;
 
 import javafx.application.Platform;
@@ -19,7 +19,7 @@ public class Timer implements Runnable{
     public void run() {
         int time = 600;
         for (int i = time; i >= 0; i--) {
-            Room.getKeyItemList().stream().filter(Clock.class::isInstance).toList().get(0).setDesc(String.format("I feel a sudden uneasiness looking at the watch.\nIt's a countdown.\nThe number on the watch says %d:%d.", (i/60)%60, i%60));
+            Room.getKeyItemList().stream().filter(Watch.class::isInstance).toList().get(0).setDesc(String.format("I feel a sudden uneasiness looking at the watch.\nIt's a countdown.\nThe number on the watch says %d:%d.", (i/60)%60, i%60));
             log.info(String.format("Player has %d:%d minutes left.", (i/60)%60, i%60 ));
             try {
                 Thread.sleep(1000);

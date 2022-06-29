@@ -1,10 +1,14 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
+import de.stuttgart_hdm.mi.se2.items.commonItems.Note2;
+import de.stuttgart_hdm.mi.se2.items.furniture.Bed;
 import de.stuttgart_hdm.mi.se2.items.keyItems.BaseballBat;
 import de.stuttgart_hdm.mi.se2.items.keyItems.ExitKey;
+import de.stuttgart_hdm.mi.se2.items.keyItems.KitchenTorch;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Knife;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,10 +28,8 @@ public class Basement extends Room {
         setDescription("It´s pretty dark in here.\nI can barely see my own hand.\nI think something tries to crawl up my leg!\nBut it disappeared after a shake.");     //TODO Itemliste in room nicht anzeigen bis taschenlampe gefunden wurde
         setDoorDescription("It´s a heavy metal door.\nThere is no way you can break it, can you?");
         addItemsInRoom(getKeyItemList().stream().filter(ExitKey.class::isInstance).toList().get(0));
-        final Item bed = getFurnitureFactory().createFurniture("Bed");
-        final Item note2 = getItemFactory().createItem("Note2");
-        addItemsInRoom(bed);
-        addItemsInRoom(note2);
+        addItemsInRoom(getFurnitureList().stream().filter(Bed.class::isInstance).toList().get(0));
+        addItemsInRoom(getItemList().stream().filter(Note2.class::isInstance).toList().get(0));
     }
 
     /**
@@ -35,6 +37,12 @@ public class Basement extends Room {
      */
     public List<Integer> neededItem()
     {
-        return getKeyItemList().stream().filter(BaseballBat.class::isInstance).map(Item::getId).toList();
+
+        List<Integer> neededKeyItemList = new ArrayList<>();
+        neededKeyItemList.addAll(getKeyItemList().stream().filter(BaseballBat.class::isInstance).map(Item::getId).toList());
+        neededKeyItemList.addAll(getKeyItemList().stream().filter(Knife.class::isInstance).map(Item::getId).toList());
+        neededKeyItemList.addAll(getKeyItemList().stream().filter(KitchenTorch.class::isInstance).map(Item::getId).toList());
+
+        return neededKeyItemList;
     }
 }

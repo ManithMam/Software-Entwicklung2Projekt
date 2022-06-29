@@ -11,14 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.io.File;
 
 
 //TODO add documentation
@@ -267,7 +261,7 @@ public class GameController {
                     currentRoomLabel.setText(getText(8));
                     setCurrentRoom(0);
                     dialog.setText(getText(12));
-                } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).anyMatch(item -> gameModel.getNededItem(getSelected()).contains(item))) {
+                } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).anyMatch(item -> gameModel.getNeededItem(getSelected()).contains(item))) {
                     if(!gameModel.getExit(getSelected())) {
                         gameModel.setCurrentRoom(getSelected());
                         gameModel.setRoomAccess(getSelected());
