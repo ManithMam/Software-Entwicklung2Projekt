@@ -24,21 +24,21 @@
                      <HBox alignment="CENTER" styleClass="margin-Select">
                         <children>
                             <Button fx:id="btnOffRayTracing" styleClass="setting-button" text="&lt;" />
-                           <Label text="OFF" />
+                           <Label minWidth="35.0" alignment="CENTER" text="OFF" />
                            <Button fx:id="btnOnRayTracing" styleClass="setting-button" text="&gt;" />
                         </children>
                      </HBox>
                      <HBox alignment="CENTER" styleClass="margin-Select">
                         <children>
                             <Button fx:id="btnOffFullScreen" styleClass="setting-button" text="&lt;" />
-                           <Label fx:id="textFullScreen" minWidth="27.0" text="OFF" />
+                           <Label fx:id="textFullScreen" minWidth="35.0" alignment="CENTER" text="OFF" />
                            <Button fx:id="btnOnFullScreen" styleClass="setting-button" text="&gt;" />
                         </children>
                      </HBox>
                      <HBox alignment="CENTER" styleClass="margin-Select">
                         <children>
                            <Button fx:id="btnOffCheatMode" styleClass="setting-button" text="&lt;" />
-                           <Label fx:id="textCheatMode" minWidth="27.0" text="OFF" />
+                           <Label fx:id="textCheatMode" minWidth="35.0" alignment="CENTER" text="OFF" />
                            <Button fx:id="btnOnCheatMode" styleClass="setting-button" text="&gt;" />
                         </children>
                      </HBox>

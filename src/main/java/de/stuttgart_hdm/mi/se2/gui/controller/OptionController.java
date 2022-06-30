@@ -50,16 +50,16 @@ public class OptionController {
             textCheatMode.setText(text1);
         }
 
-        btnOffRayTracing.setOnAction(event -> Audio.playAudio());
+        btnOffRayTracing.setOnAction(event -> Audio.playAudio(Resource.BTN_AUDIO));
 
         btnOnRayTracing.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             errorText.setText("Your PC is to week to handle the might of Ray Tracing!");
             log.info("On button for Ray-Tracing has been pushed");
         });
 
         btnOffFullScreen.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             GameView.setFullScreen(false);
             textFullScreen.setText(text1);
             log.info(text3 + text1);
@@ -67,14 +67,14 @@ public class OptionController {
         });
 
         btnOnFullScreen.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             GameView.setFullScreen(true);
             textFullScreen.setText(text2);
             log.info(text3 + text2);
         });
 
         btnOffCheatMode.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             gameModel.setCheatMode(false);
             textCheatMode.setText(text1);
             log.info(text4 + text1);
@@ -82,7 +82,7 @@ public class OptionController {
         });
 
         btnOnCheatMode.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             gameModel.setCheatMode(true);
             textCheatMode.setText(text2);
             log.info(text4 + text2);
@@ -90,7 +90,7 @@ public class OptionController {
         });
 
         btnApply.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             GameView.getPrimaryStage().setFullScreen(GameView.isFullScreen());
             errorText.setText(text5);
             log.info("Settings were applied");
@@ -102,7 +102,7 @@ public class OptionController {
     private void backTo() {
         if (gameView.isOptionBackBtn()) {
             btnBack.setOnAction(event -> {
-                Audio.playAudio();
+                Audio.playAudio(Resource.BTN_AUDIO);
                 Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
                 GameView.getPrimaryStage().getScene().setRoot(root);
                 root.requestFocus();
@@ -110,7 +110,7 @@ public class OptionController {
             });
         } else {
             btnBack.setOnAction(event -> {
-                Audio.playAudio();
+                Audio.playAudio(Resource.BTN_AUDIO);
                 Parent root = Utils.loadFxml(Resource.GAME_SCREEN);
                 GameView.getPrimaryStage().getScene().setRoot(root);
                 root.requestFocus();

@@ -39,7 +39,7 @@ public class MenuController {
         gameModel = GameModel.getGameModel();
 
         startGameBtn.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             log.info("Start game button has been pressed");
             Parent root = Utils.loadFxml(Resource.GAME_SCREEN);
             GameView.getPrimaryStage().getScene().setRoot(root);
@@ -60,14 +60,14 @@ public class MenuController {
             stage.setY(GameView.getPrimaryStage().getY() + (GameView.getPrimaryStage().getHeight() / 2) - (stage.getHeight()/2));
         });
         optionBtn.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             log.info("Option button has been pressed in menu");
             Parent root = Utils.loadFxml(Resource.OPTION_SCREEN);
             GameView.getPrimaryStage().getScene().setRoot(root);
             root.requestFocus();
         });
         exitBtn.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             log.info("Exit button has been pressed");
 
             GameView.getPrimaryStage().close();

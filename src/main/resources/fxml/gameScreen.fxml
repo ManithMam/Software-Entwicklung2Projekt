@@ -73,6 +73,7 @@
                               <Button fx:id="btnInspect" mnemonicParsing="false" text="Inspect" />
                               <Button fx:id="btnPickUp" mnemonicParsing="false" text="Pick Up" />
                               <Button fx:id="btnPickRoom" managed="false" mnemonicParsing="false" text="Pick Room" visible="false" />
+                              <Button fx:id="btnOk" managed="false" visible="false" text="OK" mnemonicParsing="false" />
                            </children>
                         </HBox>
                      </children>

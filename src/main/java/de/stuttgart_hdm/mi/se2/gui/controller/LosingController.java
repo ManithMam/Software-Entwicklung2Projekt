@@ -26,7 +26,7 @@ public class LosingController {
 
     @FXML
     private void exit(ActionEvent event) {
-        Audio.playAudio();
+        Audio.playAudio(Resource.BTN_AUDIO);
         log.info("Back to menu button has been pressed from Losing Screen");
         Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
         GameView.getPrimaryStage().getScene().setRoot(root);

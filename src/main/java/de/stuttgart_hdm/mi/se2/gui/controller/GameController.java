@@ -6,7 +6,6 @@ import de.stuttgart_hdm.mi.se2.gui.model.GameModel;
 import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import javafx.animation.PauseTransition;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,9 +17,6 @@ import javafx.scene.control.ListView;
 import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
 
 
 //TODO add documentation
@@ -35,7 +31,7 @@ public class GameController {
     @FXML
     private Label currentRoomLabel, currentRoom, inventoryLabel, dialog;
     @FXML
-    private Button btnBackToMenu, btnOptionsInGame, btnChangeRoom, btnInspect, btnPickUp, btnPickRoom;
+    private Button btnBackToMenu, btnOptionsInGame, btnChangeRoom, btnInspect, btnPickUp, btnPickRoom, btnOk;
     @FXML
     private ListView roomView, invView;
 
@@ -48,7 +44,7 @@ public class GameController {
 
         btnBackToMenu.setOnAction(event -> {
 
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             log.info(getText(16));
             Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
             GameView.getPrimaryStage().getScene().setRoot(root);
@@ -60,7 +56,7 @@ public class GameController {
         });
 
         btnOptionsInGame.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             log.info(getText(15));
             Parent root = Utils.loadFxml(Resource.OPTION_SCREEN);
             GameView.getPrimaryStage().getScene().setRoot(root);
@@ -74,6 +70,11 @@ public class GameController {
         btnPickUp.setOnAction(this::pickUp);
 
         btnPickRoom.setOnAction(this::pickRoom);
+
+        btnOk.setOnAction(event -> {
+            roomUnlocked();
+            gameModel.startThread();
+        });
 
         cellFactory(roomView);
 
@@ -142,7 +143,7 @@ public class GameController {
             cell.setOnMouseClicked(e -> {
 
                 if (!cell.isEmpty()) {
-                    Audio.playAudio();
+                    Audio.playAudio(Resource.BTN_AUDIO);
                 }
             });
 
@@ -216,7 +217,10 @@ public class GameController {
                 return "Use Ctr-Click to unselect Item!";
             }
             case 19 -> {
-                return "Opend room with %s";
+                return "Opend door with: ";
+            }
+            case 20 -> {
+                return "The room is locked!%n%s%n%s%s";
             }
             default -> throw new IllegalArgumentException(String.format(getText(5), number));
         }
@@ -271,7 +275,7 @@ public class GameController {
 
 
     private void inspect(ActionEvent event) {
-        Audio.playAudio();
+        Audio.playAudio(Resource.BTN_AUDIO);
 
         log.info(getText(14));
 
@@ -292,7 +296,7 @@ public class GameController {
 
     private void pickUp(ActionEvent event) {
 
-        Audio.playAudio();
+        Audio.playAudio(Resource.BTN_AUDIO);
         log.info(getText(17));
         try {
 
@@ -306,6 +310,7 @@ public class GameController {
                 gameModel.pickUp(getSelected(), false);
                 inventoryLabel.setText(String.format(getText(7), gameModel.getInventory().size()));
                 dialog.setText(getText(12));
+                roomViewStyle(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
                 invView.getSelectionModel().select(null);
 
             } else {
@@ -344,7 +349,7 @@ public class GameController {
 
     private void changeRoom(ActionEvent event) {
 
-        Audio.playAudio();
+        Audio.playAudio(Resource.BTN_AUDIO);
         log.info(getText(13));
 
         if (btnPickRoom.isVisible()) {
@@ -379,7 +384,7 @@ public class GameController {
 
     private void pickRoom(ActionEvent event) {
 
-        Audio.playAudio();
+        Audio.playAudio(Resource.BTN_AUDIO);
         log.info(getText(10));
 
         if (gameView.isRoomViewSelected()) {
@@ -395,14 +400,20 @@ public class GameController {
                     gameModel.setCurrentRoom(getSelected());
                     gameModel.setRoomAccess(gameModel.getCurrentRoom());
 
-                    dialog.setText(String.format(getText(3), gameModel.getRoomDoorDescription(gameModel.getCurrentRoom())));
-                    PauseTransition pause1 = new PauseTransition(Duration.seconds(5));
-                    pause1.setOnFinished(e -> dialog.setText(String.format(getText(19), gameModel.getUsedItemNames(gameModel.getInventory().stream().filter(item -> gameModel.getNeededItem(gameModel.getCurrentRoom()).contains(item.getId())).map(item -> gameModel.getItemName(item)).toList()))));
-                    pause1.play();
+                    if(!gameModel.isCheatMode()) {
 
-                    PauseTransition pause2 = new PauseTransition(Duration.seconds(10));
-                    pause2.setOnFinished(e -> roomUnlocked());
-                    pause2.play();
+                        gameModel.stopThread();
+                        dialog.setText(String.format(getText(20), gameModel.getRoomDoorDescription(gameModel.getCurrentRoom()), getText(19), gameModel.getUsedItemNames(gameModel.getInventory().stream().filter(item -> gameModel.getNeededItem(gameModel.getCurrentRoom()).contains(item.getId())).map(item -> gameModel.getItemName(item)).toList())));
+
+                        btnPickRoom.setVisible(false);
+                        btnPickRoom.setManaged(false);
+                        btnOk.setVisible(true);
+                        btnOk.setManaged(true);
+
+                    } else {
+
+                        roomUnlocked();
+                    }
 
                 } else {
 
@@ -451,8 +462,6 @@ public class GameController {
 
     private void roomUnlocked() {
 
-
-
         if (!gameModel.getExit(gameModel.getCurrentRoom())) {
 
             try {
@@ -463,6 +472,9 @@ public class GameController {
 
                 log.error(e);
             }
+
+            btnOk.setVisible(false);
+            btnOk.setManaged(false);
 
             roomSelection();
             currentRoomLabel.setText(getText(8));

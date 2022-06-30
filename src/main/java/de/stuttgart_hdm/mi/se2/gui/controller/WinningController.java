@@ -21,7 +21,7 @@ public class WinningController {
     @FXML
     private void initialize() {
         btnBackToMenu.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             log.info("Back to menu button has been pressed from Winning Screen");
             Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
             GameView.getPrimaryStage().getScene().setRoot(root);

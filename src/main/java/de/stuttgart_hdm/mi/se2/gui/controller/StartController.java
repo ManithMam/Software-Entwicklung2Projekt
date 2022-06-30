@@ -1,6 +1,7 @@
 package de.stuttgart_hdm.mi.se2.gui.controller;
 
 import de.stuttgart_hdm.mi.se2.gui.Audio;
+import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.model.GameModel;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ public class StartController {
         gameModel = GameModel.getGameModel();
 
         btnStart.setOnAction(event -> {
-            Audio.playAudio();
+            Audio.playAudio(Resource.BTN_AUDIO);
             log.info("Pressed start button in Start Game Scene");
             gameModel.startThread();
             GameView.getStartStage().close();

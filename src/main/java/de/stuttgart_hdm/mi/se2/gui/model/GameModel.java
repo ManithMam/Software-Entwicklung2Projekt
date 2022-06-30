@@ -20,14 +20,17 @@ public class GameModel {
 
     private static final Logger log = LogManager.getLogger(GameModel.class);
 
+    private static GameModel gameModel = new GameModel();
+
     private Thread thread;
+    private Timer timer;
+    //Integer so I can check if null
+    private Integer time;
     private final ObservableList<Room> roomsList;
     private final ObservableList<Item> inventory;
     private Room currentRoom;
-
     private boolean cheatMode;
 
-    private static GameModel gameModel = new GameModel();
 
     public GameModel()
     {
@@ -56,10 +59,6 @@ public class GameModel {
             GameView.getPrimaryStage().getScene().setRoot(root);
             root.requestFocus();
         }
-
-        Timer timer = new Timer();
-        this.thread = new Thread(timer);
-        thread.setDaemon(true);
     }
 
     public static GameModel getGameModel() {
@@ -192,25 +191,19 @@ public class GameModel {
     }
 
     public void startThread() {
-        this.thread = new Thread(new Timer());
+        this.timer = new Timer();
+        if (this.time != null) {
+            this.timer.setTimeLeft(this.time);
+        }
+        this.thread = new Thread(timer);
         thread.setDaemon(true);
         this.thread.start();
     }
 
-    public void pauseThread() {
-        try {
-            this.thread.wait();
-        } catch (InterruptedException e) {
-            log.error(e);
-        }
-    }
-
-    public void resumeThread() {
-        this.thread.notify();
-    }
-
     public void stopThread() {
-        this.thread.interrupt();
+
+        this.time = timer.getTimeLeft();
+        this.timer.stop();
     }
 
     public void pickUp(Object object, boolean toInventory) throws IllegalArgumentException {
@@ -231,8 +224,17 @@ public class GameModel {
 
     public String getUsedItemNames(List<String> list) {
         StringBuilder s = new StringBuilder();
-        for (Object o : list) {
-            s.append(o).append(" ");
+
+        for (int i = 0; i < list.size(); i++) {
+
+            if (i + 1 != list.size()) {
+
+                s.append(list.get(i)).append(", ");
+
+            } else {
+
+                s.append(list.get(i));
+            }
         }
         return s.toString();
     }
