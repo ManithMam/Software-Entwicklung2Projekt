@@ -10,8 +10,8 @@ public enum Resource {
     ERROR_SCREEN("errorScreen.fxml", "Warning Screen", "/fxml/errorScreen.fxml", 700, 500),
     START_GAME_SCREEN("startGame.fxml", "Start Game Screen", "/fxml/startGame.fxml", 500, 200),
     WINNING_SCREEN("winningScreen.fxml", "Winning Screen", "/fxml/winningScreen.fxml", 700, 500),
-    BTN_AUDIO("gameSounds/buttonClick2.wav", "Button Audio", "buttonClick2.wav"),
-    BACKGROUND_HALLWAY("gameImages/Hallway.jpg", "Hallway Background", "resources/Hallway.jpg");
+    BTN_AUDIO("buttonClick2.wav", "Button Audio", "buttonClick2.wav"),
+    BACKGROUND_HALLWAY("Hallway.jpg", "Hallway Background", "resources/Hallway.jpg");
 
 
     private final String name;

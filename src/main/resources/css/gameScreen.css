@@ -30,7 +30,7 @@ Label {
 }
 
 #background {
-    -fx-background-image: url(../gameImages/Hallway.jpg);
+    -fx-background-image: url(../Hallway.jpg);
     -fx-background-repeat: no-repeat no-repeat;
     -fx-background-size: cover, auto;
 }
