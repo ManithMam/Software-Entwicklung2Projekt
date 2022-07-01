@@ -1,6 +1,8 @@
 package de.stuttgart_hdm.mi.se2.gui;
 
-//TODO add documentation
+/**
+ * used to store and get information of resources
+ */
 public enum Resource {
 
     MENU_SCREEN("mainMenu.fxml", "Menu Screen", "/fxml/mainMenu.fxml", 700, 500),
@@ -24,6 +26,7 @@ public enum Resource {
     private final double stageWidth;
     private final double stageHeight;
 
+
     Resource(String name, String desc, String url) {
         this.name = name;
         this.desc = desc;
@@ -40,7 +43,6 @@ public enum Resource {
         this.stageHeight = height;
     }
 
-    //TODO get and set methods for public variables
 
     public String getName() {
         return this.name;

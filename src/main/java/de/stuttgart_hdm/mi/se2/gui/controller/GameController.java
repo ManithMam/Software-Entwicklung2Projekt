@@ -18,7 +18,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-//TODO add documentation
+/**
+ * Controller of Game Screen
+ */
 public class GameController {
 
     Logger log = LogManager.getLogger(GameController.class);
@@ -37,6 +39,10 @@ public class GameController {
     private ListView roomView, invView;
 
 
+    /**
+     * invoked when gemaScreen.fxml loaded
+     * used to set start parameters
+     */
     @FXML
     private void initialize() {
 
@@ -70,16 +76,15 @@ public class GameController {
 
         btnPickUp.setOnAction(this::pickUp);
 
-        btnPickRoom.setOnAction(this::pickRoom);
-
         btnOk.setOnAction(event -> {
             roomUnlocked();
             gameModel.startThread();
         });
 
+
         cellFactory(roomView);
 
-        roomViewStyle(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
+        roomViewHeight(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
 
         try {
 
@@ -93,13 +98,7 @@ public class GameController {
             root.requestFocus();
         }
 
-        roomView.setOnMouseClicked(mouseEvent -> {
-
-            gameView.setRoomViewSelected(true);
-            gameView.setInvViewSelected(false);
-            btnPickUp.setText("Pick Up");
-            dialog.setText(getText(18));
-        });
+        roomViewItemEvent();
 
 
         cellFactory(invView);
@@ -119,11 +118,54 @@ public class GameController {
         dialog.setText(gameModel.getRoomDescription(gameModel.getCurrentRoom()));
     }
 
-    private void roomViewStyle(ObservableList list) {
 
-        roomView.setPrefHeight(list.size() * 30 + 6);
+    /**
+     * sets selection model of roomView if items of room are shown
+     */
+    private void roomViewItemEvent() {
+
+        roomView.setOnMouseClicked(mouseEvent -> {
+
+            gameView.setRoomViewSelected(true);
+            gameView.setInvViewSelected(false);
+            btnPickUp.setText("Pick Up");
+            dialog.setText(getText(18));
+        });
     }
 
+    /**
+     * sets selection model of roomView if rooms are shown
+     */
+    private void roomViewRoomEvent() {
+
+        roomView.setOnMouseClicked(click -> {
+
+            dialog.setText(getText(18));
+
+            //double-click selection
+            if (click.getClickCount() == 2) {
+
+                gameView.setRoomViewSelected(true);
+                gameView.setInvViewSelected(false);
+
+                pickRoom();
+            }
+        });
+    }
+
+    /**
+     * sets the roomView height to height of it's content
+     * @param list list of items/rooms
+     */
+    private void roomViewHeight(ObservableList list) {
+
+        roomView.setPrefHeight((list.size() * 30D) + 6);
+    }
+
+    /**
+     * sets style of ListView cells
+     * @param list ListView to be styled
+     */
     private void cellFactory(ListView<Object> list) {
 
         list.setCellFactory(listView -> {
@@ -161,7 +203,7 @@ public class GameController {
     private String getText(int number) {
         switch (number) {
             case 0 -> {
-                return "Please select a room and use \"Pick Room\" button!";
+                return "Please select a room with double click!";
             }
             case 1 -> {
                 return "Please select a room!";
@@ -218,16 +260,23 @@ public class GameController {
                 return "Use Ctr-Click to unselect Item!";
             }
             case 19 -> {
-                return "Opend door with: ";
+                return "Opened door with: ";
             }
             case 20 -> {
                 return "The room is locked!%n%s%n%s%s";
+            }
+            case 21 -> {
+                return "Double click to select room!";
             }
             default -> throw new IllegalArgumentException(String.format(getText(5), number));
         }
     }
 
 
+    /**
+     * displays description of given item/room in dialog
+     * @param object item/room you want to show description of
+     */
     private void showDesc(Object object) {
 
         try {
@@ -242,6 +291,9 @@ public class GameController {
     }
 
 
+    /**
+     * loads items of current room in roomView
+     */
     private void showItemsInSelectedRoom() {
 
         try {
@@ -258,6 +310,10 @@ public class GameController {
     }
 
 
+    /**
+     * used to get selected item/room
+     * @return selected item/room
+     */
     private Object getSelected() {
 
         if (gameView.isRoomViewSelected()) {
@@ -275,6 +331,10 @@ public class GameController {
     }
 
 
+    /**
+     * action of inspect button
+     * @param event event in gui (e.g button press)
+     */
     private void inspect(ActionEvent event) {
         Audio.playAudio(Resource.BTN_AUDIO);
 
@@ -295,15 +355,22 @@ public class GameController {
     }
 
 
+    /**
+     * action of pick-up button
+     * @param event event in gui (e.g button press)
+     */
     private void pickUp(ActionEvent event) {
 
         Audio.playAudio(Resource.BTN_AUDIO);
         log.info(getText(17));
+
         try {
 
             if (gameView.isRoomViewSelected()) {
 
                 pickFromRoom();
+
+                //otherwise, next item in roomView would be selected
                 roomView.getSelectionModel().select(null);
 
             } else if (gameView.isInvViewSelected()) {
@@ -311,12 +378,16 @@ public class GameController {
                 gameModel.pickUp(getSelected(), false);
                 inventoryLabel.setText(String.format(getText(7), gameModel.getInventory().size()));
                 dialog.setText(getText(12));
-                roomViewStyle(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
+                roomViewHeight(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
+
+                //otherwise, next item in invView would be selected
                 invView.getSelectionModel().select(null);
 
             } else {
 
                 dialog.setText(getText(4));
+
+                //just to be sure
                 roomView.getSelectionModel().select(null);
                 invView.getSelectionModel().select(null);
             }
@@ -327,11 +398,15 @@ public class GameController {
             dialog.setText(getText(4));
         }
 
+        //reset to prevent errors
         gameView.setInvViewSelected(false);
         gameView.setRoomViewSelected(false);
     }
 
 
+    /**
+     * picks up item from room if item is movable and inventory has space left
+     */
     private void pickFromRoom() {
 
         if (gameModel.isItemMovable(getSelected()) && gameModel.getInventory().size() < 3) {
@@ -343,30 +418,40 @@ public class GameController {
         } else {
 
             dialog.setText(getText(2));
+
+            //otherwise, item in roomView would still be selected
             roomView.getSelectionModel().select(null);
         }
     }
 
 
+    /**
+     * action of change room button
+     * displays rooms and changes selection model of roomView
+     * @param event event in gui (e.g button press)
+     */
     private void changeRoom(ActionEvent event) {
 
         Audio.playAudio(Resource.BTN_AUDIO);
         log.info(getText(13));
 
-        if (btnPickRoom.isVisible()) {
+        if (!btnInspect.isVisible()) {
 
             dialog.setText(getText(0));
 
+            //otherwise, room in roomView would still be selected
+            roomView.getSelectionModel().select(null);
+
         } else {
 
-            roomViewStyle(gameModel.getRoomsList());
+            dialog.setText(getText(21));
+            roomViewHeight(gameModel.getRoomsList());
+            roomViewRoomEvent();
             roomView.setItems(gameModel.getRoomsList());
             btnInspect.setVisible(false);
             btnInspect.setManaged(false);
             btnPickUp.setVisible(false);
             btnPickUp.setManaged(false);
-            btnPickRoom.setVisible(true);
-            btnPickRoom.setManaged(true);
         }
 
         currentRoomLabel.setText(getText(11));
@@ -383,7 +468,10 @@ public class GameController {
     }
 
 
-    private void pickRoom(ActionEvent event) {
+    /**
+     * action after double-click in change room screen
+     */
+    private void pickRoom() {
 
         Audio.playAudio(Resource.BTN_AUDIO);
         log.info(getText(10));
@@ -392,38 +480,7 @@ public class GameController {
 
             try {
 
-                if (gameModel.getRoomAccess(getSelected())) {
-
-                    gameModel.setCurrentRoom(getSelected());
-                    background.setStyle(gameModel.getBackground(gameModel.getCurrentRoom()));
-                    roomOpen();
-
-                } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).toList().containsAll(gameModel.getNeededItem(getSelected())) || gameModel.isCheatMode()) {
-
-                    gameModel.setCurrentRoom(getSelected());
-                    gameModel.setRoomAccess(gameModel.getCurrentRoom());
-                    background.setStyle(gameModel.getBackground(gameModel.getCurrentRoom()));
-
-                    if(!gameModel.isCheatMode()) {
-
-                        gameModel.stopThread();
-                        dialog.setText(String.format(getText(20), gameModel.getRoomDoorDescription(gameModel.getCurrentRoom()), getText(19), gameModel.getUsedItemNames(gameModel.getInventory().stream().filter(item -> gameModel.getNeededItem(gameModel.getCurrentRoom()).contains(item.getId())).map(item -> gameModel.getItemName(item)).toList())));
-
-                        btnPickRoom.setVisible(false);
-                        btnPickRoom.setManaged(false);
-                        btnOk.setVisible(true);
-                        btnOk.setManaged(true);
-
-                    } else {
-
-                        roomUnlocked();
-                    }
-
-                } else {
-
-                    roomLocked();
-                    roomView.getSelectionModel().select(null);
-                }
+                goToRoom(getSelected());
 
             } catch (IllegalArgumentException e) {
 
@@ -441,28 +498,76 @@ public class GameController {
     }
 
 
+    /**
+     * checks if room is accessible
+     * shows items of room if accessible
+     * @param object selected room
+     */
+    private void goToRoom(Object object) {
+
+        if (gameModel.getRoomAccess(object)) {
+
+            gameModel.setCurrentRoom(object);
+            background.setStyle(gameModel.getBackground(gameModel.getCurrentRoom()));
+            roomViewItemEvent();
+            roomOpen();
+
+        } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).toList().containsAll(gameModel.getNeededItem(object)) || gameModel.isCheatMode()) {
+
+            gameModel.setCurrentRoom(object);
+            gameModel.setRoomAccess(gameModel.getCurrentRoom());
+
+            if(!gameModel.isCheatMode()) {
+
+                gameModel.stopThread();
+                dialog.setText(String.format(getText(20), gameModel.getRoomDoorDescription(gameModel.getCurrentRoom()), getText(19), gameModel.getUsedItemNames(gameModel.getInventory().stream().filter(item -> gameModel.getNeededItem(gameModel.getCurrentRoom()).contains(item.getId())).map(item -> gameModel.getItemName(item)).toList())));
+                btnOk.setVisible(true);
+                btnOk.setManaged(true);
+
+            } else {
+
+                roomUnlocked();
+            }
+
+        } else {
+
+            roomLocked();
+
+            //otherwise, room in roomView would still be selected
+            roomView.getSelectionModel().select(null);
+        }
+    }
+
+
+    /**
+     * makes buttons visible and manageable
+     */
     private void roomSelection() {
 
         btnInspect.setVisible(true);
         btnInspect.setManaged(true);
         btnPickUp.setVisible(true);
         btnPickUp.setManaged(true);
-        btnPickRoom.setVisible(false);
-        btnPickRoom.setManaged(false);
     }
 
 
+    /**
+     * handles actions if room is already opened
+     */
     private void roomOpen() {
 
         roomSelection();
         currentRoomLabel.setText(getText(8));
         currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));
         dialog.setText(gameModel.getRoomDescription(gameModel.getCurrentRoom()));
-        roomViewStyle(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
+        roomViewHeight(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
         showItemsInSelectedRoom();
     }
 
 
+    /**
+     * handles actions if room gets unlocked and checks if player enters Exit
+     */
     private void roomUnlocked() {
 
         if (!gameModel.getExit(gameModel.getCurrentRoom())) {
@@ -479,11 +584,13 @@ public class GameController {
             btnOk.setVisible(false);
             btnOk.setManaged(false);
 
+            background.setStyle(gameModel.getBackground(gameModel.getCurrentRoom()));
             roomSelection();
             currentRoomLabel.setText(getText(8));
             currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));
             dialog.setText(gameModel.getRoomDescription(gameModel.getCurrentRoom()));
-            roomViewStyle(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
+            roomViewHeight(gameModel.getItemsInSelectedRoom(gameModel.getCurrentRoom()));
+            roomViewItemEvent();
             showItemsInSelectedRoom();
 
         } else {
@@ -496,6 +603,9 @@ public class GameController {
     }
 
 
+    /**
+     * handles actions if room is locked
+     */
     private void roomLocked() {
         try {
 

@@ -19,7 +19,7 @@ public class Timer implements Runnable {
     //stops the thread
     private boolean stop = true;
 
-    //If the timer has to pause the thread will be stopped and timeLeft saves the remaining time.
+    //If the timer has to pause, the thread will be stopped and timeLeft saves the remaining time.
     //After restart of the thread, the timer will start with the remaining time.
     //Not ideal, but it works.
     private int timeLeft = 600;
@@ -49,7 +49,7 @@ public class Timer implements Runnable {
                     timeString = String.format("%d:%d", min, sec);
                 }
 
-                Room.getKeyItemList().stream().filter(Watch.class::isInstance).toList().get(0).setDesc(String.format("I feel a sudden uneasiness looking at the watch.\nIt's a countdown.\nThe number on the watch says %s.", timeString));
+                Room.getKeyItemList().stream().filter(Watch.class::isInstance).toList().get(0).setDesc(String.format("I feel a sudden uneasiness looking at the watch.%nIt's a countdown.%nThe number on the watch says %s.", timeString));
                 log.info(String.format("Player has %s minutes left.", timeString));
 
                 try {

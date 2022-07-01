@@ -16,6 +16,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+
+/**
+ * Model of the game containing all the necessary data and methods for the game wo work
+ */
 public class GameModel {
 
     private static final Logger log = LogManager.getLogger(GameModel.class);
@@ -24,8 +28,7 @@ public class GameModel {
 
     private Thread thread;
     private Timer timer;
-    //Integer so I can check if null
-    private Integer time;
+    private Integer time; //Integer to check if null
     private final ObservableList<Room> roomsList;
     private final ObservableList<Item> inventory;
     private Room currentRoom;
@@ -39,6 +42,7 @@ public class GameModel {
         this.cheatMode = false;
 
         try {
+
             final RoomFactory roomFactory = new RoomFactory();
             final Room basement = roomFactory.createRoom("Basement");
             final Room hallway = roomFactory.createRoom("Hallway");
@@ -53,7 +57,9 @@ public class GameModel {
             roomsList.add(library);
             roomsList.add(bathroom);
             roomsList.add(exit);
+
         } catch (IllegalArgumentException e) {
+
             log.error(e);
             Parent root = Utils.loadFxml(Resource.ERROR_SCREEN);
             GameView.getPrimaryStage().getScene().setRoot(root);
@@ -134,7 +140,7 @@ public class GameModel {
         if(object instanceof Item selectedItem) {
             return selectedItem.getId();
         } else {
-            throw new IllegalArgumentException("Cant get id because provided objetc is not an Item");
+            throw new IllegalArgumentException("Cant get id because provided object is not an Item");
         }
     }
 
@@ -142,7 +148,7 @@ public class GameModel {
         if(object instanceof Item selectedItem) {
             return selectedItem.getName();
         } else {
-            throw new IllegalArgumentException("Cant get item name because provided objetc is not an Item");
+            throw new IllegalArgumentException("Cant get item name because provided object is not an Item");
         }
     }
 
@@ -150,7 +156,7 @@ public class GameModel {
         if(object instanceof Item selectedItem) {
             return selectedItem.getDesc();
         } else {
-            throw new IllegalArgumentException("Cant get itemDesc because provided objetc is not an Item");
+            throw new IllegalArgumentException("Cant get itemDesc because provided object is not an Item");
         }
     }
 
@@ -158,7 +164,7 @@ public class GameModel {
         if(object instanceof Item selectedItem) {
             return selectedItem.isPickable();
         } else {
-            throw new IllegalArgumentException("Cant get pickable because provided objetc is not an Item");
+            throw new IllegalArgumentException("Cant get pickable because provided object is not an Item");
         }
     }
 
@@ -182,6 +188,11 @@ public class GameModel {
         }
     }
 
+    /**
+     * checks if object is instance of Exit
+     * @param object room to be checked
+     * @return boolean
+     */
     public boolean getExit(Object object) {
         return object instanceof Exit;
     }
@@ -190,39 +201,71 @@ public class GameModel {
         gameModel = new GameModel();
     }
 
+    /**
+     * starts the thread
+     * sets timeLeft in Timer if thread gets stopped and started again
+     */
     public void startThread() {
+
         this.timer = new Timer();
+
         if (this.time != null) {
             this.timer.setTimeLeft(this.time);
         }
+
         this.thread = new Thread(timer);
-        thread.setDaemon(true);
+        this.thread.setDaemon(true);
         this.thread.start();
     }
 
+
+    /**
+     * stops thread
+     * sets time to current time
+     */
     public void stopThread() {
 
         this.time = timer.getTimeLeft();
         this.timer.stop();
     }
 
+
+    /**
+     * adds and removes selected item from or to inventory/room
+     * @param object selected item
+     * @param toInventory move to inventory or room
+     * @throws IllegalArgumentException if object is not item for some reason
+     */
     public void pickUp(Object object, boolean toInventory) throws IllegalArgumentException {
+
         if(object instanceof Item selectedItem && (this.getCurrentRoom().getItemsInRoom().contains(selectedItem) || this.inventory.contains(selectedItem))) {
+
             if (toInventory) {
+
                 this.currentRoom.getItemsInRoom().remove(selectedItem);
                 this.inventory.add(selectedItem);
                 log.info(String.format("Moved item: %s from room: %s to inventory", selectedItem.getName(), this.currentRoom));
+
             } else {
+
                 this.inventory.remove(selectedItem);
                 this.currentRoom.getItemsInRoom().add(selectedItem);
                 log.info(String.format("Moved item: %s from inventory to: %s", selectedItem.getName(), this.currentRoom));
             }
+
         } else {
+
             throw new IllegalArgumentException("Cant pickUp item because Provided object is not an Item or not in current room");
         }
     }
 
+    /**
+     * constructs string containing items used to unlock room
+     * @param list list of used items
+     * @return string containing items used to unlock room
+     */
     public String getUsedItemNames(List<String> list) {
+
         StringBuilder s = new StringBuilder();
 
         for (int i = 0; i < list.size(); i++) {
@@ -239,6 +282,12 @@ public class GameModel {
         return s.toString();
     }
 
+
+    /**
+     * returns css code to set background of selected room
+     * @param object selected room
+     * @return css code as string
+     */
     public String getBackground(Object object) {
 
         final String style = "-fx-background-image: url(%s);";

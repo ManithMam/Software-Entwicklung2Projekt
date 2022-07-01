@@ -13,13 +13,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-//TODO add documentation
+/**
+ * Controller of Option Screen
+ */
 public class OptionController {
 
     private static final Logger log = LogManager.getLogger(OptionController.class);
 
     private GameView gameView;
-    private GameModel gameModel;
 
     @FXML
     private Label textFullScreen, textCheatMode, errorText;
@@ -27,10 +28,15 @@ public class OptionController {
     private Button btnOffRayTracing, btnOnRayTracing, btnOffFullScreen, btnOnFullScreen, btnOffCheatMode, btnOnCheatMode, btnApply, btnBack;
 
 
+    /**
+     * invoked when optionScreen.fxml loaded
+     * used to set start parameters
+     */
     @FXML
     private void initialize() {
+
         gameView = GameView.getGameView();
-        gameModel = GameModel.getGameModel();
+        final GameModel gameModel = GameModel.getGameModel();
 
         final String text1 = "OFF";
         final String text2 = "ON";
@@ -53,12 +59,14 @@ public class OptionController {
         btnOffRayTracing.setOnAction(event -> Audio.playAudio(Resource.BTN_AUDIO));
 
         btnOnRayTracing.setOnAction(event -> {
+
             Audio.playAudio(Resource.BTN_AUDIO);
             errorText.setText("Your PC is to week to handle the might of Ray Tracing!");
             log.info("On button for Ray-Tracing has been pushed");
         });
 
         btnOffFullScreen.setOnAction(event -> {
+
             Audio.playAudio(Resource.BTN_AUDIO);
             GameView.setFullScreen(false);
             textFullScreen.setText(text1);
@@ -67,6 +75,7 @@ public class OptionController {
         });
 
         btnOnFullScreen.setOnAction(event -> {
+
             Audio.playAudio(Resource.BTN_AUDIO);
             GameView.setFullScreen(true);
             textFullScreen.setText(text2);
@@ -74,6 +83,7 @@ public class OptionController {
         });
 
         btnOffCheatMode.setOnAction(event -> {
+
             Audio.playAudio(Resource.BTN_AUDIO);
             gameModel.setCheatMode(false);
             textCheatMode.setText(text1);
@@ -82,6 +92,7 @@ public class OptionController {
         });
 
         btnOnCheatMode.setOnAction(event -> {
+
             Audio.playAudio(Resource.BTN_AUDIO);
             gameModel.setCheatMode(true);
             textCheatMode.setText(text2);
@@ -90,6 +101,7 @@ public class OptionController {
         });
 
         btnApply.setOnAction(event -> {
+
             Audio.playAudio(Resource.BTN_AUDIO);
             GameView.getPrimaryStage().setFullScreen(GameView.isFullScreen());
             errorText.setText(text5);
@@ -99,23 +111,34 @@ public class OptionController {
         backTo();
     }
 
+
+    /**
+     * sets the action of btnBack depending on from where the option screen was entered
+     */
     private void backTo() {
+
         if (gameView.isOptionBackBtn()) {
+
             btnBack.setOnAction(event -> {
+
                 Audio.playAudio(Resource.BTN_AUDIO);
                 Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
                 GameView.getPrimaryStage().getScene().setRoot(root);
                 root.requestFocus();
                 log.info("Back to Menu button has been pressed");
             });
+
         } else {
+
             btnBack.setOnAction(event -> {
+
                 Audio.playAudio(Resource.BTN_AUDIO);
                 Parent root = Utils.loadFxml(Resource.GAME_SCREEN);
                 GameView.getPrimaryStage().getScene().setRoot(root);
                 root.requestFocus();
                 log.info("Back to Game button has been pressed");
             });
+
             btnBack.setText("Back to Game");
         }
     }

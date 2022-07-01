@@ -9,6 +9,10 @@
     src: url("../font/crimes.ttf");
 }
 
+VBox, HBox {
+    -fx-background-color: #121212;
+}
+
 Button {
     -fx-min-width: 100px;
     -fx-min-height: 30px;
@@ -23,16 +27,6 @@ Label {
     -fx-text-fill: #ffa500;
     -fx-font-size: 20px;
     -fx-font-family: "True Crimes";
-}
-
-#currentRoom {
-    -fx-text-fill: red;
-}
-
-#background {
-    -fx-background-image: url(../Hallway.jpg);
-    -fx-background-repeat: no-repeat no-repeat;
-    -fx-background-size: cover, auto;
 }
 
 .list-cell{
@@ -52,6 +46,51 @@ Label {
     -fx-spacing: 5px;
 }
 
-VBox, HBox, Seperator {
-    -fx-background-color: #121212;
+#currentRoom {
+    -fx-text-fill: red;
+}
+
+#background {
+    -fx-background-image: url(../Hallway.jpg);
+    -fx-background-repeat: no-repeat no-repeat;
+    -fx-background-size: cover, auto;
+    -fx-border-style: solid none none none;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
+#dialogScreen {
+    -fx-border-style: solid none none none;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
+#action {
+    -fx-border-style: none solid solid solid;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
+#change {
+    -fx-border-style: solid none solid solid;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
+#settings {
+    -fx-border-style: solid none solid solid;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
+#gameScreen {
+    -fx-border-style: solid solid none solid;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
+#inventory {
+    -fx-border-style: solid solid none none;
+    -fx-border-color: black;
+    -fx-border-width: 2;
 }

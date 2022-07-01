@@ -12,6 +12,10 @@ import javafx.scene.control.Button;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
+/**
+ * Controller of Losing Screen
+ */
 public class LosingController {
 
     private static final Logger log = LogManager.getLogger(LosingController.class);
@@ -19,11 +23,21 @@ public class LosingController {
     @FXML
     private Button exitBtn;
 
+
+    /**
+     * invoked when losingScreen.fxml loaded
+     * used to set start parameters
+     */
     @FXML
     private void initialize() {
         exitBtn.setOnAction(this::exit);
     }
 
+
+    /**
+     * action of exit button
+     * @param event event in gui (e.g button press)
+     */
     @FXML
     private void exit(ActionEvent event) {
         Audio.playAudio(Resource.BTN_AUDIO);
