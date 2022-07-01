@@ -1,9 +1,13 @@
 package de.stuttgart_hdm.mi.se2.items.keyItems;
 
+import de.stuttgart_hdm.mi.se2.gui.Resource;
+import de.stuttgart_hdm.mi.se2.gui.Utils;
+import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import de.stuttgart_hdm.mi.se2.items.Item;
 import de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Parent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,13 +54,22 @@ public class KeyItemFactory {
     public ObservableList<Item> createAllKeyItems(){
 
         final ObservableList <Item> keyItemList = FXCollections.observableArrayList();
-        keyItemList.add(createItem("Baseball bat"));
-        keyItemList.add(createItem("Watch"));
-        keyItemList.add(createItem("Kitchen torch"));
-        keyItemList.add(createItem("Knife"));
-        keyItemList.add(createItem("Exit key"));
-        keyItemList.add(createItem("Toothbrush"));
-        keyItemList.add(createItem("Flashlight"));
+
+        try {
+            keyItemList.add(createItem("Baseball bat"));
+            keyItemList.add(createItem("Watch"));
+            keyItemList.add(createItem("Kitchen torch"));
+            keyItemList.add(createItem("Knife"));
+            keyItemList.add(createItem("Exit key"));
+            keyItemList.add(createItem("Toothbrush"));
+            keyItemList.add(createItem("Flashlight"));
+        }
+        catch (IllegalArgumentException aE){
+            log.error(aE);
+            Parent root = Utils.loadFxml(Resource.ERROR_SCREEN);
+            GameView.getPrimaryStage().getScene().setRoot(root);
+            root.requestFocus();
+        }
         return keyItemList;
     }
 

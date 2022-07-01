@@ -1,8 +1,12 @@
 package de.stuttgart_hdm.mi.se2.items.commonItems;
 
+import de.stuttgart_hdm.mi.se2.gui.Resource;
+import de.stuttgart_hdm.mi.se2.gui.Utils;
+import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import de.stuttgart_hdm.mi.se2.items.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Parent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -65,22 +69,30 @@ public class CommonItemFactory {
         }
     }
 
-    public ObservableList<Item> createAllItems(){
+    public ObservableList<Item> createAllItems() throws IllegalArgumentException {
 
         final ObservableList<Item> itemList = FXCollections.observableArrayList();
-        itemList.add(createItem("Book"));
-        itemList.add(createItem("CD"));
-        itemList.add(createItem("Cookbook"));
-        itemList.add(createItem("Glasses"));
-        itemList.add(createItem("Note1"));
-        itemList.add(createItem("Note2"));
-        itemList.add(createItem("Note3"));
-        itemList.add(createItem("Note4"));
-        itemList.add(createItem("Note5"));
-        itemList.add(createItem("Note6"));
-        itemList.add(createItem("Pliers"));
-        itemList.add(createItem("Rope"));
 
+        try {
+            itemList.add(createItem("Book"));
+            itemList.add(createItem("CD"));
+            itemList.add(createItem("Cookbook"));
+            itemList.add(createItem("Glasses"));
+            itemList.add(createItem("Note1"));
+            itemList.add(createItem("Note2"));
+            itemList.add(createItem("Note3"));
+            itemList.add(createItem("Note4"));
+            itemList.add(createItem("Note5"));
+            itemList.add(createItem("Note6"));
+            itemList.add(createItem("Pliers"));
+            itemList.add(createItem("Rope"));
+        }
+        catch (IllegalArgumentException aE){
+            log.error(aE);
+            Parent root = Utils.loadFxml(Resource.ERROR_SCREEN);
+            GameView.getPrimaryStage().getScene().setRoot(root);
+            root.requestFocus();
+        }
         return itemList;
 
     }

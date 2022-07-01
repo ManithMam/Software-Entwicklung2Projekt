@@ -2,9 +2,13 @@ package de.stuttgart_hdm.mi.se2.items.furniture;
 
 
 
+import de.stuttgart_hdm.mi.se2.gui.Resource;
+import de.stuttgart_hdm.mi.se2.gui.Utils;
+import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import de.stuttgart_hdm.mi.se2.items.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Parent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -48,13 +52,21 @@ public class FurnitureFactory {
     public ObservableList<Item> createAllFurniture(){
 
         final ObservableList <Item> furnitureList = FXCollections.observableArrayList();
-        furnitureList.add(createFurniture("Bed"));
-        furnitureList.add(createFurniture("Chair"));
-        furnitureList.add(createFurniture("Sink"));
-        furnitureList.add(createFurniture("Sofa"));
-        furnitureList.add(createFurniture("Table"));
-        furnitureList.add(createFurniture("Toilet"));
 
+        try {
+            furnitureList.add(createFurniture("Bed"));
+            furnitureList.add(createFurniture("Chair"));
+            furnitureList.add(createFurniture("Sink"));
+            furnitureList.add(createFurniture("Sofa"));
+            furnitureList.add(createFurniture("Table"));
+            furnitureList.add(createFurniture("Toilet"));
+        }
+        catch (IllegalArgumentException aE){
+            log.error(aE);
+            Parent root = Utils.loadFxml(Resource.ERROR_SCREEN);
+            GameView.getPrimaryStage().getScene().setRoot(root);
+            root.requestFocus();
+        }
         return furnitureList;
     }
 

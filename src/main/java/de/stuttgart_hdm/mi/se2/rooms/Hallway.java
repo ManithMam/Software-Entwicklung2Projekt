@@ -1,5 +1,7 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
+import de.stuttgart_hdm.mi.se2.items.commonItems.Note1;
+import de.stuttgart_hdm.mi.se2.items.commonItems.Rope;
 import de.stuttgart_hdm.mi.se2.items.keyItems.BaseballBat;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Watch;
 
@@ -18,10 +20,12 @@ public class Hallway extends Room {
         this.id = ++idCounter;
         setAccess(true);
         setName("Hallway");
-        setDescription("The Hallway is really long.\n");
+        setDescription("The Hallway is long and dark.\nWhere the hell am I?");
         setDoorDescription("The door is wide open");
         addItemsInRoom(getKeyItemList().stream().filter(BaseballBat.class::isInstance).toList().get(0));
         addItemsInRoom(getKeyItemList().stream().filter(Watch.class::isInstance).toList().get(0));
+        addItemsInRoom(getItemList().stream().filter(Note1.class::isInstance).toList().get(0));
+        addItemsInRoom(getItemList().stream().filter(Rope.class::isInstance).toList().get(0));
 
     }
 
