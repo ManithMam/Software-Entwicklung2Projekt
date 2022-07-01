@@ -238,4 +238,35 @@ public class GameModel {
         }
         return s.toString();
     }
+
+    public String getBackground(Object object) {
+
+        final String style = "-fx-background-image: url(%s);";
+
+        if (object instanceof Room selectedRoom) {
+
+            switch (selectedRoom.getName()) {
+                case "Hallway"  -> {
+                    return String.format(style, Resource.BACKGROUND_HALLWAY.getUrl());
+                }
+                case "Basement" -> {
+                    return String.format(style, Resource.BACKGROUND_BASEMENT.getUrl());
+                }
+                case "Kitchen"  -> {
+                    return String.format(style, Resource.BACKGROUND_KITCHEN.getUrl());
+                }
+                case "Library"  -> {
+                    return String.format(style, Resource.BACKGROUND_LIBRARY.getUrl());
+                }
+                case "Bathroom" -> {
+                    return String.format(style, Resource.BACKGROUND_BATHROOM.getUrl());
+                }
+                default -> throw new IllegalArgumentException("Background for room doesnt exist");
+            }
+
+        } else {
+
+            throw new IllegalArgumentException("Cant get Background because provided object is not a room");
+        }
+    }
 }

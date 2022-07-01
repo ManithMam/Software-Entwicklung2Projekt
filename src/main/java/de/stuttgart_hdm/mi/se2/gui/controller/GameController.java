@@ -5,7 +5,6 @@ import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.model.GameModel;
 import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
-import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.util.Duration;
+import javafx.scene.layout.VBox;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,6 +27,8 @@ public class GameController {
     private GameView gameView;
 
 
+    @FXML
+    private VBox background;
     @FXML
     private Label currentRoomLabel, currentRoom, inventoryLabel, dialog;
     @FXML
@@ -393,12 +394,15 @@ public class GameController {
 
                 if (gameModel.getRoomAccess(getSelected())) {
 
+                    gameModel.setCurrentRoom(getSelected());
+                    background.setStyle(gameModel.getBackground(gameModel.getCurrentRoom()));
                     roomOpen();
 
                 } else if (gameModel.getInventory().stream().map(item -> gameModel.getItemId(item)).toList().containsAll(gameModel.getNeededItem(getSelected())) || gameModel.isCheatMode()) {
 
                     gameModel.setCurrentRoom(getSelected());
                     gameModel.setRoomAccess(gameModel.getCurrentRoom());
+                    background.setStyle(gameModel.getBackground(gameModel.getCurrentRoom()));
 
                     if(!gameModel.isCheatMode()) {
 
@@ -450,7 +454,6 @@ public class GameController {
 
     private void roomOpen() {
 
-        gameModel.setCurrentRoom(getSelected());
         roomSelection();
         currentRoomLabel.setText(getText(8));
         currentRoom.setText(gameModel.getRoomName(gameModel.getCurrentRoom()));

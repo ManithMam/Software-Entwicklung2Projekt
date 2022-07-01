@@ -11,7 +11,11 @@ public enum Resource {
     START_GAME_SCREEN("startGame.fxml", "Start Game Screen", "/fxml/startGame.fxml", 500, 200),
     WINNING_SCREEN("winningScreen.fxml", "Winning Screen", "/fxml/winningScreen.fxml", 700, 500),
     BTN_AUDIO("buttonClick2.wav", "Button Audio", "buttonClick2.wav"),
-    BACKGROUND_HALLWAY("Hallway.jpg", "Hallway Background", "resources/Hallway.jpg");
+    BACKGROUND_HALLWAY("Hallway.jpg", "Hallway Background", "Hallway.jpg"),
+    BACKGROUND_BATHROOM("Bathroom.jpg", "Bathroom Background", "Bathroom.jpg"),
+    BACKGROUND_BASEMENT("Basement.jpg", "Basement Background", "Basement.jpg"),
+    BACKGROUND_KITCHEN("Kitchen.jpg", "Kitchen Background", "Kitchen.jpg"),
+    BACKGROUND_LIBRARY("Library.jpg", "Library Background", "Library.jpg");
 
 
     private final String name;
