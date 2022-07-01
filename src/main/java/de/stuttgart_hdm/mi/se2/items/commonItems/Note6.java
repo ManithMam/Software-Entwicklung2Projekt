@@ -6,8 +6,8 @@ public class Note6 extends Item {
 
     protected Note6(){
         this.id = ++idCount;
-        setName("Ripped note");
-        setDesc("\"Aluminum + iron oxide = termite\"...\nWhat a weird note to keep around.");
+        setName("Diary");
+        setDesc("\"Will he find the key? Will he ever escape?\nI truly wished there was a way around this...\"\nA way around what? Can't even tell your diary?");
         setPickable(false);
         itemList.add(this);
     }

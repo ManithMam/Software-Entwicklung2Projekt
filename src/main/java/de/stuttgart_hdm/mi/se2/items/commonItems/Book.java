@@ -6,9 +6,9 @@ public class Book extends Item {
 
     protected Book(){
         this.id = ++idCount;
-        setName("Book");
+        setName("Book in shelf");
         setDesc("\"Java for dummies\"...\nI think I know someone who needs it.");
-        setPickable(true);
+        setPickable(false);
         itemList.add(this);
     }
 

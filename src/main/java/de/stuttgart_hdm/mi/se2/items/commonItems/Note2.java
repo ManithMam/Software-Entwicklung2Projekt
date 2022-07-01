@@ -6,8 +6,8 @@ public class Note2 extends Item {
 
     protected Note2(){
         this.id = ++idCount;
-        setName("Diary");
-        setDesc("\"...One after another... My collection\nwill soon be complete!...\"\nThey better be talking about Pokemon!");
+        setName("Ragged piece of paper");
+        setDesc("\"A maiden grown old, her silver hair shines,\nher beauty remains, no one can deny...\"\nis this some kind of riddle?");
         setPickable(false);
         itemList.add(this);
     }

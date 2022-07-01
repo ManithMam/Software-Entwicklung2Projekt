@@ -7,8 +7,8 @@ public class Cookbook extends Item {
     protected Cookbook(){
         this.id = ++idCount;
         setName("Cookbook");
-        setDesc("A book full of tasty recipes");
-        setPickable(true);
+        setDesc("That fried rice sure looks good...\nI'm getting distracted...\nand hungry.");
+        setPickable(false);
         itemList.add(this);
     }
 

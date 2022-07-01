@@ -2,6 +2,8 @@ package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
 import de.stuttgart_hdm.mi.se2.items.commonItems.Cookbook;
+import de.stuttgart_hdm.mi.se2.items.commonItems.Note3;
+import de.stuttgart_hdm.mi.se2.items.commonItems.Pliers;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KitchenTorch;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Toothbrush;
 
@@ -20,10 +22,12 @@ public class Kitchen extends Room {
         this.id = ++idCounter;
         setAccess(false);
         setName("Kitchen");
-        setDescription("Uhhh. A cruel and disgusting smell tries to creep up my nose.\nIt´s not bearable. I am pretty sure something died here not only once.");
-        setDoorDescription("It´s a heavy sliding door.\nIt´s too sturdy to break it.\nBut maybe I can pick the lock");
+        setDescription("Ughh. A cruel and disgusting smell tries to creep up my nose.\nIt´s unbearable. Definitely no place to prepare food!");
+        setDoorDescription("It´s a heavy sliding door.\nIt´s too sturdy to break it.\nBut maybe I can pick the lock.");
         addItemsInRoom(getKeyItemList().stream().filter(KitchenTorch.class::isInstance).toList().get(0));
         addItemsInRoom(getItemList().stream().filter(Cookbook.class::isInstance).toList().get(0));
+        addItemsInRoom(getItemList().stream().filter(Note3.class::isInstance).toList().get(0));
+        addItemsInRoom(getItemList().stream().filter(Pliers.class::isInstance).toList().get(0));
     }
 
 

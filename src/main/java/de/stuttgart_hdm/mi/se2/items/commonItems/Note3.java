@@ -6,8 +6,8 @@ public class Note3 extends Item {
 
     protected Note3(){
         this.id = ++idCount;
-        setName("Note3");
-        setDesc("A strong negotiation device");
+        setName("Paper pinned to wall");
+        setDesc("\"...her skin full of wrinkles, all past her prime,\nher legs shaky, don't carry her like before...\"\nWhat the hell is that supposed to mean?");
         setPickable(false);
         itemList.add(this);
     }
