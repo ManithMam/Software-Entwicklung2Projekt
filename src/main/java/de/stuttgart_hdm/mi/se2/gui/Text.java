@@ -2,9 +2,9 @@ package de.stuttgart_hdm.mi.se2.gui;
 
 public enum Text {
     //0
-    SELECT_ROOM_WITH_PICK_BUTTON( "Please select a room and use \"Pick Room\" button!"),
+    PROMPT_TO_PICK_ROOM_BUTTON( "Please select a room and use \"Pick Room\" button!"),
     //1
-    SELECT_ROOM("Please select a room!"),
+    PROMPT_TO_PICK_ROOM("Please select a room!"),
     //2
     PICKUP_DENIED( "You can not pick that up"),
     //3
