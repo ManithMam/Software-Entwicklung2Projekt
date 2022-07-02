@@ -46,12 +46,16 @@ Label {
     -fx-spacing: 5px;
 }
 
+#startScreen {
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}
+
 #currentRoom {
     -fx-text-fill: red;
 }
 
 #background {
-    -fx-background-image: url(../Hallway.jpg);
     -fx-background-repeat: no-repeat no-repeat;
     -fx-background-size: cover, auto;
     -fx-border-style: solid none none none;

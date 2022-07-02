@@ -5,6 +5,7 @@ import de.stuttgart_hdm.mi.se2.items.commonItems.Note2;
 import de.stuttgart_hdm.mi.se2.items.furniture.Sink;
 import de.stuttgart_hdm.mi.se2.items.furniture.Toilet;
 import de.stuttgart_hdm.mi.se2.items.keyItems.BaseballBat;
+import de.stuttgart_hdm.mi.se2.items.keyItems.Flashlight;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Toothbrush;
 
 import java.util.List;
@@ -28,6 +29,7 @@ public class Bathroom extends Room {
         addItemsInRoom(getFurnitureList().stream().filter(Sink.class::isInstance).toList().get(0));
         addItemsInRoom(getFurnitureList().stream().filter(Toilet.class::isInstance).toList().get(0));
         addItemsInRoom(getItemList().stream().filter(Note2.class::isInstance).toList().get(0));
+        addItemsInRoom(getKeyItemList().stream().filter(Flashlight.class::isInstance).toList().get(0));
 
 
     }

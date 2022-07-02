@@ -7,7 +7,7 @@ public class Toothbrush extends Item {
     protected Toothbrush(){
         this.id = ++idCount;
         setName("Broken toothbrush");
-        setDesc("A broken toothbrush...\nWho on earth keeps this around!?");
+        setDesc("A broken pointy toothbrush...\nWho on earth keeps this around!?");
         setPickable(true);
         itemList.add(this);
     }

@@ -2,26 +2,27 @@ package de.stuttgart_hdm.mi.se2;
 
 import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
-import de.stuttgart_hdm.mi.se2.timer.Timer;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
-import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import de.stuttgart_hdm.mi.se2.gui.Resource;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-
+/**
+ * Main class of project
+ */
 public class Main extends Application {
 
-    private static final Logger log = LogManager.getLogger(Main.class);
 
+    /**
+     * executes start parameter of program
+     * @param primaryStage stage shown on program start
+     */
     @Override
     public void start(Stage primaryStage) {
+
         Parent root = Utils.loadFxml(Resource.MENU_SCREEN);
         primaryStage.setTitle("PAIN");
         primaryStage.setScene(new Scene(root, Resource.MENU_SCREEN.getStageWidth(), Resource.MENU_SCREEN.getStageHeight()));
@@ -37,8 +38,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-
-        log.info("test");
 
         launch(args);
     }

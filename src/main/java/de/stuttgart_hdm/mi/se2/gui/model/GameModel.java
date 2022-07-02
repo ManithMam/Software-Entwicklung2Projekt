@@ -4,6 +4,8 @@ import de.stuttgart_hdm.mi.se2.gui.Resource;
 import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import de.stuttgart_hdm.mi.se2.items.Item;
+import de.stuttgart_hdm.mi.se2.items.keyItems.Flashlight;
+import de.stuttgart_hdm.mi.se2.rooms.Basement;
 import de.stuttgart_hdm.mi.se2.rooms.Exit;
 import de.stuttgart_hdm.mi.se2.rooms.Room;
 import de.stuttgart_hdm.mi.se2.rooms.RoomFactory;
@@ -189,12 +191,24 @@ public class GameModel {
     }
 
     /**
-     * checks if object is instance of Exit
-     * @param object room to be checked
+     * checks if currentRoom is instance of Exit
      * @return boolean
      */
-    public boolean getExit(Object object) {
-        return object instanceof Exit;
+    public boolean getExit() {
+        return this.currentRoom instanceof Exit;
+    }
+
+    /**
+     * get if current room is basement and flashlight in inventory or basement or just if current room is basement
+     * @param isBasementWithFlashlight to switch between the two
+     * @return if current room is basement and flashlight in inventory or basement or just if current room is basement
+     */
+    public boolean getBasement(boolean isBasementWithFlashlight) {
+        if(isBasementWithFlashlight) {
+            return this.currentRoom instanceof Basement && (this.inventory.contains(Room.getKeyItemList().stream().filter(Flashlight.class::isInstance).toList().get(0)) || this.currentRoom.getItemsInRoom().contains(Room.getKeyItemList().stream().filter(Flashlight.class::isInstance).toList().get(0)));
+        } else {
+            return this.currentRoom instanceof Basement;
+        }
     }
 
     public static void restartGame() {
@@ -288,7 +302,7 @@ public class GameModel {
      * @param object selected room
      * @return css code as string
      */
-    public String getBackground(Object object) {
+    public String getBackground(Object object) throws IllegalArgumentException {
 
         final String style = "-fx-background-image: url(%s);";
 

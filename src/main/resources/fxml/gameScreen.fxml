@@ -37,7 +37,7 @@
                         </children>
                      </VBox>
                   </VBox>
-                  <VBox fx:id="inventory" alignment="CENTER" maxWidth="300.0" prefHeight="274.0" prefWidth="198.0" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="inventory" alignment="CENTER" maxWidth="300.0" prefHeight="275.0" minWidth="225.0" HBox.hgrow="ALWAYS">
                      <Label fx:id="inventoryLabel" minHeight="30.0" text="Inventory" />
                      <ListView fx:id="invView" prefHeight="0" styleClass="list-cell" VBox.vgrow="ALWAYS" />
                   </VBox>

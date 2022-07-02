@@ -21,7 +21,7 @@ class GameModelTest {
     void testPositivePickUp() throws IllegalArgumentException, IndexOutOfBoundsException {
         //Room Library
         gameModel.setCurrentRoom(gameModel.getRoomsList().get(3));
-        //Item Book (cant use commonItemFactory because items have a unique id
+        //Item Book (can't use commonItemFactory because items have a unique id
         final Item item = gameModel.getCurrentRoom().getItemsInRoom().get(4);
         gameModel.pickUp(item, true);
 
