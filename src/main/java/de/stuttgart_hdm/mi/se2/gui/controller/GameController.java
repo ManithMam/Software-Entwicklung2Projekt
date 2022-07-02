@@ -164,6 +164,7 @@ public class GameController {
 
     /**
      * sets the roomView height to height of it's content
+     *
      * @param list list of items/rooms
      */
     private void roomViewHeight(ObservableList list) {
@@ -173,6 +174,7 @@ public class GameController {
 
     /**
      * sets style of ListView cells
+     *
      * @param list ListView to be styled
      */
     private void cellFactory(ListView<Object> list) {
@@ -211,6 +213,7 @@ public class GameController {
 
     /**
      * displays description of given item/room in dialog
+     *
      * @param object item/room you want to show description of
      */
     private void showDesc(Object object) {
@@ -248,6 +251,7 @@ public class GameController {
 
     /**
      * used to get selected item/room
+     *
      * @return selected item/room
      */
     private Object getSelected() {
@@ -269,6 +273,7 @@ public class GameController {
 
     /**
      * action of inspect button
+     *
      * @param event event in gui (e.g button press)
      */
     private void inspect(ActionEvent event) {
@@ -293,6 +298,7 @@ public class GameController {
 
     /**
      * action of pick-up button
+     *
      * @param event event in gui (e.g button press)
      */
     private void pickUp(ActionEvent event) {
@@ -364,6 +370,7 @@ public class GameController {
     /**
      * action of change room button
      * displays rooms and changes selection model of roomView
+     *
      * @param event event in gui (e.g button press)
      */
     private void changeRoom(ActionEvent event) {
@@ -372,25 +379,17 @@ public class GameController {
         log.info(Text.CHANGE_ROOM_BUTTON_PRESSED.getMessage());
 
         btnChangeRoom.setDisable(true);
+        invView.setDisable(true);
 
-        if (!btnInspect.isVisible()) {
 
-            dialog.setText(Text.PROMPT_TO_PICK_ROOM_DOUBLE_CLICK.getMessage());
-
-            //otherwise, room in roomView would still be selected
-            roomView.getSelectionModel().select(null);
-
-        } else {
-
-            dialog.setText(Text.PROMPT_TO_DOUBLE_CLICK.getMessage());
-            roomViewHeight(gameModel.getRoomsList());
-            roomViewRoomEvent();
-            roomView.setItems(gameModel.getRoomsList());
-            btnInspect.setVisible(false);
-            btnInspect.setManaged(false);
-            btnPickUp.setVisible(false);
-            btnPickUp.setManaged(false);
-        }
+        dialog.setText(Text.PROMPT_TO_DOUBLE_CLICK.getMessage());
+        roomViewHeight(gameModel.getRoomsList());
+        roomViewRoomEvent();
+        roomView.setItems(gameModel.getRoomsList());
+        btnInspect.setVisible(false);
+        btnInspect.setManaged(false);
+        btnPickUp.setVisible(false);
+        btnPickUp.setManaged(false);
 
         currentRoomLabel.setText(Text.PREVIOUS_ROOM.getMessage());
 
@@ -439,6 +438,7 @@ public class GameController {
     /**
      * checks if room is accessible
      * shows items of room if accessible
+     *
      * @param object selected room
      */
     private void goToRoom(Object object) {
@@ -458,7 +458,7 @@ public class GameController {
             gameModel.setCurrentRoom(object);
             gameModel.setRoomAccess(gameModel.getCurrentRoom());
 
-            if(!gameModel.isCheatMode()) {
+            if (!gameModel.isCheatMode()) {
 
                 gameModel.stopThread();
                 dialog.setText(String.format(Text.ROOM_LOCKED_DIFFERENT_FORMAT.getMessage(), gameModel.getRoomDoorDescription(gameModel.getCurrentRoom()), Text.USED_ITEM_INFO.getMessage(), gameModel.getUsedItemNames(gameModel.getInventory().stream().filter(item -> gameModel.getNeededItem(gameModel.getCurrentRoom()).contains(item.getId())).map(item -> gameModel.getItemName(item)).toList())));
