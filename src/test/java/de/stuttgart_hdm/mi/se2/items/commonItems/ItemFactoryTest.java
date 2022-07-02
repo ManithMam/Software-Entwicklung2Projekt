@@ -14,7 +14,6 @@ public class ItemFactoryTest {
     private Item cookBook;
     private Item glasses;
 
-    //Creating objects only when test is conducted
     @BeforeEach
     public void prepare(){
         rope = new Rope();
@@ -22,24 +21,32 @@ public class ItemFactoryTest {
         glasses = new Glasses();
     }
 
-    //Testing whether each item has a unique ID, duplicate IDs not allowed
+    /**
+     * Test to ensure unique item ID's, duplicates are not allowed
+     */
     @Test
-    public void TestUniqueItemIds(){
+    public void testUniqueItemIds(){
         assertTrue(rope.getId() != cookBook.getId() && glasses.getId() != rope.getId() && glasses.getId() != cookBook.getId());
     }
 
-    //Testing whether the items have the correct assigned parameters
+    /**
+     * Testing whether item parameters get assigned correctly
+     */
     @Test
-    public void TestItemParameters(){
+    public void testItemParameters(){
         assertTrue(rope.isPickable());
-        assertEquals(rope.getName(), "Rope");
-        assertEquals(rope.getDesc(), "A strong rope that could be useful later");
+        assertEquals("Rope", rope.getName());
+        assertEquals("A strong rope that could be useful later", rope.getDesc());
     }
 
-    //Removing the objects created for testing purposes
+    /**
+     * Method to remove all objects created for testing purposes
+     */
     @AfterEach
-    //Testing whether Teardown method is working properly
     //@Test
+    /**
+     * Adds test to ensure removal of test objects
+     */
     public void Teardown(){
         rope = null;
         cookBook = null;

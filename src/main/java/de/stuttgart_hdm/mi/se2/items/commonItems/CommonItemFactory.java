@@ -14,6 +14,13 @@ public class CommonItemFactory {
 
     private static final Logger log = LogManager.getLogger(CommonItemFactory.class);
 
+    /**
+     * Method to create individual items
+     * @param itemType String containing the item Name
+     * @return         Corresponding item
+     * @throws IllegalArgumentException when itemType is not defined
+     */
+
     public Item createItem(String itemType) throws IllegalArgumentException{
 
         switch (itemType) {
@@ -69,6 +76,11 @@ public class CommonItemFactory {
         }
     }
 
+    /**
+     * Method to create all common items at once
+     * @return Observable List of common items
+     * @throws IllegalArgumentException when itemType is not defined, shows error screen
+     */
     public ObservableList<Item> createAllItems() throws IllegalArgumentException {
 
         final ObservableList<Item> itemList = FXCollections.observableArrayList();

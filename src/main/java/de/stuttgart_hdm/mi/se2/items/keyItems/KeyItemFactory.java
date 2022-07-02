@@ -16,6 +16,12 @@ public class KeyItemFactory {
 
     private static final Logger log = LogManager.getLogger(KeyItemFactory.class);
 
+    /**
+     * Method to create individual Key Items
+     * @param itemType String containing Key Item name
+     * @return         Corresponding Key Item
+     * @throws IllegalArgumentException when Key Item is not defined
+     */
     public Item createItem(String itemType) throws IllegalArgumentException{
 
         switch (itemType) {
@@ -51,6 +57,11 @@ public class KeyItemFactory {
         }
     }
 
+    /**
+     *Method to create all Key Items as once
+     * @return Observable List containing all Key Items
+     * @throws IllegalArgumentException when Key Item is not defined
+     */
     public ObservableList<Item> createAllKeyItems(){
 
         final ObservableList <Item> keyItemList = FXCollections.observableArrayList();

@@ -13,23 +13,27 @@ class ItemFactoryExceptionTest {
     private Item testItem;
 
     @BeforeEach
-
-    //Creating new Item factory only when test is conducted
     public void setup(){
         testItemFactory = new CommonItemFactory();
     }
 
+    /**
+     * Testing whether IllegalArgumentException is thrown, when trying to create non defined item
+     */
     @Test
-    //Testing whether Exception is thrown when trying to create a non existing Item
     public void itemExceptionTest(){
         Throwable e = assertThrows(IllegalArgumentException.class, () -> testItem = testItemFactory.createItem("Test Item"));
         assertEquals("Item not existing", e.getMessage());
     }
 
+    /**
+     * Method to remove all objects created for testing purposes
+     */
     @AfterEach
-    //Removing the objects created for testing purposes
     //@Test
-    //Testing whether objects have been removed
+    /**
+     * Adds test to ensure removal of test objects
+     */
     public void teardown(){
         testItemFactory = null;
         testItem = null;

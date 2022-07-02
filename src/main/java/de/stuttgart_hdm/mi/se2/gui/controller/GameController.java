@@ -375,18 +375,17 @@ public class GameController {
 
         if (!btnInspect.isVisible()) {
 
-            dialog.setText(Text.PROMPT_TO_PICK_ROOM_BUTTON.getMessage());
+            dialog.setText(Text.PROMPT_TO_PICK_ROOM_DOUBLE_CLICK.getMessage());
 
             //otherwise, room in roomView would still be selected
             roomView.getSelectionModel().select(null);
 
         } else {
 
-            dialog.setText(Text.SELECT_ROOM_INFO.getMessage());
+            dialog.setText(Text.PROMPT_TO_DOUBLE_CLICK.getMessage());
             roomViewHeight(gameModel.getRoomsList());
             roomViewRoomEvent();
             roomView.setItems(gameModel.getRoomsList());
-            invView.setDisable(true);
             btnInspect.setVisible(false);
             btnInspect.setManaged(false);
             btnPickUp.setVisible(false);

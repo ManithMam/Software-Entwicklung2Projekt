@@ -6,7 +6,7 @@ package de.stuttgart_hdm.mi.se2.gui;
  */
 public enum Text {
 
-    PROMPT_TO_PICK_ROOM_BUTTON( "Please select a room and use \"Pick Room\" button!"),
+    PROMPT_TO_PICK_ROOM_DOUBLE_CLICK( "Please select a room with double click!"),
 
     PROMPT_TO_PICK_ROOM("Please select a room!"),
 
@@ -46,8 +46,7 @@ public enum Text {
 
     ROOM_LOCKED_DIFFERENT_FORMAT("The room is locked!%n%s%n%s%s"),
 
-    SELECT_ROOM_INFO("Double click to select room!");
-
+    PROMPT_TO_DOUBLE_CLICK("Double click to select room!");
 
     private final String message;
 

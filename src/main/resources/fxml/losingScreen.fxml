@@ -8,7 +8,7 @@
 <BorderPane stylesheets="@../css/losingScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.controller.LosingController">
     <center>
         <VBox alignment="CENTER" styleClass="menu-Buttons">
-            <Label text="The clocks ringing. I suddenly feel dizzy. I can't...anymore...Who are...?" />
+            <Label text="The clocks ringing. I suddenly feel dizzy. I can't...anymore...Who are...you...?" />
             <Button fx:id="exitBtn" onAction="#exit" prefWidth="100" text="Exit" />
         </VBox>
     </center>
