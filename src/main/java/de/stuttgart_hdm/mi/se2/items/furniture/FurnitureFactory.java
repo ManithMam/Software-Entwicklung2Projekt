@@ -18,13 +18,16 @@ public class FurnitureFactory {
 
     private static final Logger log = LogManager.getLogger(FurnitureFactory.class);
 
+    /**
+     * Method to create individual furniture items
+     * @param itemType String containing the furniture name
+     * @return         Corresponding furniture
+     * @throws IllegalArgumentException when furniture type is not defined
+     */
+
     public Item createFurniture(String itemType) throws IllegalArgumentException{
 
         switch (itemType) {
-            case "Sofa" -> {
-                log.info("Sofa has been created");
-                return new Sofa();
-            }
             case "Chair" -> {
                 log.info("Chair has been created");
                 return new Chair();
@@ -49,6 +52,11 @@ public class FurnitureFactory {
         }
     }
 
+    /**
+     *Method to create all furniture items at once
+     * @return Observable List containing all furniture items
+     * @throws IllegalArgumentException when furniture type is not defined, shows error screen
+     */
     public ObservableList<Item> createAllFurniture(){
 
         final ObservableList <Item> furnitureList = FXCollections.observableArrayList();
@@ -57,7 +65,6 @@ public class FurnitureFactory {
             furnitureList.add(createFurniture("Bed"));
             furnitureList.add(createFurniture("Chair"));
             furnitureList.add(createFurniture("Sink"));
-            furnitureList.add(createFurniture("Sofa"));
             furnitureList.add(createFurniture("Table"));
             furnitureList.add(createFurniture("Toilet"));
         }

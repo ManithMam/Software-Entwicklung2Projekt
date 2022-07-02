@@ -1,6 +1,7 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
+import de.stuttgart_hdm.mi.se2.items.commonItems.CD;
 import de.stuttgart_hdm.mi.se2.items.commonItems.Note6;
 import de.stuttgart_hdm.mi.se2.items.furniture.Bed;
 import de.stuttgart_hdm.mi.se2.items.keyItems.BaseballBat;
@@ -30,6 +31,7 @@ public class Basement extends Room {
         addItemsInRoom(getKeyItemList().stream().filter(ExitKey.class::isInstance).toList().get(0));
         addItemsInRoom(getFurnitureList().stream().filter(Bed.class::isInstance).toList().get(0));
         addItemsInRoom(getItemList().stream().filter(Note6.class::isInstance).toList().get(0));
+        addItemsInRoom(getItemList().stream().filter(CD.class::isInstance).toList().get(0));
     }
 
     /**

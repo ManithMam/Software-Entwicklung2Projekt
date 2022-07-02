@@ -80,7 +80,7 @@ public abstract class Room {
     }
 
     /**
-     * If item is created it gets add in the Room to the belonging itemList
+     * If item is created it gets added in the Room to the belonging itemList
      * @param item
      */
     //TODO throw exception

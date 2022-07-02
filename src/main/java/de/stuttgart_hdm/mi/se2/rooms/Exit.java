@@ -20,7 +20,7 @@ public class Exit extends Room {
         this.id = ++idCounter;
         setAccess(false);
         setName("Exit");
-        setDescription("I am finally free! Whatever the hell that was.\nNothings ever been able to keep me from getting\nwhat I wanted.");
+        setDescription("I am finally free! Whatever the hell that was.\nI got my way once again.");
         setDoorDescription("It´s a heavy metal door with a huge lock.");
     }
 
