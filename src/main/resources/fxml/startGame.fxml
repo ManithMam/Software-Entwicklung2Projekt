@@ -9,15 +9,15 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stuttgart_hdm.mi.se2.gui.controller.StartController">
    <center>
-      <VBox fx:id="startScreen" alignment="CENTER" prefHeight="200.0" prefWidth="500.0" stylesheets="@../css/gameScreen.css">
-         <children>
-            <Label text="Welcome to PAIN!&#10;Your mission is to escape the strange building you have been trapped in&#10;with the help of items found in the rooms.&#10;&#10;You awake in a run down Hallway and something is ticking..." textAlignment="CENTER" wrapText="true">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </Label>
-            <Button fx:id="btnStart" mnemonicParsing="false" text="Start" />
-         </children>
+      <VBox fx:id="startScreen" alignment="CENTER" prefHeight="200.0" prefWidth="500.0"
+            stylesheets="@../css/gameScreen.css">
+         <Label text="Welcome to PAIN!&#10;Your mission is to escape the strange building you have been trapped in&#10;with the help of items found in the rooms.&#10;&#10;You awake in a run down Hallway and something is ticking..."
+                textAlignment="CENTER" wrapText="true">
+            <VBox.margin>
+               <Insets bottom="10.0"/>
+            </VBox.margin>
+         </Label>
+         <Button fx:id="btnStart" mnemonicParsing="false" text="Start"/>
       </VBox>
    </center>
 </BorderPane>

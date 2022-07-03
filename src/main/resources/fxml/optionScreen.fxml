@@ -11,47 +11,33 @@
       <VBox alignment="CENTER" styleClass="margin">
          <Label text="Options" />
          <HBox alignment="CENTER" styleClass="margin-Settings">
-            <children>
-               <VBox alignment="CENTER_LEFT" styleClass="margin-Text">
-                  <children>
-                     <Label minWidth="63.0" text="Ray-Tracing" />
-                     <Label text="Fullscreen" />
-                     <Label text="Cheat Mode" />
-                  </children>
-               </VBox>
-               <VBox alignment="CENTER" styleClass="margin-Buttons">
-                  <children>
-                     <HBox alignment="CENTER" styleClass="margin-Select">
-                        <children>
-                            <Button fx:id="btnOffRayTracing" styleClass="setting-button" text="&lt;" />
-                           <Label minWidth="35.0" alignment="CENTER" text="OFF" />
-                           <Button fx:id="btnOnRayTracing" styleClass="setting-button" text="&gt;" />
-                        </children>
-                     </HBox>
-                     <HBox alignment="CENTER" styleClass="margin-Select">
-                        <children>
-                            <Button fx:id="btnOffFullScreen" styleClass="setting-button" text="&lt;" />
-                           <Label fx:id="textFullScreen" minWidth="35.0" alignment="CENTER" text="OFF" />
-                           <Button fx:id="btnOnFullScreen" styleClass="setting-button" text="&gt;" />
-                        </children>
-                     </HBox>
-                     <HBox alignment="CENTER" styleClass="margin-Select">
-                        <children>
-                           <Button fx:id="btnOffCheatMode" styleClass="setting-button" text="&lt;" />
-                           <Label fx:id="textCheatMode" minWidth="35.0" alignment="CENTER" text="OFF" />
-                           <Button fx:id="btnOnCheatMode" styleClass="setting-button" text="&gt;" />
-                        </children>
-                     </HBox>
-                  </children>
-               </VBox>
-            </children>
+            <VBox alignment="CENTER_LEFT" styleClass="margin-Text">
+               <Label minWidth="63.0" text="Ray-Tracing"/>
+               <Label text="Fullscreen"/>
+               <Label text="Cheat Mode"/>
+            </VBox>
+            <VBox alignment="CENTER" styleClass="margin-Buttons">
+               <HBox alignment="CENTER" styleClass="margin-Select">
+                  <Button fx:id="btnOffRayTracing" styleClass="setting-button" text="&lt;"/>
+                  <Label minWidth="35.0" alignment="CENTER" text="OFF"/>
+                  <Button fx:id="btnOnRayTracing" styleClass="setting-button" text="&gt;"/>
+               </HBox>
+               <HBox alignment="CENTER" styleClass="margin-Select">
+                  <Button fx:id="btnOffFullScreen" styleClass="setting-button" text="&lt;"/>
+                  <Label fx:id="textFullScreen" minWidth="35.0" alignment="CENTER" text="OFF"/>
+                  <Button fx:id="btnOnFullScreen" styleClass="setting-button" text="&gt;"/>
+               </HBox>
+               <HBox alignment="CENTER" styleClass="margin-Select">
+                  <Button fx:id="btnOffCheatMode" styleClass="setting-button" text="&lt;"/>
+                  <Label fx:id="textCheatMode" minWidth="35.0" alignment="CENTER" text="OFF"/>
+                  <Button fx:id="btnOnCheatMode" styleClass="setting-button" text="&gt;"/>
+               </HBox>
+            </VBox>
          </HBox>
          <VBox alignment="CENTER" styleClass="margin-Buttons">
-            <children>
-               <Label fx:id="errorText"/>
-               <Button fx:id="btnApply" text="Apply" />
-                <Button fx:id="btnBack" text="Back to Menu" />
-            </children>
+            <Label fx:id="errorText"/>
+            <Button fx:id="btnApply" text="Apply"/>
+            <Button fx:id="btnBack" text="Back to Menu"/>
          </VBox>
       </VBox>
    </center>
