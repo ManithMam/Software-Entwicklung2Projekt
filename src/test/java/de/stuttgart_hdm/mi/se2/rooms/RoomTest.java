@@ -1,6 +1,7 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 
+import de.stuttgart_hdm.mi.se2.gui.model.GameModel;
 import de.stuttgart_hdm.mi.se2.items.Item;
 import de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory;
 
@@ -9,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import de.stuttgart_hdm.mi.se2.items.keyItems.BaseballBat;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory;
 import javafx.collections.ObservableList;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -16,28 +18,29 @@ import java.util.List;
 
 public class RoomTest {
 
-    /*
+    private GameModel gameModel;
+    private KeyItemFactory keyItemFactory;
+
+
     @Test
     public void testNeededItem() {
         RoomFactory roomFactory = new RoomFactory();
-        KeyItemFactory keyItemFactory = new KeyItemFactory();
+        gameModel = new GameModel();
+        keyItemFactory = new KeyItemFactory();
 
-        Item baseBallBat = keyItemFactory.createItem("Baseball bat");
         Room bathroom = roomFactory.createRoom("Bathroom");
-        Room basement = roomFactory.createRoom("Basement");
         Room hallway = roomFactory.createRoom("Hallway");
 
-        List<Integer> hallwayList = new ArrayList<>();
-        List<Integer> bathroomList = new ArrayList<>();
-        List<Integer> basementList = new ArrayList<>();
+        List item  = gameModel.getCurrentRoom().getKeyItemList().stream().filter(BaseballBat.class::isInstance).map(Item::getId).toList();
 
+        assertEquals(item, bathroom.neededItem());
 
-        assertEquals(bathroomList, bathroom.neededItem());
-        assertEquals(basementList, basement.neededItem());
-        assertEquals(hallwayList, hallway.neededItem());
+        gameModel.setCurrentRoom(gameModel.getRoomsList().get(3));
+        item = new ArrayList();
+
+        assertEquals(item, hallway.neededItem());
     }
 
-     */
 
     @Test
     public void testAddItemInRoom() {
@@ -78,7 +81,7 @@ public class RoomTest {
 
         assertAll("id access name",
                 () -> assertEquals(1, basement1.getId()),
-                () -> assertEquals(true, basement1.getAccess()),
+                () -> assertEquals(false, basement1.getAccess()),
                 () -> assertEquals("Basement", basement1.getName()));
 
         assertAll("id access name",
@@ -88,16 +91,4 @@ public class RoomTest {
 
     }
 
-    @Test
-    public void negativeTestCreatingRooms() {
-        RoomFactory roomFactory = new RoomFactory();
-        Room basement1 = roomFactory.createRoom("Basement");
-
-
-        assertAll("id access name",
-                () -> assertEquals(1, basement1.getId()),
-                () -> assertEquals(false, basement1.getAccess()),
-                () -> assertEquals("Basement", basement1.getName()));
-
-    }
 }
