@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-//import static de.stuttgart_hdm.mi.se2.Main.items;
 
 public class FurnitureFactory {
 

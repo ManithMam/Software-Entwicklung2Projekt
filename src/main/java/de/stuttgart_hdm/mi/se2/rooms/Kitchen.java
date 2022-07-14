@@ -6,7 +6,6 @@ import de.stuttgart_hdm.mi.se2.items.commonItems.Note3;
 import de.stuttgart_hdm.mi.se2.items.commonItems.Pliers;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KitchenTorch;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Toothbrush;
-
 import java.util.List;
 
 /**

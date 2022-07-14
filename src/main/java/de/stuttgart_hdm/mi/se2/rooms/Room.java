@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.List;
 
 

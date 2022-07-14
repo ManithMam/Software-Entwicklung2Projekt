@@ -6,8 +6,6 @@ package de.stuttgart_hdm.mi.se2.gui;
  */
 public enum Text {
 
-    PROMPT_TO_PICK_ROOM_DOUBLE_CLICK( "Please select a room with double click!"),
-
     PROMPT_TO_PICK_ROOM("Please select a room!"),
 
     PICKUP_DENIED( "You can not pick that up"),

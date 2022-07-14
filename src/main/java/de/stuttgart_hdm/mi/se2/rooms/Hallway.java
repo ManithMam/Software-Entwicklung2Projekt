@@ -4,7 +4,6 @@ import de.stuttgart_hdm.mi.se2.items.commonItems.Note1;
 import de.stuttgart_hdm.mi.se2.items.commonItems.Rope;
 import de.stuttgart_hdm.mi.se2.items.keyItems.BaseballBat;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Watch;
-
 import java.util.ArrayList;
 import java.util.List;
 

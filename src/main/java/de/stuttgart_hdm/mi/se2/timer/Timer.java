@@ -5,10 +5,8 @@ import de.stuttgart_hdm.mi.se2.gui.Utils;
 import de.stuttgart_hdm.mi.se2.gui.view.GameView;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Watch;
 import de.stuttgart_hdm.mi.se2.rooms.Room;
-
 import javafx.application.Platform;
 import javafx.scene.Parent;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

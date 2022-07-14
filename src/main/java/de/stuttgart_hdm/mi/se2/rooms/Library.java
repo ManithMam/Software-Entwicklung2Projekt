@@ -1,12 +1,10 @@
 package de.stuttgart_hdm.mi.se2.rooms;
 
 import de.stuttgart_hdm.mi.se2.items.Item;
-
 import de.stuttgart_hdm.mi.se2.items.commonItems.*;
 import de.stuttgart_hdm.mi.se2.items.furniture.Chair;
 import de.stuttgart_hdm.mi.se2.items.keyItems.KitchenTorch;
 import de.stuttgart_hdm.mi.se2.items.keyItems.Knife;
-
 import java.util.List;
 
 /**
