@@ -1,0 +1,98 @@
+17:57:10.491 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.gui.controller.MenuController - Start game button has been pressed
+17:57:10.525 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Basement was created
+17:57:10.531 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory - Baseball bat was created
+17:57:10.531 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory - Watch was created
+17:57:10.531 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory - Kitchen torch was created
+17:57:10.531 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory - Knife was created
+17:57:10.531 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory - Exit key was created
+17:57:10.531 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory - Toothbrush was created
+17:57:10.531 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.keyItems.KeyItemFactory - Flashlight was created
+17:57:10.531 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory - Bed has been created
+17:57:10.531 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory - Chair has been created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory - Sink has been created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory - Table has been created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.furniture.FurnitureFactory - Toilet has been created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Book was created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - CD was created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Cookbook was created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Glasses were created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Note1 was created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Note2 was created
+17:57:10.532 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Note3 was created
+17:57:10.533 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Note4 was created
+17:57:10.533 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Note5 was created
+17:57:10.533 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Note6 was created
+17:57:10.533 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Note6 was created
+17:57:10.533 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.items.commonItems.CommonItemFactory - Rope was created
+17:57:10.534 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Large Key was succesfully added into the Room
+17:57:10.534 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Bed was succesfully added into the Room
+17:57:10.534 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Diary was succesfully added into the Room
+17:57:10.534 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - CD was succesfully added into the Room
+17:57:10.534 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Hallway was created
+17:57:10.534 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Aluminum Baseball bat was succesfully added into the Room
+17:57:10.535 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Watch was succesfully added into the Room
+17:57:10.535 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Letter was succesfully added into the Room
+17:57:10.535 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Rope was succesfully added into the Room
+17:57:10.535 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Kitchen was created
+17:57:10.535 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Kitchen torch was succesfully added into the Room
+17:57:10.536 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Cookbook was succesfully added into the Room
+17:57:10.536 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Paper pinned to wall was succesfully added into the Room
+17:57:10.536 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Pliers was succesfully added into the Room
+17:57:10.536 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Library was created
+17:57:10.536 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Rusty Knife was succesfully added into the Room
+17:57:10.536 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Chair was succesfully added into the Room
+17:57:10.537 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Glasses was succesfully added into the Room
+17:57:10.537 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Book in shelf was succesfully added into the Room
+17:57:10.537 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Note between books was succesfully added into the Room
+17:57:10.537 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Chemistry book was succesfully added into the Room
+17:57:10.537 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Bathroom was created
+17:57:10.538 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Broken toothbrush was succesfully added into the Room
+17:57:10.538 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Sink was succesfully added into the Room
+17:57:10.538 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Toilet was succesfully added into the Room
+17:57:10.539 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Ragged piece of paper was succesfully added into the Room
+17:57:10.539 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Flashlight was succesfully added into the Room
+17:57:10.539 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Exitroom was created
+17:57:13.384 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.gui.controller.StartController - Pressed start button in Start Game Scene
+17:57:13.385 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 10:00 minutes left.
+17:57:14.388 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:59 minutes left.
+17:57:15.389 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:58 minutes left.
+17:57:16.389 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:57 minutes left.
+17:57:17.390 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:56 minutes left.
+17:57:18.393 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:55 minutes left.
+17:57:19.394 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:54 minutes left.
+17:57:20.395 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:53 minutes left.
+17:57:21.397 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:52 minutes left.
+17:57:22.398 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:51 minutes left.
+17:57:23.399 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:50 minutes left.
+17:57:24.400 [Thread-55] INFO  de.stuttgart_hdm.mi.se2.timer.Timer - Player has 9:49 minutes left.
+17:57:24.767 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.gui.controller.GameController - Back to Menu button was pressed in game
+17:57:24.771 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Basement was created
+17:57:24.771 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Large Key was succesfully added into the Room
+17:57:24.771 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Bed was succesfully added into the Room
+17:57:24.771 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Diary was succesfully added into the Room
+17:57:24.771 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - CD was succesfully added into the Room
+17:57:24.771 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Hallway was created
+17:57:24.771 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Aluminum Baseball bat was succesfully added into the Room
+17:57:24.771 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Watch was succesfully added into the Room
+17:57:24.771 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Letter was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Rope was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Kitchen was created
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Kitchen torch was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Cookbook was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Paper pinned to wall was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Pliers was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Library was created
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Rusty Knife was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Chair was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Glasses was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Book in shelf was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Note between books was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Chemistry book was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Bathroom was created
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Broken toothbrush was succesfully added into the Room
+17:57:24.772 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Sink was succesfully added into the Room
+17:57:24.773 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Toilet was succesfully added into the Room
+17:57:24.773 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Ragged piece of paper was succesfully added into the Room
+17:57:24.773 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.Room - Flashlight was succesfully added into the Room
+17:57:24.773 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.rooms.RoomFactory - Exitroom was created
+17:57:25.473 [JavaFX Application Thread] INFO  de.stuttgart_hdm.mi.se2.gui.controller.MenuController - Exit button has been pressed

@@ -561,6 +561,7 @@ public class GameController {
         try {
 
             dialog.setText(String.format(Text.ROOM_LOCKED.getMessage(), gameModel.getRoomDoorDescription(getSelected())));
+            roomView.setDisable(false);
 
         } catch (IllegalArgumentException e) {
 
